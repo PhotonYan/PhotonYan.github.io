@@ -9,4 +9,6 @@ Hello World!
 
 Here is a test of `mathmode`:
 
-$$ \int_{\partial A}\bm \omega =\int_A \mathrm d\bm \omega $$
+$$ \int_{\partial A}\mathbf{\omega} =\int_A \mathrm d \mathbf{\omega}$$
+
+This is called **Stokes' theorem**.
