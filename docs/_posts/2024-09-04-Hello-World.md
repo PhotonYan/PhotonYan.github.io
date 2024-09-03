@@ -2,8 +2,14 @@
 layout: post
 title: "Hello World!"
 date: 2024-09-04
-categories: post
+categories: Test-Documents
+description: "Welcome to my website!"
 ---
+### Abstract
+
+Welcome to my website! This is the first post, and I hope it marks the beginning of a vibrant journey for both you and me. English will be the primary language used here, but I may occasionally provide additional explanations in Chinese. 
+
+### Article
 
 Hello World!
 
