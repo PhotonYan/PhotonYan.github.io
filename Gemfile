@@ -4,6 +4,11 @@ source "https://rubygems.org"
 
 # gem "jekyll-theme-chirpy"
 
+gem "jekyll", "~> 4.2"
+
+group :jekyll_plugins do
+  gem "jekyll-timeago", "~> 0.13.1"
+end
 gemspec
 
 gem "html-proofer", "~> 5.0", group: :test
