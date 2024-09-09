@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>PhotonYan</title>
   <subtitle>This is the official webpage where I publish my works.</subtitle>
-  <updated>2024-09-04T07:58:49+08:00</updated>
+  <updated>2024-09-09T23:07:46+08:00</updated>
   <author>
     <name>Shaoheng YAN</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,30 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>[线性代数A-笔记]线性方程组01</title>
+    <link href="http://localhost:4000/posts/LA-01/" rel="alternate" type="text/html" title="[线性代数A-笔记]线性方程组01" />
+    <published>2024-09-09T00:00:00+08:00</published>
+  
+    <updated>2024-09-09T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/LA-01/</id>
+    <content src="http://localhost:4000/posts/LA-01/" />
+    <author>
+      <name>Shaoheng YAN</name>
+    </author>
+
+  
+    
+    <category term="Linear-Algebra" />
+    
+  
+
+  <summary>240909第一次课</summary>
+
+  </entry>
 
   
   <entry>
