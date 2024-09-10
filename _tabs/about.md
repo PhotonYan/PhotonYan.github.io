@@ -9,5 +9,5 @@ order: 4
 ## Education
 
 - Middle school, 2021-2024, [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
-- E.B. in Artificial Intelligence, 2024-NOW, [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
+- B.S. in Artificial Intelligence, 2024-NOW, [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
  
