@@ -1,0 +1,31 @@
+typename: am
+	categories:
+		Advanced-Mathematics
+	tags:
+		Mathematics
+	num-of-documents: 4
+end-of-type
+
+typename: la
+	categories:
+		Linear-Algebra
+	tags:
+		Mathematics
+	num-of-documents: 4
+end-of-type
+
+typename: am-homework
+	categories:
+		Advanced-Mathematics-homework
+	tags:
+		Mathematics
+	num-of-documents: 1
+end-of-type
+
+typename: la-homework
+	categories:
+		Linear-Algebra-homework
+	tags:
+		Mathematics
+	num-of-documents: 4
+end-of-type
