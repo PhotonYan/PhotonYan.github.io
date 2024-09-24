@@ -17,5 +17,5 @@ num-of-documents: 4
 typename: test
 categories: Test-documents 
 tags: 
-num-of-documents: 2
+num-of-documents: 1
  end-of-type 
