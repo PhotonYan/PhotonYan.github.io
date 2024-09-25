@@ -1,20 +1,20 @@
 typename: ma
-categories: Advanced-Mathematics Notes 
+categories: Advanced-Mathematics am-Notes 
 tags: Math 
 num-of-documents: 4
 end-of-type
 typename: ma-homework
-categories: Advanced-Mathematics Homeworks 
+categories: Advanced-Mathematics ad-Homeworks 
 tags: Math 
 num-of-documents: 1
 end-of-type
 typename: la
-categories: Linear-Algebra Notes 
+categories: Linear-Algebra la-Notes 
 tags: Math 
 num-of-documents: 5
 end-of-type
 typename: la-homework
-categories: Linear-Algebra Homeworks 
+categories: Linear-Algebra la-Homeworks 
 tags: Math 
 num-of-documents: 4
 end-of-type
