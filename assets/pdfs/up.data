@@ -4,7 +4,7 @@ tags: Math
 num-of-documents: 4
 end-of-type
 typename: ma-homework
-categories: Advanced-Mathematics-Homeworks Homeworks 
+categories: Advanced-Mathematics Homeworks 
 tags: Math 
 num-of-documents: 1
 end-of-type
@@ -14,7 +14,12 @@ tags: Math
 num-of-documents: 5
 end-of-type
 typename: la-homework
-categories: Linear-Algebra-Homeworks Homeworks 
+categories: Linear-Algebra Homeworks 
 tags: Math 
 num-of-documents: 4
+end-of-type
+typename: test
+categories: Test-Documents
+tags:  Tests
+num-of-documents: 2
 end-of-type
