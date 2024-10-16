@@ -10,4 +10,8 @@ order: 1
 
 - Middle school, 2021-2024, [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
 - B.S. in Artificial Intelligence, 2024-NOW, [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
+
+## Friends
+- [Fanzt](https://fanzt.github.io/ ), B.S. in Physics, 2024-NOW, SJTU.
+- [Whitney](https://phymani.me/), B.S. in Physics, 2024-NOW, SDU.
  
