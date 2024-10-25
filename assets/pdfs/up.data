@@ -23,3 +23,8 @@ categories: Test-Documents
 tags: Tests 
 num-of-documents: 2
 end-of-type
+typename: MinP
+categories: Mathematical_Methods_For_Physics 
+tags: Math Physics 
+num-of-documents: 1
+end-of-type
