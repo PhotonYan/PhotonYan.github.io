@@ -17,4 +17,4 @@ order: 1
 ## Friends
 - [Fanzt](https://fanzt.github.io/ ), B.S. in Physics, 2024-NOW, at SJTU.
 - [Whitney](https://phymani.me/), B.S. in Physics, 2024-NOW, at SDU.
- 
+- [for_each](https://https://cwd316.com/).
