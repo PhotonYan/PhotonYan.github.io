@@ -7,7 +7,7 @@ gem "jekyll-theme-chirpy", "~> 7.1.0"
 gem "jekyll", "~> 4.3"
 
 group :jekyll_plugins do
-  gem "jekyll-timeago", "~> 0.13.1"
+  gem "jekyll-timeago", "~> 0.15.0"
 end
 # gemspec
 
