@@ -1,0 +1,32 @@
+typename: ma
+categories:
+Advanced-Mathematics
+Notes
+tags:
+Math
+num-of-documents: 4
+end-of-type
+typename: ma-homework
+categories:
+Advanced-Mathematics-Homeworks
+Homeworks
+tags:
+Math
+num-of-documents: 1
+end-of-type
+typename: la
+categories:
+Linear-Algebra
+Notes
+tags:
+Math
+num-of-documents: 4
+end-of-type
+typename: la-homework
+categories:
+Linear-Algebra-Homeworks
+Homeworks
+tags:
+Math
+num-of-documents: 4
+end-of-type
