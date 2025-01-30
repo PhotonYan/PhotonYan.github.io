@@ -27,11 +27,27 @@ jobs:
         with:
           fetch-depth: 0 # for posts's lastmod
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+      - name: Install dependencies for ruby-build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev git
+
+      - name: Clone ruby-build
+        run: |
+          git clone https://github.com/rbenv/ruby-build.git
+
+      - name: Install Ruby ${{ matrix.ruby }} using ruby-build
+        run: |
+          cd ruby-build
+          sudo ./install.sh
+          ruby-build ${{ matrix.ruby }} /opt/hostedtoolcache/Ruby/${{ matrix.ruby }}/x64
+
+      - name: Mark Ruby installation as complete
+        run: |
+          touch /opt/hostedtoolcache/Ruby/${{ matrix.ruby }}/x64.complete
+
+      - name: Check Ruby version
+        run: ruby -v  # 确认 Ruby 是否成功安装
 
       - name: Setup Node
         uses: actions/setup-node@v4
