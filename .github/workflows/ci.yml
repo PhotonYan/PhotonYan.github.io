@@ -22,22 +22,19 @@ jobs:
         ruby: ["3.1", "3.2", "3.3"]
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # for posts's lastmod
+          fetch-depth: 0 # to ensure that posts' lastmod date is available
 
-      - name: Install dependencies for ruby-build
+      - name: Install dependencies for Ruby installation
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev git
 
-      - name: Clone ruby-build
+      - name: Install Ruby version with ruby-build
         run: |
           git clone https://github.com/rbenv/ruby-build.git
-
-      - name: Install Ruby ${{ matrix.ruby }} using ruby-build
-        run: |
           cd ruby-build
           sudo ./install.sh
           ruby-build ${{ matrix.ruby }} /opt/hostedtoolcache/Ruby/${{ matrix.ruby }}/x64
@@ -46,16 +43,16 @@ jobs:
         run: |
           touch /opt/hostedtoolcache/Ruby/${{ matrix.ruby }}/x64.complete
 
-      - name: Check Ruby version
-        run: ruby -v  # 确认 Ruby 是否成功安装
+      - name: Verify Ruby installation
+        run: ruby -v  # this should confirm Ruby is installed and the version is correct
 
-      - name: Setup Node
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
-      - name: Build Assets
-        run: npm i && npm run build
+      - name: Install dependencies and build assets
+        run: npm install && npm run build
 
-      - name: Test Site
+      - name: Test site
         run: bash tools/test.sh
