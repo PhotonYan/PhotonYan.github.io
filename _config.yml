@@ -99,7 +99,7 @@ theme_mode: light # [light | dark]
 cdn: # "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/head.jpg"
+avatar: "/assets/img/favicons/head.jpg"
 head:
   - "<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML'></script>"
 
