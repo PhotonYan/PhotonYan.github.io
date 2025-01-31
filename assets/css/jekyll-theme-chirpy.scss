@@ -1,9 +1,9 @@
 ---
 ---
 
-@import '/sass/main
+@use 'main
 {%- if jekyll.environment == 'production' -%}
-  .bundle.scss
+  .bundle
 {%- endif -%}
 ';
 
