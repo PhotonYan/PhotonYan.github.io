@@ -2,13 +2,12 @@ name: CD
 
 on:
   push:
-    branches:
-      - production
-    tags-ignore:
-      - "**"
+    branches: [production]
+    tags-ignore: ["**"]
 
 jobs:
   release:
+    if: ${{ ! startsWith(github.event.head_commit.message, 'chore(release)') }}
     permissions:
       contents: write
       issues: write
@@ -17,38 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # 手动安装 Ruby 版本 3.3
-      - name: Install dependencies for Ruby
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev git
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
 
-      # 安装 ruby-build 并使用它安装 Ruby 3.3
-      - name: Install Ruby using ruby-build
-        run: |
-          git clone https://github.com/rbenv/ruby-build.git
-          cd ruby-build
-          sudo ./install.sh
-          ruby-build 3.3.0 /opt/hostedtoolcache/Ruby/3.3.0/x64
-
-      # 标记 Ruby 安装完成
-      - name: Mark Ruby installation as complete
-        run: |
-          touch /opt/hostedtoolcache/Ruby/3.3.0/x64.complete
-
-      # 验证 Ruby 安装
-      - name: Verify Ruby installation
-        run: ruby -v  # 打印出 Ruby 版本，确认安装无误
-
-      # 安装 Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
-      # 安装依赖并构建资产
       - run: npm install
-
-      # 使用 semantic-release 发布
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
