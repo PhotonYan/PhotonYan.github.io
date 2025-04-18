@@ -34,16 +34,18 @@ image:
 实变函数论实际上是在尝试对“面积”和“体积”这一类直观概念进行严格抽象，它试图在更一般的集合上定义度量（Measure）。Henri Lebesgue在20世纪初提出新的积分理论不仅拓展了可积函数的范围，也为研究不连续性、极限过程、概率统计等数学领域提供了统一的数学语言。
 
 我们早已熟知的Riemann积分是被Riemann和定义的。如果一个函数$f(x)$在闭区间$[a,b]$上有定义，且$\{x_i\}_{[n]}$是闭区间$[a,b]$上的一个**分划**$P$，定义区间$[a,b]$上的上Riemann和$U(f,P,[a,b])$和下Riemann和$L(f,P,[a,b])$分别为：
-$$U(f,P,[a,b])=\sum_i m(x_i,x_{i+1})\sup_{[x_i,x_{i+1}]}f\\L(f,P,[a,b])=\sum_i m(x_i,x_{i+1})\inf_{[x_i,x_{i+1}]}f$$
+$$\begin{gather}U(f,P,[a,b])=\sum_i m(x_i,x_{i+1})\sup_{[x_i,x_{i+1}]}f\\L(f,P,[a,b])=\sum_i m(x_i,x_{i+1})\inf_{[x_i,x_{i+1}]}f\end{gather}$$
 
 其中$m(x_i,x_{i+1})$是区间$(x_i,x_{i+1})$的长度。如果$U(f,P,[a,b])=L(f,P,[a,b])$，则称$f(x)$在区间$[a,b]$上Riemann 可积。
 
 这个定义看起来非常美好，因为它非常符合直观。但它有一个问题：存在大量函数的上下Riemann和并不相等。这严重限制了积分理论在更广泛的实函数上的拓展。例如著名的定义在$[0,1]$上的Dirichlet函数：
 $$
+\begin{equation}
 f(x):=\left\{\begin{matrix}
 1,&x\in \mathbb Q\cap[0,1]\\
 0,&x\not\in \mathbb Q\cap[0,1]
 \end{matrix}\right.
+\end{equation}
 $$
 其上下Riemann和分别等于1和0，也就是说，Dirichlet函数并不是Riemann可积函数。Dirichlet函数可以被看作将$f(x)=0$这一函数中所有有理数点的函数值调成$1$得到的。
 > 另一个并不是很好的性质在于：Riemann积分和求和、求导并不能随意换序，哪怕函数是逐点收敛的（Pointwise Converge）。后面我们会提到的Lebesgue积分虽然对这些操作也有一定限制，但它能将驻点收敛几乎处处地收紧到一致收敛，从而可以更轻易地交换次序——这会给我们带来巨大的证明上的便利。
@@ -59,6 +61,7 @@ $$
 
 > 关于「有理数与自然数可以一一对应」，我们可以构造如下双射。注意到有理数均可被表示为$p/q$的形式，我们可以列出如下数表。以反对角线的方向对数表的元素编号，并以这个标号对数表中的所有元素排列，我们便可得到一个数列：$\frac{1}{1},\frac{1}{2},\frac{2}{1},\frac{1}{3}\dots$。在这个数列中，任意有理数与其序号（一个正整数）一一对应。证毕。
 >$$
+\begin{equation}
 \begin{matrix}
      & \scriptstyle q \rightarrow &        &        &         &        \\
 \scriptstyle p \downarrow & 1/1 & 1/2 & 1/3 & 1/4 & \cdots \\
@@ -67,6 +70,7 @@ $$
          & 4/1 & 4/2 & 4/3 & 4/4 & \cdots \\
          & \vdots & \vdots & \vdots & \vdots & \ddots \\
 \end{matrix}
+\end{equation}
 $$
 
 有理数集和自然数集是等势的，偶数构成的集合与自然数构成的集合是等势的，有限项自然数构成的有序数组的几何和自然数集也是等势的——这些命题都可以通过上面给出的列表法证明。记自然数集的势（又称基数）为$\aleph_0$，读作Aleph零。实数这一类连续的集合——这种描述并不严谨，但不妨碍理解——有一个统一的名字，叫做**连续统**。连续统的基数等于$2^{\aleph_0}$。这是很好理解的，只需要你注意到任意的实数都可以被无穷位的二进制小数表示。
@@ -77,12 +81,16 @@ $$
 
 因为有理数是可列的，即与自然数等势的，因此我们可以构造一个集合序列：
 $$
+\begin{equation}
 A_k=\{(x-\varepsilon/2^k,x+\varepsilon/2^k)\vert x\in \mathbb Q\cap[0,1]\}
+\end{equation}
 $$
 
 其中$\varepsilon$是大于零的任意正数。用$A_k$代替Dirichlet函数中的有理数集合，并取下确界，我们有：
 $$
+\begin{equation}
 \int_{[0,1]}f(x)\,\mathrm dx=\sup_{\varepsilon}\sum_k^\infty m(x_k-\varepsilon/2^k,x_k+\varepsilon/2^k)=\inf_{\varepsilon}2\varepsilon=0
+\end{equation}
 $$
 
 我们称这种用*一个覆盖原集合的开区间族*的长度衡量原集合长度的集合长度测量方式为**外测度**，又称**Lebesgue外测度**；上述开区间族被称作原集合的一个**开覆盖**。「外测度」的外字来源于我们是「从外面包裹住集合来测量」的，这与Riemann积分中我们从集合内部进行分划的「内测度」相对。
@@ -122,7 +130,9 @@ $$
 >
 > 考虑集合
 >$$
+>\begin{equation}
 >A := \bigcup_{q \in \mathbb{Q} \cap [0,1/2]} (V + q), \quad B := \bigcup_{q \in \mathbb{Q} \cap (1/2,1]} (V + q).
+>\end{equation}
 >$$
 >
 >则 $A \cap B = \varnothing$ 且 $A \cup B \subseteq [0,2]$，但我们有：
@@ -130,7 +140,7 @@ $$
 >- 而每个 $V + q$ 的外测度是恒定的，$\mu^*(V + q) = \mu^*(V)$；
 >- 因此如果 $\mu^*$ 可加，那么
 >$$
->\mu^*(A) + \mu^*(B) = \sum_{q \in \mathbb{Q} \cap [0,1/2]} \mu^*(V) + \sum_{q \in \mathbb{Q} \cap (1/2,1]} \mu^*(V) = \infty.
+>\begin{equation}\mu^*(A) + \mu^*(B) = \sum_{q \in \mathbb{Q} \cap [0,1/2]} \mu^*(V) + \sum_{q \in \mathbb{Q} \cap (1/2,1]} \mu^*(V) = \infty.\end{equation}
 >$$
 >
 >这显然矛盾。因此 $A$ 和 $B$ 的外测度不满足可加性。
@@ -146,7 +156,7 @@ Lebesgue外测度在Borel集上是测度。
 但这并不意味着在Borel集之外Lebesgue外测度就不能成为测度了。事实上，有一族与Borel集至多只在很少点不同的集合也是Lebesgue可测的。具体相差的有多少呢？答案是不同的点集至多只有$0$的外测度。
 
 确切来说，如果集合$A$对任意集合 $E\subseteq\mathbb R$ 都有：
-$$\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\cap A^c)$$
+$$\begin{equation}\mu^*(E)=\mu^*(E\cap A)+\mu^*(E\cap A^c)\end{equation}$$
 
 那么我们便称$A$是 Carathéodory 可测的；其中这里$A^c$指补集。也就是说，在这个集合 $A$ 上，$\mu^*$ 对“划分”行为是保持可加性的。所有满足这一条件的集合构成了一个 $\sigma$-代数，记作 $\mathcal{L}$，被称作 Lebesgue 可测集族。$\mu^*$ 在 $\mathcal{L}$ 上是一个真正的测度，即Lebesgue 测度。
 
