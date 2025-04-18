@@ -7,7 +7,7 @@ categories: [Courses, Math]
 tags: [Math]
 math: true
 mermaid: true
-image:
+image: true
 path: /assets/img/2025-04-18-Real-Analysis/cover.png
 ---
 
@@ -71,7 +71,17 @@ $$
 
 记严格比$\aleph_0$大的最小基数为$\aleph_1$。我们并不确定$\aleph_1$是不是$2^{\aleph_0}$，这被称作**连续统假设**。在标准集合论ZFC的公理系统中，连续统假设既无法被证明，也无法被否定。
 
+回到对积分理论的讨论。
 
+因为有理数是可列的，即与自然数等势的，因此我们可以构造一个集合序列：
+$$
+A_k=\{(x-\varepsilon/2^k,x+\varepsilon/2^k)|x\in \mathbb Q\cap[0,1]\}
+$$
+
+我们有：
+$$
+1
+$$
 
 > 你永远无法逃离线性代数的真实。
 {: .prompt-danger }
