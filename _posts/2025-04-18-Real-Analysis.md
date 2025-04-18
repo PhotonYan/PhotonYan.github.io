@@ -77,7 +77,7 @@ $$
 
 因为有理数是可列的，即与自然数等势的，因此我们可以构造一个集合序列：
 $$
-A_k=\{(x-\varepsilon/2^k,x+\varepsilon/2^k)|x\in \mathbb Q\cap[0,1]\}
+A_k=\{(x-\varepsilon/2^k,x+\varepsilon/2^k)\vert x\in \mathbb Q\cap[0,1]\}
 $$
 
 其中$\varepsilon$是大于零的任意正数。用$A_k$代替Dirichlet函数中的有理数集合，并取下确界，我们有：
@@ -102,14 +102,14 @@ $$
 
 **测度**$m$是一个将$\sigma$-代数$\mathcal S$中的集合映射为数的函数。考虑集合$X$与其上的$\sigma$-代数$\mathcal S$，测度$\mu$是$S\rightarrow[0,\infty]$的函数。
 
-在Riemann积分中，我们已经将开区间长度$(x_i,x_{i+1})$定义为$|x_{i+1}-x_i|$。我们希望测度能够在进行推广的过程中能够保留上述性质，即对于开区间$(a,b)$，其测度依旧等于$|b-a|$。为此我们要求，推广的测度函数$\mu(A)$必须要满足：
+在Riemann积分中，我们已经将开区间长度$(x_i,x_{i+1})$定义为$\vert x_{i+1}-x_i\vert $。我们希望测度能够在进行推广的过程中能够保留上述性质，即对于开区间$(a,b)$，其测度依旧等于$\vert b-a\vert $。为此我们要求，推广的测度函数$\mu(A)$必须要满足：
 1. 空集是零测集：$\mu(\varnothing)=0$;
-2. 开区间的测度退化为端点坐标差：$\mu(a,b)=|b-a|$;
+2. 开区间的测度退化为端点坐标差：$\mu(a,b)=\vert b-a\vert $;
 3. 对彼此不交的集合具有可数可加性：$\displaystyle\mu\left(\bigcup_{i}^\infty A_i\right)=\sum_i^{\infty}\mu(A_i)$.
 
 对于集合$X$，设可测空间（Measurable Space）$\mathcal S$为其所有子集构成的集合，这自然是一个$\sigma$-代数，读者可以自行验证。**Lebesgue外测度不满足上述条件中的第三条，因此Lebesgue外测度不是$\mathcal S$上的测度**。
 
-> 这一点可以通过以下技巧验证。我们限定在$\mathbb R$上讨论。现在我们希望证明存在两个互相无交集的集合$A,B$，满足$A\cap B=\varnothing$且$|A\cup B|\neq |A|+|B|$。
+> 这一点可以通过以下技巧验证。我们限定在$\mathbb R$上讨论。现在我们希望证明存在两个互相无交集的集合$A,B$，满足$A\cap B=\varnothing$且$\vert A\cup B\vert \neq \vert A\vert +\vert B\vert $。
 >
 > 我们构造一个不可测集合作为反例。这个构造依赖于**Vitali 集**。
 >
@@ -168,7 +168,40 @@ $$f=\sum_i \chi_{E_i}c_i$$
 > Dirichlet函数实际上就是$\chi_\mathbb Q$.
 > {: .prompt-tip }
 
-直观来讲
+直观来讲，上述逼近即将$f$拆分成其各个函数值组分的和。这与Riemann积分的思考是正交的。Riemann积分通过拆分积分区间计算积分，而Lebesgue积分通过拆解值域计算积分。
+
+在完成逼近以后，任意连续函数值域的原像根据前面的定义都是开集，从而必然Lebesgue可测，进而有限测度空间上的任何连续函数都Lebesgue可积。
+
+记函数$\chi_E$在测度$\mu$下的积分为$\int \chi_E\ \mathrm d \mu$，根据积分的意义有：
+$$\int \chi_E\ \mathrm d \mu=\mu(E)$$
+
+Lebesgue积分类似于Riemann积分，也是线性算符，因此：
+$$\int \sum c_i\chi_{A_i}\ \mathrm d\mu=\sum c_i\mu(A_i)$$
+
+在测度$\mu$下非负定函数$f$的Lebesgue积分记作：
+$$\int f\,\mathrm d \mu=\sup\left(\sum c_i\mu(A_i),\ \forall m,n,\,A_m\cap A_n=\varnothing,\, c_m\ge 0, f\ge\sum c_i\chi_{A_i} \right)$$
+
+其中$\sup$与$f\ge\sum c_i\chi_{A_i}$共同工作，通过选择最佳的逼近简单函数得到积分值。
+
+对于任意函数$f$，我们可以将其拆成正值部分$f^+$和负值部分$f^-$。也就是说：
+$$
+f^+=\left\{\begin{matrix}
+f, &f>0\\
+0, &f\le0
+\end{matrix}\right.,\quad f^-=\left\{\begin{matrix}
+0, &f>0\\
+-f, &f\le0
+\end{matrix}\right.$$
+
+而$f$整体的积分为：
+$$
+\int f\ \mathrm d\mu=\int f^+\ \mathrm d\mu-\int f^-\ \mathrm d\mu
+$$
+$\vert f\vert $的积分为：
+$$
+\int f\ \mathrm d\mu=\int f^+\ \mathrm d\mu+\int f^-\ \mathrm d\mu
+$$
+由此，我们得到了Lebesgue积分的完整定义。
 
 > 你永远无法逃离线性代数的真实。
 {: .prompt-danger }
