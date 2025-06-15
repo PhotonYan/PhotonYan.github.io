@@ -10,7 +10,7 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 
 ## Research Interest
 - Graph Machine Learning
-- Design of pretraining paradigms
+- Molecular pretraining
 
 ## Education
 
@@ -23,22 +23,33 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 {: .prompt-info }
 
 ### 正在进行
+**2024-2025暑假**（大一暑假）：
+<!-- - 普通物理实验 (II) -->
+- Differential Geometry, Lie Groups, and Symmetric Spaces
+- 深入理解计算机系统
+- 离散数学及其应用
+- 普通物理学（准备力学与电磁学免修考试）
+
+### 已修课程
+<!-- **2025-2026秋**（大二上）：
+- [免修]力学
+- [免修]电磁学 -->
+  
 **2024-2025春** (大一下)：
 - 高等数学 (Advanced Mathematic) - A
 - 概率统计 (Probability Theory and Statistics)- A
-- 程序设计实习 (实验班) (Practice of Programming in C&C++)
+- [Withdraw]程序设计实习 (实验班) (Practice of Programming in C&C++) 
 - 电动力学 (Electrodynamics) - A
 - 数学物理方法 (Methods of Mathematical Physics)
-- 人工智能引论 (	Introduction to Artificial Intelligence)
+- 人工智能引论 (Introduction to Artificial Intelligence)
 - 人工智能系统实践 (II) (Directed Research in AI System)
-- 计算艺术概论 (Introduction to Computing Art)
-- 艺术心理学 (Psychology of Art)
+- [旁听]计算艺术概论 (Introduction to Computing Art)
+- [旁听]艺术心理学 (Psychology of Art)
 - 物理心理学 (Psychophysics)
 - 实变函数论 (Real Analysis)
 - 常微分方程 (ODE)
 - 偏微分方程 (PDE)
 
-### 已修课程
 **2024-2025秋** (大一上)：
 - 高等数学 (Advanced Mathematics) - A
 - 线性代数 (Linear Algebra) - A
@@ -80,16 +91,13 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 - 微分流形 (Differential Manifolds)
 - 黎曼几何 (Riemannian Geometry)
 - 数值分析 (Numerical Analysis)
-- 离散数学 (Discrete Mathematics)
-- 计算机系统导论 (Introduction to Computer Systems)
-- 强化学习 (Reinforcement Learning)
 - **培养方案内的其它课程** (Other Courses in the Curriculum)
 
 ## Book in Progress and Completed
 - 方兴未艾——初中随笔集
 - 高中随笔集
-- 高考化学新讲
-- 高考语文备考指南
+- 高考化学新讲（准备出版）
+- 高考语文备考指南（准备出版）
 - 高考地备考指南
 - [Ongoing]北京四中物理竞赛讲义
 
