@@ -17,23 +17,37 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 - Middle school, 2021-2024, at [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
 - B.S. in Artificial Intelligence, and B.S. in Physics, 2024-NOW, at [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
 
+## Publications
+- [GeoRecon: Graph-Level Representation Learning for 3D Molecules via Reconstruction-Based Pretraining
+](https://arxiv.org/abs/2506.13174), **Shaoheng Yan**, Zian Li, Muhan Zhang. Preprint, under review (NeurIPS 2025).
+
 ## Ongoing Studies
 
 > This section is about what I'm learning now, whether through courses or on my own. I have **NOT** included the political courses, physical education courses, and some general education courses I am currently taking in the list below.
 {: .prompt-info }
 
 ### 正在进行
+**2025-2026秋**（大二上）：
+- 机器学习
+- 强化学习
+- 量子力学 A
+- 近现代物理导论（一）
+- 普通物理实验（二）
+- 离散数学与结构（图灵班）
+- 数据结构与算法 A（实验班）
+- 数学与音乐
+- 《理想国》
+- 电磁学（免修）
+
+### 已修课程
+
 **2024-2025暑假**（大一暑假）：
-<!-- - 普通物理实验 (II) -->
+部分阅读以下书籍：
 - Differential Geometry, Lie Groups, and Symmetric Spaces
+- GTM 258: Foundations of Optimization
 - 深入理解计算机系统
 - 离散数学及其应用
 - 普通物理学（准备力学与电磁学免修考试）
-
-### 已修课程
-<!-- **2025-2026秋**（大二上）：
-- [免修]力学
-- [免修]电磁学 -->
   
 **2024-2025春** (大一下)：
 - 高等数学 (Advanced Mathematic) - A
