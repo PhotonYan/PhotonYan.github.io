@@ -18,7 +18,7 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 ## Education
 
 - Middle school, 2021-2024, at [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
-- B.E. in Artificial Intelligence, and B.S. in Physics, 2024-NOW, at [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
+- B.E. in Artificial Intelligence, and B.S. in Physics, 2024-Present, at [Peking University](https://www.pku.edu.cn) YuanPei College.
 
 ## Publications
 - [GeoRecon: Graph-Level Representation Learning for 3D Molecules via Reconstruction-Based Pretraining
