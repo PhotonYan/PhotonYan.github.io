@@ -10,16 +10,19 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 
 ## Research Interest
 - Graph Machine Learning
-- Molecular pretraining
+- AI4Chemistry
+- MLFF (Machine Learning Force Field)
+- VLM (Visual Language Model)
+- VFM (Visual Foundation Model)
 
 ## Education
 
 - Middle school, 2021-2024, at [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
-- B.S. in Artificial Intelligence, and B.S. in Physics, 2024-NOW, at [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
+- B.E. in Artificial Intelligence, and B.S. in Physics, 2024-NOW, at [Peking University](https://www.pku.edu.cn) YuanPei Colledge.
 
 ## Publications
 - [GeoRecon: Graph-Level Representation Learning for 3D Molecules via Reconstruction-Based Pretraining
-](https://arxiv.org/abs/2506.13174), **Shaoheng Yan**, Zian Li, Muhan Zhang. Preprint, under review (NeurIPS 2025).
+](https://arxiv.org/abs/2506.13174), **Shaoheng Yan**, Zian Li, Muhan Zhang. Preprint.
 
 ## Ongoing Studies
 
@@ -28,26 +31,34 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 
 ### 正在进行
 **2025-2026秋**（大二上）：
-- 机器学习
+- 机器学习 (With [Notes](https://github.com/MuLabPKU/MachineLearningCourse2025/tree/main/notes/2025/mvp))
 - 强化学习
 - 量子力学 A
-- 近现代物理导论（一）
-- 普通物理实验（二）
-- 离散数学与结构（图灵班）
-- 数据结构与算法 A（实验班）
-- 数学与音乐
+- 近现代物理导论（一）(With Notes, but waiting for publish in TPD)
+- 离散数学与结构（图灵班）(With Notes, but waiting for publish)
+  - 数理逻辑
+  - 类型论
+  - 抽象代数
+  - 随机过程
+- 数据结构与算法 A
+- 金融时间序列分析
 - 《理想国》
-- 电磁学（免修）
+- 人工智能系统实践(III)
+- 泛函分析 
+- 优化理论与凸分析 (GTM 258: Foundations of Optimization)
+- 量子场论 (The Quantum Theory of Fields (Weinberg))
+
+
 
 ### 已修课程
+**2025-2026秋**（大二上）：
+- 电磁学（免修）
 
 **2024-2025暑假**（大一暑假）：
 部分阅读以下书籍：
-- Differential Geometry, Lie Groups, and Symmetric Spaces
 - GTM 258: Foundations of Optimization
-- 深入理解计算机系统
 - 离散数学及其应用
-- 普通物理学（准备力学与电磁学免修考试）
+- 普通物理学（准备免修考试）
   
 **2024-2025春** (大一下)：
 - 高等数学 (Advanced Mathematic) - A
@@ -112,7 +123,7 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 - 高中随笔集
 - 高考化学新讲（准备出版）
 - 高考语文备考指南（准备出版）
-- 高考地备考指南
+- 高考地理备考指南
 - [Ongoing]北京四中物理竞赛讲义
 
 ## Friends
