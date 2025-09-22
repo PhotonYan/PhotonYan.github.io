@@ -182,6 +182,26 @@
       return d.name || d.en_name || d.id;
     }
 
+    // —— 透明度映射（含别名） —— //
+    const stageOpacityMap = {
+      // 高中
+      "high_school": 0.5, "highschool": 0.5, "hs": 0.5,
+      // 大一上
+      "undergrad_year1_fall": 0.6, "y1_fall": 0.6, "freshman_fall": 0.6,
+      // 大一下
+      "undergrad_year1_spring": 0.7, "y1_spring": 0.7, "freshman_spring": 0.7,
+      // 大二上
+      "undergrad_year2_fall": 0.8, "y2_fall": 0.8, "sophomore_fall": 0.8
+    };
+    function nodeOpacity(d) {
+      if ((d.stage || '').toLowerCase() === 'ongoing') return 0.9; // 正在修读优先生效
+      const key = (d.stage_detail || '').toLowerCase();
+      return stageOpacityMap[key] ?? 1.0;
+    }
+    function nodeDash(d) {
+      return ((d.stage || '').toLowerCase() === 'ongoing') ? "4 2" : "none";
+    }
+
     // ---------- 状态 ----------
     let allCourses = [];
     let currentCategory = "__all__";
@@ -277,6 +297,8 @@
         .attr("fill", d => categoryColors[d.category] || "#95a5a6")
         .attr("stroke", "#fff")
         .attr("stroke-width", 2)
+        .style("opacity", d => nodeOpacity(d))
+        .style("stroke-dasharray", d => nodeDash(d))
         .on("click", showNodeInfo)
         .on("mouseover", handleNodeOver)
         .on("mouseout", handleNodeOut)
@@ -394,7 +416,7 @@
       langToggle.addEventListener("click", () => {
         currentLang = (currentLang === 'zh' ? 'en' : 'zh');
         refreshStaticTexts();
-        renderGraph(getFilteredCourses()); // 重绘以更新所有文本
+        renderGraph(getFilteredCourses()); // 重绘以更新所有文本 & 样式
       });
 
       window.addEventListener("resize", () => {
@@ -422,7 +444,7 @@
           categorySelect.appendChild(opt);
         }
 
-        refreshStaticTexts();            // 初次文案
+        refreshStaticTexts();              // 初次文案
         renderGraph(getFilteredCourses()); // 初次渲染
       } catch (err) {
         console.error(err);
