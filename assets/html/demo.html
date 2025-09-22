@@ -15,7 +15,7 @@
     .graph-container {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 100vh; /* 让 iframe 内全屏占位 */
       background: #f8f9fa;
       cursor: grab;
     }
@@ -72,7 +72,7 @@
     }
     .reset-btn:hover { background: #2563eb; }
 
-    /* 类别选择栏 */
+    /* 顶部工具条：类别 + 语言 */
     .category-bar {
       position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
       z-index: 60; display: flex; gap: 8px; align-items: center;
@@ -88,23 +88,29 @@
     .category-bar .pill {
       padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-weight: 600;
     }
+    .lang-btn{
+      border: 1px solid #e5e7eb; border-radius: 999px; background:#fff;
+      padding: 6px 10px; cursor: pointer; font-weight: 600; font-size: 13px;
+    }
+    .lang-btn:hover{ background:#f3f4f6; }
   </style>
 </head>
 <body>
   <div class="graph-container" id="graph">
     <div class="category-bar">
-      <span class="pill">类别/Categories</span>
+      <span class="pill" id="pillLabel">类别</span>
       <select id="categorySelect">
-        <option value="__all__">所有类别/All</option>
+        <option value="__all__">所有类别</option>
         <!-- 其余选项将由脚本根据数据自动填充 -->
       </select>
+      <button id="langToggle" class="lang-btn" title="Switch Language">EN</button>
     </div>
 
     <div class="zoom-controls">
       <div class="zoom-btn" id="zoomIn">+</div>
       <div class="zoom-btn" id="zoomOut">−</div>
     </div>
-    <button class="reset-btn" id="resetView">重置视图/Reset</button>
+    <button class="reset-btn" id="resetView">重置视图</button>
     <div class="node-info" id="nodeInfo"></div>
   </div>
 
@@ -130,7 +136,51 @@
       "Humanities": "#7f8c8d",
       "OPT": "#16a085"
     };
-    const stageMap = { "completed": "已完成", "ongoing": "进行中", "planned": "计划中", "audited": "旁听", "withdrawn": "退课" };
+
+    // —— 多语言文案 —— //
+    let currentLang = 'zh';
+    const i18n = {
+      zh: {
+        pill: '类别',
+        all: '所有类别',
+        reset: '重置视图',
+        category: '类别',
+        status: '状态',
+        credits: '学分',
+        related: '相关课程',
+        unknown: '—',
+        completed: '已完成',
+        ongoing: '进行中',
+        planned: '计划中',
+        audited: '旁听',
+        withdrawn: '退课',
+        langBtn: 'EN'
+      },
+      en: {
+        pill: 'Category',
+        all: 'All',
+        reset: 'Reset',
+        category: 'Category',
+        status: 'Status',
+        credits: 'Credits',
+        related: 'Related',
+        unknown: '—',
+        completed: 'Completed',
+        ongoing: 'Ongoing',
+        planned: 'Planned',
+        audited: 'Audited',
+        withdrawn: 'Withdrawn',
+        langBtn: '中'
+      }
+    };
+    function stageLabel(stage) {
+      const map = i18n[currentLang];
+      return map[stage] || stage || map.unknown;
+    }
+    function displayName(d) {
+      if (currentLang === 'en' && d.en_name) return d.en_name;
+      return d.name || d.en_name || d.id;
+    }
 
     // ---------- 状态 ----------
     let allCourses = [];
@@ -144,6 +194,8 @@
     const zoomOutBtn = document.getElementById('zoomOut');
     const resetBtn = document.getElementById('resetView');
     const categorySelect = document.getElementById('categorySelect');
+    const pillLabel = document.getElementById('pillLabel');
+    const langToggle = document.getElementById('langToggle');
 
     // ---------- 初始化图 ----------
     function initGraph() {
@@ -175,6 +227,17 @@
         });
 
       svg.call(zoom);
+    }
+
+    // ---------- 文案刷新 ----------
+    function refreshStaticTexts() {
+      const t = i18n[currentLang];
+      pillLabel.textContent = t.pill;
+      // 更新“所有类别/All”这个选项的显示文本（保留 value 不变）
+      const firstOpt = categorySelect.querySelector('option[value="__all__"]');
+      if (firstOpt) firstOpt.textContent = t.all;
+      resetBtn.textContent = t.reset;
+      langToggle.textContent = t.langBtn;
     }
 
     // ---------- 过滤 ----------
@@ -228,7 +291,7 @@
         .selectAll("text")
         .data(nodes)
         .enter().append("text")
-        .text(d => d.name)
+        .text(d => displayName(d))
         .attr("text-anchor", "middle")
         .attr("dy", 35)
         .attr("font-size", 12)
@@ -277,17 +340,20 @@
 
     // ---------- 信息卡 ----------
     function showNodeInfo(event, d) {
+      const t = i18n[currentLang];
       const relatedNames = (d.related || [])
-        .map(id => (allCourses.find(c => c.id === id) || {}).name || id)
+        .map(id => (allCourses.find(c => c.id === id) || {}))
+        .map(displayName)
         .filter(Boolean)
-        .join("，");
+        .join(currentLang === 'en' ? ', ' : '，');
+
       nodeInfo.innerHTML = `
-        <h3>${d.name} <span class="muted">(${d.id})</span></h3>
-        <div><strong>类别：</strong>${d.category || "—"}</div>
-        <div><strong>状态：</strong>${stageMap[d.stage] || d.stage || "—"} <span class="muted">(${d.stage_detail || "—"})</span></div>
-        ${d.credits ? `<div><strong>学分：</strong>${d.credits}</div>` : ""}
+        <h3>${displayName(d)} <span class="muted">(${d.id})</span></h3>
+        <div><strong>${t.category}：</strong>${d.category || t.unknown}</div>
+        <div><strong>${t.status}：</strong>${stageLabel(d.stage)} <span class="muted">(${d.stage_detail || t.unknown})</span></div>
+        ${d.credits ? `<div><strong>${t.credits}：</strong>${d.credits}</div>` : ""}
         ${d.description ? `<div class="muted block">${d.description}</div>` : ""}
-        <div class="block"><strong>相关课程：</strong>${relatedNames || "无"}</div>
+        <div class="block"><strong>${t.related}：</strong>${relatedNames || t.unknown}</div>
       `;
       nodeInfo.style.display = "block";
 
@@ -303,6 +369,8 @@
       nodeInfo.style.left = `${left}px`;
       nodeInfo.style.top = `${top}px`;
     }
+
+    // 点击空白处关闭信息卡
     document.addEventListener("click", (e) => {
       const isNode = e.target.tagName.toLowerCase() === "circle";
       if (!isNode) nodeInfo.style.display = "none";
@@ -320,6 +388,13 @@
       categorySelect.addEventListener("change", () => {
         currentCategory = categorySelect.value;
         renderGraph(getFilteredCourses());
+      });
+
+      // 语言切换
+      langToggle.addEventListener("click", () => {
+        currentLang = (currentLang === 'zh' ? 'en' : 'zh');
+        refreshStaticTexts();
+        renderGraph(getFilteredCourses()); // 重绘以更新所有文本
       });
 
       window.addEventListener("resize", () => {
@@ -347,8 +422,8 @@
           categorySelect.appendChild(opt);
         }
 
-        // 初始渲染
-        renderGraph(getFilteredCourses());
+        refreshStaticTexts();            // 初次文案
+        renderGraph(getFilteredCourses()); // 初次渲染
       } catch (err) {
         console.error(err);
         d3.select("#graph").append("div")

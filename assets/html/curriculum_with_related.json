@@ -4,6 +4,7 @@
     {
       "id": "AI-ML",
       "name": "机器学习",
+      "en_name": "Machine Learning",
       "category": "AI",
       "related": [
         "AI-RL",
@@ -30,6 +31,7 @@
     {
       "id": "AI-RL",
       "name": "强化学习",
+      "en_name": "Reinforcement Learning",
       "category": "AI",
       "related": [
         "AI-ML",
@@ -46,6 +48,7 @@
     {
       "id": "PH-QM-A",
       "name": "量子力学 A",
+      "en_name": "Quantum Mechanics A",
       "category": "Physics",
       "related": [
         "PH-MP",
@@ -64,6 +67,7 @@
     {
       "id": "PH-MP",
       "name": "近现代物理导论(一)",
+      "en_name": "Introduction to Modern and Contemporary Physics (I)",
       "category": "Physics",
       "related": [
         "PH-QM-A",
@@ -76,6 +80,7 @@
     {
       "id": "MATH-DS",
       "name": "离散数学与结构(图灵班)",
+      "en_name": "Discrete Mathematics and Structures (Turing Class)",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -97,6 +102,7 @@
     {
       "id": "MATH-Logic",
       "name": "数理逻辑",
+      "en_name": "Mathematical Logic",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -108,6 +114,7 @@
     {
       "id": "MATH-TT",
       "name": "类型论",
+      "en_name": "Type Theory",
       "category": "Math",
       "related": [
         "MATH-DS"
@@ -118,6 +125,7 @@
     {
       "id": "MATH-Alg",
       "name": "抽象代数",
+      "en_name": "Abstract Algebra",
       "category": "Math",
       "related": [
         "MATH-DS",
@@ -130,6 +138,7 @@
     {
       "id": "MATH-SP",
       "name": "随机过程",
+      "en_name": "Stochastic Processes",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -146,6 +155,7 @@
     {
       "id": "CS-DSA",
       "name": "数据结构与算法 A",
+      "en_name": "Data Structures and Algorithms A",
       "category": "CS",
       "related": [
         "CS-ProgLab",
@@ -157,6 +167,7 @@
     {
       "id": "FIN-TS",
       "name": "金融时间序列分析",
+      "en_name": "Financial Time Series Analysis",
       "category": "Finance",
       "related": [
         "AI-ML",
@@ -172,6 +183,7 @@
     {
       "id": "HUM-Rep",
       "name": "《理想国》",
+      "en_name": "The Republic (Plato)",
       "category": "Humanities",
       "related": [
         "PSY-Gen"
@@ -182,6 +194,7 @@
     {
       "id": "AI-Sys3",
       "name": "人工智能系统实践(III)",
+      "en_name": "AI Systems Practicum (III)",
       "category": "AI",
       "related": [
         "OPT-GTM258"
@@ -192,6 +205,7 @@
     {
       "id": "MATH-FA",
       "name": "泛函分析",
+      "en_name": "Functional Analysis",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -218,6 +232,7 @@
     {
       "id": "OPT-GTM258",
       "name": "优化理论与凸分析 (GTM 258)",
+      "en_name": "Foundations of Optimization (GTM 258)",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -236,6 +251,7 @@
     {
       "id": "PH-QFT",
       "name": "量子场论 (Weinberg)",
+      "en_name": "Quantum Field Theory (Weinberg)",
       "category": "Physics",
       "related": [
         "PH-QM-A",
@@ -250,6 +266,7 @@
     {
       "id": "PH-EM",
       "name": "电磁学(免修)",
+      "en_name": "Electromagnetism (Ex)",
       "category": "Physics",
       "related": [
         "PH-MP",
@@ -265,6 +282,7 @@
     {
       "id": "MATH-DSA-APP",
       "name": "离散数学及其应用",
+      "en_name": "Discrete Mathematics and Its Applications",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -277,6 +295,7 @@
     {
       "id": "MATH-AdvCal",
       "name": "高等数学",
+      "en_name": "Advanced Mathematics",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -292,6 +311,7 @@
     {
       "id": "MATH-Prob",
       "name": "概率统计",
+      "en_name": "Probability and Statistics",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -310,6 +330,7 @@
     {
       "id": "CS-ProgLab",
       "name": "程序设计实习 (实验班)",
+      "en_name": "Programming Practicum (Honors Section)",
       "category": "CS",
       "related": [
         "CS-DSA",
@@ -321,6 +342,7 @@
     {
       "id": "PH-ED",
       "name": "电动力学",
+      "en_name": "Electrodynamics",
       "category": "Physics",
       "related": [
         "PH-EM",
@@ -334,6 +356,7 @@
     {
       "id": "PH-MMP",
       "name": "数学物理方法",
+      "en_name": "Methods of Mathematical Physics",
       "category": "Physics",
       "related": [
         "PH-QM-A",
@@ -360,6 +383,7 @@
     {
       "id": "AI-Intro",
       "name": "人工智能引论",
+      "en_name": "Introduction to Artificial Intelligence",
       "category": "AI",
       "related": [
         "AI-ML",
@@ -375,6 +399,7 @@
     {
       "id": "AI-Sys2",
       "name": "人工智能系统实践 (II)",
+      "en_name": "AI Systems Practicum (II)",
       "category": "AI",
       "related": [
         "AI-Sys3",
@@ -386,6 +411,7 @@
     {
       "id": "ART-CA",
       "name": "计算艺术概论",
+      "en_name": "Introduction to Computational Art",
       "category": "Humanities",
       "related": [
         "PSY-Art",
@@ -397,6 +423,7 @@
     {
       "id": "PSY-Art",
       "name": "艺术心理学",
+      "en_name": "Psychology of Art",
       "category": "Humanities",
       "related": [
         "ART-CA"
@@ -407,6 +434,7 @@
     {
       "id": "PSY-Phys",
       "name": "物理心理学",
+      "en_name": "Psychophysics",
       "category": "Humanities",
       "related": [
         "ART-CA",
@@ -418,6 +446,7 @@
     {
       "id": "MATH-RA",
       "name": "实变函数论",
+      "en_name": "Real Analysis",
       "category": "Math",
       "related": [
         "MATH-FA",
@@ -431,6 +460,7 @@
     {
       "id": "MATH-ODE",
       "name": "常微分方程",
+      "en_name": "Ordinary Differential Equations (ODE)",
       "category": "Math",
       "related": [
         "MATH-FA",
@@ -443,6 +473,7 @@
     {
       "id": "MATH-PDE",
       "name": "偏微分方程",
+      "en_name": "Partial Differential Equations (PDE)",
       "category": "Math",
       "related": [
         "MATH-FA",
@@ -454,6 +485,7 @@
     {
       "id": "MATH-LA",
       "name": "线性代数",
+      "en_name": "Linear Algebra",
       "category": "Math",
       "related": [
         "PH-QM-A",
@@ -474,6 +506,7 @@
     {
       "id": "CS-IntroCPP",
       "name": "计算概论 (C++)",
+      "en_name": "Introduction to Computing (C++)",
       "category": "CS",
       "related": [
         "AI-ML",
@@ -486,6 +519,7 @@
     {
       "id": "MATH-Prob-Theory",
       "name": "概率论",
+      "en_name": "Probability Theory",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -504,6 +538,7 @@
     {
       "id": "MATH-Analysis",
       "name": "数学分析",
+      "en_name": "Mathematical Analysis",
       "category": "Math",
       "related": [
         "AI-ML",
@@ -520,6 +555,7 @@
     {
       "id": "PSY-Gen",
       "name": "普通心理学",
+      "en_name": "General Psychology",
       "category": "Humanities",
       "related": [
         "HUM-Rep",
@@ -531,6 +567,7 @@
     {
       "id": "PH-MQM",
       "name": "现代量子力学",
+      "en_name": "Modern Quantum Mechanics",
       "category": "Physics",
       "related": [
         "PH-QM-A",
@@ -544,6 +581,7 @@
     {
       "id": "AI-IntroML",
       "name": "机器学习简论 (CS50)",
+      "en_name": "Introduction to Machine Learning (CS50)",
       "category": "AI",
       "related": [
         "AI-ML",
@@ -556,6 +594,7 @@
     {
       "id": "HS-MATH-AdvCal",
       "name": "高等数学 (高中)",
+      "en_name": "Advanced Mathematics (High School)",
       "category": "Math",
       "related": [
         "MATH-AdvCal"
@@ -566,6 +605,7 @@
     {
       "id": "HS-MATH-LA",
       "name": "简明线性代数",
+      "en_name": "A Brief Introduction to Linear Algebra",
       "category": "Math",
       "related": [
         "MATH-LA"
@@ -576,6 +616,7 @@
     {
       "id": "HS-MATH-AGeo",
       "name": "解析几何",
+      "en_name": "Analytic Geometry",
       "category": "Math",
       "related": [
         "PH-EM",
@@ -593,6 +634,7 @@
     {
       "id": "HS-PH-GP",
       "name": "普通物理学",
+      "en_name": "General Physics",
       "category": "Physics",
       "related": [
         "PH-MP",
@@ -623,6 +665,7 @@
     {
       "id": "HS-PH-TM",
       "name": "理论力学",
+      "en_name": "Theoretical Mechanics",
       "category": "Physics",
       "related": [
         "MATH-FA",
@@ -635,6 +678,7 @@
     {
       "id": "HS-PH-ED",
       "name": "电动力学",
+      "en_name": "Electrodynamics",
       "category": "Physics",
       "related": [
         "PH-ED",
@@ -647,6 +691,7 @@
     {
       "id": "HS-MATH-CA",
       "name": "复变函数",
+      "en_name": "Complex Analysis",
       "category": "Math",
       "related": [
         "PH-MMP",
@@ -659,6 +704,7 @@
     {
       "id": "HS-GR-Intro",
       "name": "微分几何入门与广义相对论 (I)",
+      "en_name": "Introduction to Differential Geometry and General Relativity (I)",
       "category": "Physics",
       "related": [
         "PH-GR"
@@ -669,6 +715,7 @@
     {
       "id": "HS-Optics",
       "name": "现代光学基础",
+      "en_name": "Fundamentals of Modern Optics",
       "category": "Physics",
       "related": [
         "PH-QM-A",
@@ -681,6 +728,7 @@
     {
       "id": "HS-CHEM-GC",
       "name": "普通化学原理",
+      "en_name": "Principles of General Chemistry",
       "category": "Chemistry",
       "related": [
         "HS-CHEM-Inorg",
@@ -692,6 +740,7 @@
     {
       "id": "HS-CHEM-Inorg",
       "name": "无机化学",
+      "en_name": "Inorganic Chemistry",
       "category": "Chemistry",
       "related": [
         "PH-QM-A",
@@ -704,6 +753,7 @@
     {
       "id": "HS-CHEM-Org",
       "name": "基础有机化学",
+      "en_name": "Fundamental Organic Chemistry",
       "category": "Chemistry",
       "related": [
         "HS-CHEM-GC"
@@ -714,6 +764,7 @@
     {
       "id": "HS-Geo",
       "name": "地质学",
+      "en_name": "Geology",
       "category": "EarthScience",
       "related": [
         "HS-PH-GP"
@@ -724,6 +775,7 @@
     {
       "id": "HS-Atmo",
       "name": "大气物理学",
+      "en_name": "Atmospheric Physics",
       "category": "EarthScience",
       "related": [
         "HS-PH-GP"
@@ -734,6 +786,7 @@
     {
       "id": "HS-Meteor",
       "name": "气象学",
+      "en_name": "Meteorology",
       "category": "EarthScience",
       "related": [
         "HS-PH-GP"
@@ -744,6 +797,7 @@
     {
       "id": "PH-TDSP",
       "name": "热力学与统计物理",
+      "en_name": "Thermodynamics and Statistical Physics",
       "category": "Physics",
       "related": [
         "PH-MMP",
@@ -755,6 +809,7 @@
     {
       "id": "PH-GR",
       "name": "广义相对论",
+      "en_name": "General Relativity",
       "category": "Physics",
       "related": [
         "MATH-FA",
@@ -771,6 +826,7 @@
     {
       "id": "MATH-Group",
       "name": "群论",
+      "en_name": "Group Theory",
       "category": "Math",
       "related": [
         "MATH-Alg",
@@ -783,6 +839,7 @@
     {
       "id": "MATH-AG",
       "name": "代数几何",
+      "en_name": "Algebraic Geometry",
       "category": "Math",
       "related": [
         "HS-MATH-AGeo"
@@ -793,6 +850,7 @@
     {
       "id": "MATH-DiffMan",
       "name": "微分流形",
+      "en_name": "Differential Manifolds",
       "category": "Math",
       "related": [
         "HS-MATH-AGeo",
@@ -805,6 +863,7 @@
     {
       "id": "MATH-Riem",
       "name": "黎曼几何",
+      "en_name": "Riemannian Geometry",
       "category": "Math",
       "related": [
         "HS-MATH-AGeo",
@@ -816,6 +875,7 @@
     {
       "id": "MATH-NA",
       "name": "数值分析",
+      "en_name": "Numerical Analysis",
       "category": "Math",
       "related": [
         "MATH-DS",
