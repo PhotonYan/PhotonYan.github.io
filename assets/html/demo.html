@@ -15,7 +15,7 @@
     .graph-container {
       position: relative;
       width: 100%;
-      height: 100vh; /* 让 iframe 内全屏占位 */
+      height: 100vh;
       background: #f8f9fa;
       cursor: grab;
     }
@@ -55,7 +55,7 @@
     .link { stroke: #bdbdbd; stroke-width: 1.5; stroke-opacity: 0.6; }
     .link-highlight { stroke: #ef4444; stroke-width: 2; stroke-opacity: 1; }
 
-    /* 右上角缩放按钮，左上角重置 */
+    /* 控件：缩放 / 重置 */
     .zoom-controls {
       position: absolute; top: 12px; right: 12px;
       display: flex; flex-direction: column; gap: 8px; z-index: 50;
@@ -68,13 +68,38 @@
     .zoom-btn:hover, .reset-btn:hover { background: #f3f4f6; }
     .reset-btn {
       position: absolute; top: 12px; left: 12px; width: auto; padding: 0 12px; font-weight: 500;
-      color: #fff; background: #3b82f6; border-color: #3b82f6;
+      color: #fff; background: #3b82f6; border-color: #3b82f6; z-index: 50;
     }
     .reset-btn:hover { background: #2563eb; }
+
+    /* 类别选择栏 */
+    .category-bar {
+      position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      z-index: 60; display: flex; gap: 8px; align-items: center;
+      background: rgba(255,255,255,0.9); backdrop-filter: saturate(1.2) blur(2px);
+      border: 1px solid #e5e7eb; border-radius: 999px; padding: 6px 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      font-size: 13px; color: #374151;
+    }
+    .category-bar select {
+      border: 1px solid #e5e7eb; border-radius: 999px; padding: 6px 10px; background: #fff;
+      font-size: 13px; outline: none;
+    }
+    .category-bar .pill {
+      padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-weight: 600;
+    }
   </style>
 </head>
 <body>
   <div class="graph-container" id="graph">
+    <div class="category-bar">
+      <span class="pill">类别</span>
+      <select id="categorySelect">
+        <option value="__all__">所有类别</option>
+        <!-- 其余选项将由脚本根据数据自动填充 -->
+      </select>
+    </div>
+
     <div class="zoom-controls">
       <div class="zoom-btn" id="zoomIn">+</div>
       <div class="zoom-btn" id="zoomOut">−</div>
@@ -85,18 +110,15 @@
 
   <script>
     // ---------- 配置 ----------
-    // 兼容 GitHub Pages 项目页：{{ site.baseurl }} 若为空则为 ""，否则类似 "/repo"
-    const BASEURL = (typeof window.__J_BASEURL__ !== "undefined" && window.__J_BASEURL__) ||
-                    (document.currentScript && document.currentScript.dataset.baseurl) ||
-                    ""; // 你也可以在 iframe src 用 ?base=/repo 传参
+    const BASEURL = ""; // 若在项目页，建议用 ?base=/repo 或在 iframe 外注入 __J_BASEURL__
     const urlParams = new URLSearchParams(window.location.search);
     const qsBase = urlParams.get("base");
-    const BASE = qsBase || BASEURL;
+    const BASE = window.__J_BASEURL__ || qsBase || BASEURL;
 
-    // JSON 路径：默认 /assets/html/curriculum_with_related.json
+    // 默认数据路径
     const DATA_URL = `${BASE}/assets/html/curriculum_with_related.json`;
 
-    // 类别配色（可按需扩展）
+    // 类别配色（可增补）
     const categoryColors = {
       "AI": "#3498db",
       "CS": "#e74c3c",
@@ -112,12 +134,16 @@
 
     // ---------- 状态 ----------
     let allCourses = [];
+    let currentCategory = "__all__";
     let simulation, svg, g, transform = d3.zoomIdentity, zoom;
+
+    // DOM
     const graphContainer = document.getElementById('graph');
     const nodeInfo = document.getElementById('nodeInfo');
     const zoomInBtn = document.getElementById('zoomIn');
     const zoomOutBtn = document.getElementById('zoomOut');
     const resetBtn = document.getElementById('resetView');
+    const categorySelect = document.getElementById('categorySelect');
 
     // ---------- 初始化图 ----------
     function initGraph() {
@@ -149,6 +175,12 @@
         });
 
       svg.call(zoom);
+    }
+
+    // ---------- 过滤 ----------
+    function getFilteredCourses() {
+      if (currentCategory === "__all__") return [...allCourses];
+      return allCourses.filter(c => c.category === currentCategory);
     }
 
     // ---------- 渲染 ----------
@@ -223,7 +255,6 @@
           .attr("y", d => d.y);
       });
 
-      // 事件函数
       function handleNodeOver(event, d) {
         d3.select(event.target).classed("node-highlight", true);
         g.selectAll(".link").classed("link-highlight",
@@ -260,7 +291,6 @@
       `;
       nodeInfo.style.display = "block";
 
-      // 让信息框出现在节点旁，并考虑缩放
       const { x, y } = d;
       const tx = transform.applyX(x), ty = transform.applyY(y);
       const W = graphContainer.clientWidth, H = graphContainer.clientHeight;
@@ -273,8 +303,6 @@
       nodeInfo.style.left = `${left}px`;
       nodeInfo.style.top = `${top}px`;
     }
-
-    // 点击空白处关闭信息卡
     document.addEventListener("click", (e) => {
       const isNode = e.target.tagName.toLowerCase() === "circle";
       if (!isNode) nodeInfo.style.display = "none";
@@ -287,12 +315,19 @@
       resetBtn.addEventListener("click", () => {
         svg.transition().duration(600).call(zoom.transform, d3.zoomIdentity);
       });
+
+      // 类别下拉：变更后重绘
+      categorySelect.addEventListener("change", () => {
+        currentCategory = categorySelect.value;
+        renderGraph(getFilteredCourses());
+      });
+
       window.addEventListener("resize", () => {
-        if (allCourses.length) renderGraph(allCourses);
+        if (allCourses.length) renderGraph(getFilteredCourses());
       });
     }
 
-    // ---------- 加载数据并启动 ----------
+    // ---------- 加载数据 & 填充类别 ----------
     async function main() {
       bindControls();
       initGraph();
@@ -302,11 +337,21 @@
         const data = await resp.json();
         allCourses = Array.isArray(data.nodes) ? data.nodes : [];
         if (!allCourses.length) throw new Error("JSON 中未找到 nodes");
-        renderGraph(allCourses);
+
+        // 自动填充现有类别
+        const categories = Array.from(new Set(allCourses.map(d => d.category).filter(Boolean))).sort();
+        for (const cat of categories) {
+          const opt = document.createElement("option");
+          opt.value = cat;
+          opt.textContent = cat;
+          categorySelect.appendChild(opt);
+        }
+
+        // 初始渲染
+        renderGraph(getFilteredCourses());
       } catch (err) {
         console.error(err);
-        // 最小降级：空画布 + 错误提示
-        const msg = d3.select("#graph").append("div")
+        d3.select("#graph").append("div")
           .style("position","absolute").style("left","50%").style("top","50%")
           .style("transform","translate(-50%,-50%)")
           .style("color","#ef4444").style("font","14px/1.6 system-ui")
@@ -315,8 +360,6 @@
           .text("加载课程数据失败，请检查路径或 JSON 格式。");
       }
     }
-
-    // 启动
     main();
   </script>
 </body>
