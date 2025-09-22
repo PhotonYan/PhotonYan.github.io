@@ -1,0 +1,828 @@
+﻿{
+  "version": "1.1",
+  "nodes": [
+    {
+      "id": "AI-ML",
+      "name": "机器学习",
+      "category": "AI",
+      "related": [
+        "AI-RL",
+        "MATH-DS",
+        "MATH-Logic",
+        "MATH-SP",
+        "FIN-TS",
+        "AI-Sys3",
+        "MATH-FA",
+        "OPT-GTM258",
+        "MATH-DSA-APP",
+        "MATH-AdvCal",
+        "MATH-Prob",
+        "AI-Intro",
+        "AI-Sys2",
+        "CS-IntroCPP",
+        "MATH-Prob-Theory",
+        "MATH-Analysis",
+        "AI-IntroML"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "AI-RL",
+      "name": "强化学习",
+      "category": "AI",
+      "related": [
+        "AI-ML",
+        "MATH-DS",
+        "FIN-TS",
+        "MATH-FA",
+        "OPT-GTM258",
+        "MATH-Prob",
+        "AI-Intro"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "PH-QM-A",
+      "name": "量子力学 A",
+      "category": "Physics",
+      "related": [
+        "PH-MP",
+        "MATH-FA",
+        "PH-QFT",
+        "PH-MMP",
+        "MATH-LA",
+        "MATH-Prob-Theory",
+        "PH-MQM",
+        "HS-Optics",
+        "HS-CHEM-Inorg"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "PH-MP",
+      "name": "近现代物理导论(一)",
+      "category": "Physics",
+      "related": [
+        "PH-QM-A",
+        "PH-EM",
+        "HS-PH-GP"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "MATH-DS",
+      "name": "离散数学与结构(图灵班)",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "AI-RL",
+        "MATH-Logic",
+        "MATH-TT",
+        "MATH-Alg",
+        "MATH-SP",
+        "MATH-FA",
+        "MATH-DSA-APP",
+        "MATH-Prob",
+        "AI-Intro",
+        "MATH-LA",
+        "MATH-NA"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "MATH-Logic",
+      "name": "数理逻辑",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "MATH-DS"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "MATH-TT",
+      "name": "类型论",
+      "category": "Math",
+      "related": [
+        "MATH-DS"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "MATH-Alg",
+      "name": "抽象代数",
+      "category": "Math",
+      "related": [
+        "MATH-DS",
+        "MATH-LA",
+        "PH-MQM"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "MATH-SP",
+      "name": "随机过程",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "MATH-DS",
+        "FIN-TS",
+        "MATH-Prob",
+        "MATH-Prob-Theory",
+        "MATH-Analysis",
+        "AI-IntroML"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "CS-DSA",
+      "name": "数据结构与算法 A",
+      "category": "CS",
+      "related": [
+        "CS-ProgLab",
+        "CS-IntroCPP"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "FIN-TS",
+      "name": "金融时间序列分析",
+      "category": "Finance",
+      "related": [
+        "AI-ML",
+        "AI-RL",
+        "MATH-SP",
+        "MATH-FA",
+        "OPT-GTM258",
+        "MATH-Prob"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "HUM-Rep",
+      "name": "《理想国》",
+      "category": "Humanities",
+      "related": [
+        "PSY-Gen"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "AI-Sys3",
+      "name": "人工智能系统实践(III)",
+      "category": "AI",
+      "related": [
+        "OPT-GTM258"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "MATH-FA",
+      "name": "泛函分析",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "AI-RL",
+        "PH-QM-A",
+        "MATH-DS",
+        "FIN-TS",
+        "OPT-GTM258",
+        "PH-QFT",
+        "MATH-Prob",
+        "PH-MMP",
+        "MATH-RA",
+        "MATH-ODE",
+        "MATH-PDE",
+        "MATH-LA",
+        "MATH-Prob-Theory",
+        "MATH-Analysis",
+        "PH-MQM",
+        "HS-PH-TM"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "OPT-GTM258",
+      "name": "优化理论与凸分析 (GTM 258)",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "AI-RL",
+        "FIN-TS",
+        "AI-Sys3",
+        "MATH-FA",
+        "MATH-RA",
+        "MATH-LA",
+        "MATH-Prob-Theory",
+        "MATH-NA"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "PH-QFT",
+      "name": "量子场论 (Weinberg)",
+      "category": "Physics",
+      "related": [
+        "PH-QM-A",
+        "MATH-FA",
+        "MATH-Prob-Theory",
+        "PH-MQM",
+        "MATH-Group"
+      ],
+      "stage": "ongoing",
+      "stage_detail": "undergrad_year2"
+    },
+    {
+      "id": "PH-EM",
+      "name": "电磁学(免修)",
+      "category": "Physics",
+      "related": [
+        "PH-MP",
+        "MATH-AdvCal",
+        "PH-ED",
+        "PH-MMP",
+        "HS-MATH-AGeo",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-DSA-APP",
+      "name": "离散数学及其应用",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "MATH-DS",
+        "MATH-Prob"
+      ],
+      "stage": "audited",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-AdvCal",
+      "name": "高等数学",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "PH-EM",
+        "PH-MMP",
+        "MATH-Analysis",
+        "HS-MATH-AGeo",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-Prob",
+      "name": "概率统计",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "AI-RL",
+        "MATH-DS",
+        "MATH-SP",
+        "FIN-TS",
+        "MATH-FA",
+        "MATH-DSA-APP",
+        "AI-Intro",
+        "MATH-Prob-Theory"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "CS-ProgLab",
+      "name": "程序设计实习 (实验班)",
+      "category": "CS",
+      "related": [
+        "CS-DSA",
+        "CS-IntroCPP"
+      ],
+      "stage": "withdrawn",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "PH-ED",
+      "name": "电动力学",
+      "category": "Physics",
+      "related": [
+        "PH-EM",
+        "PH-MMP",
+        "HS-PH-GP",
+        "HS-PH-ED"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "PH-MMP",
+      "name": "数学物理方法",
+      "category": "Physics",
+      "related": [
+        "PH-QM-A",
+        "MATH-FA",
+        "PH-EM",
+        "MATH-AdvCal",
+        "PH-ED",
+        "MATH-RA",
+        "MATH-ODE",
+        "MATH-PDE",
+        "MATH-LA",
+        "MATH-Analysis",
+        "HS-PH-GP",
+        "HS-PH-TM",
+        "HS-PH-ED",
+        "HS-MATH-CA",
+        "HS-Optics",
+        "PH-TDSP",
+        "PH-GR"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "AI-Intro",
+      "name": "人工智能引论",
+      "category": "AI",
+      "related": [
+        "AI-ML",
+        "AI-RL",
+        "MATH-DS",
+        "MATH-Prob",
+        "AI-Sys2",
+        "MATH-LA"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "AI-Sys2",
+      "name": "人工智能系统实践 (II)",
+      "category": "AI",
+      "related": [
+        "AI-Sys3",
+        "AI-Intro"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "ART-CA",
+      "name": "计算艺术概论",
+      "category": "Humanities",
+      "related": [
+        "PSY-Art",
+        "PSY-Phys"
+      ],
+      "stage": "audited",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "PSY-Art",
+      "name": "艺术心理学",
+      "category": "Humanities",
+      "related": [
+        "ART-CA"
+      ],
+      "stage": "audited",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "PSY-Phys",
+      "name": "物理心理学",
+      "category": "Humanities",
+      "related": [
+        "ART-CA",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-RA",
+      "name": "实变函数论",
+      "category": "Math",
+      "related": [
+        "MATH-FA",
+        "OPT-GTM258",
+        "PH-MMP",
+        "MATH-Analysis"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-ODE",
+      "name": "常微分方程",
+      "category": "Math",
+      "related": [
+        "MATH-FA",
+        "PH-MMP",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-PDE",
+      "name": "偏微分方程",
+      "category": "Math",
+      "related": [
+        "MATH-FA",
+        "PH-MMP"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-LA",
+      "name": "线性代数",
+      "category": "Math",
+      "related": [
+        "PH-QM-A",
+        "MATH-DS",
+        "MATH-Alg",
+        "MATH-FA",
+        "OPT-GTM258",
+        "PH-MMP",
+        "AI-Intro",
+        "MATH-Prob-Theory",
+        "HS-MATH-LA",
+        "HS-MATH-AGeo",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "CS-IntroCPP",
+      "name": "计算概论 (C++)",
+      "category": "CS",
+      "related": [
+        "AI-ML",
+        "CS-DSA",
+        "CS-ProgLab"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-Prob-Theory",
+      "name": "概率论",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "PH-QM-A",
+        "MATH-SP",
+        "MATH-FA",
+        "OPT-GTM258",
+        "PH-QFT",
+        "MATH-Prob",
+        "MATH-LA",
+        "AI-IntroML"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "MATH-Analysis",
+      "name": "数学分析",
+      "category": "Math",
+      "related": [
+        "AI-ML",
+        "MATH-SP",
+        "MATH-FA",
+        "MATH-AdvCal",
+        "PH-MMP",
+        "MATH-RA",
+        "HS-MATH-CA"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "PSY-Gen",
+      "name": "普通心理学",
+      "category": "Humanities",
+      "related": [
+        "HUM-Rep",
+        "PSY-Phys"
+      ],
+      "stage": "audited",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "PH-MQM",
+      "name": "现代量子力学",
+      "category": "Physics",
+      "related": [
+        "PH-QM-A",
+        "MATH-Alg",
+        "MATH-FA",
+        "PH-QFT"
+      ],
+      "stage": "audited",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "AI-IntroML",
+      "name": "机器学习简论 (CS50)",
+      "category": "AI",
+      "related": [
+        "AI-ML",
+        "MATH-SP",
+        "MATH-Prob-Theory"
+      ],
+      "stage": "completed",
+      "stage_detail": "undergrad_year1"
+    },
+    {
+      "id": "HS-MATH-AdvCal",
+      "name": "高等数学 (高中)",
+      "category": "Math",
+      "related": [
+        "MATH-AdvCal"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-MATH-LA",
+      "name": "简明线性代数",
+      "category": "Math",
+      "related": [
+        "MATH-LA"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-MATH-AGeo",
+      "name": "解析几何",
+      "category": "Math",
+      "related": [
+        "PH-EM",
+        "MATH-AdvCal",
+        "MATH-LA",
+        "HS-PH-GP",
+        "PH-GR",
+        "MATH-AG",
+        "MATH-DiffMan",
+        "MATH-Riem"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-PH-GP",
+      "name": "普通物理学",
+      "category": "Physics",
+      "related": [
+        "PH-MP",
+        "PH-EM",
+        "MATH-AdvCal",
+        "PH-ED",
+        "PH-MMP",
+        "PSY-Phys",
+        "MATH-ODE",
+        "MATH-LA",
+        "HS-MATH-AdvCal",
+        "HS-MATH-AGeo",
+        "HS-PH-TM",
+        "HS-PH-ED",
+        "HS-MATH-CA",
+        "HS-Optics",
+        "HS-CHEM-Inorg",
+        "HS-Geo",
+        "HS-Atmo",
+        "HS-Meteor",
+        "PH-TDSP",
+        "PH-GR",
+        "MATH-Group"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-PH-TM",
+      "name": "理论力学",
+      "category": "Physics",
+      "related": [
+        "MATH-FA",
+        "PH-MMP",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-PH-ED",
+      "name": "电动力学",
+      "category": "Physics",
+      "related": [
+        "PH-ED",
+        "PH-MMP",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-MATH-CA",
+      "name": "复变函数",
+      "category": "Math",
+      "related": [
+        "PH-MMP",
+        "MATH-Analysis",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-GR-Intro",
+      "name": "微分几何入门与广义相对论 (I)",
+      "category": "Physics",
+      "related": [
+        "PH-GR"
+      ],
+      "stage": "audited",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-Optics",
+      "name": "现代光学基础",
+      "category": "Physics",
+      "related": [
+        "PH-QM-A",
+        "PH-MMP",
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-CHEM-GC",
+      "name": "普通化学原理",
+      "category": "Chemistry",
+      "related": [
+        "HS-CHEM-Inorg",
+        "HS-CHEM-Org"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-CHEM-Inorg",
+      "name": "无机化学",
+      "category": "Chemistry",
+      "related": [
+        "PH-QM-A",
+        "HS-PH-GP",
+        "HS-CHEM-GC"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-CHEM-Org",
+      "name": "基础有机化学",
+      "category": "Chemistry",
+      "related": [
+        "HS-CHEM-GC"
+      ],
+      "stage": "audited",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-Geo",
+      "name": "地质学",
+      "category": "EarthScience",
+      "related": [
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-Atmo",
+      "name": "大气物理学",
+      "category": "EarthScience",
+      "related": [
+        "HS-PH-GP"
+      ],
+      "stage": "completed",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "HS-Meteor",
+      "name": "气象学",
+      "category": "EarthScience",
+      "related": [
+        "HS-PH-GP"
+      ],
+      "stage": "audited",
+      "stage_detail": "high_school"
+    },
+    {
+      "id": "PH-TDSP",
+      "name": "热力学与统计物理",
+      "category": "Physics",
+      "related": [
+        "PH-MMP",
+        "HS-PH-GP"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    },
+    {
+      "id": "PH-GR",
+      "name": "广义相对论",
+      "category": "Physics",
+      "related": [
+        "MATH-FA",
+        "PH-QFT",
+        "PH-MMP",
+        "HS-MATH-AGeo",
+        "HS-PH-GP",
+        "HS-GR-Intro",
+        "MATH-DiffMan"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    },
+    {
+      "id": "MATH-Group",
+      "name": "群论",
+      "category": "Math",
+      "related": [
+        "MATH-Alg",
+        "PH-QFT",
+        "HS-PH-GP"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    },
+    {
+      "id": "MATH-AG",
+      "name": "代数几何",
+      "category": "Math",
+      "related": [
+        "HS-MATH-AGeo"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    },
+    {
+      "id": "MATH-DiffMan",
+      "name": "微分流形",
+      "category": "Math",
+      "related": [
+        "HS-MATH-AGeo",
+        "PH-GR",
+        "MATH-Riem"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    },
+    {
+      "id": "MATH-Riem",
+      "name": "黎曼几何",
+      "category": "Math",
+      "related": [
+        "HS-MATH-AGeo",
+        "MATH-DiffMan"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    },
+    {
+      "id": "MATH-NA",
+      "name": "数值分析",
+      "category": "Math",
+      "related": [
+        "MATH-DS",
+        "OPT-GTM258"
+      ],
+      "stage": "planned",
+      "stage_detail": "planned"
+    }
+  ]
+}

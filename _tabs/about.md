@@ -29,6 +29,10 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 > This section is about what I'm learning now, whether through courses or on my own. I have **NOT** included the political courses, physical education courses, and some general education courses I am currently taking in the list below.
 {: .prompt-info }
 
+<iframe src="{{ site.baseurl }}/assets/html/demo.html" style="width:100%;height:600px;border:none;"></iframe>
+---
+
+
 ### 正在进行
 **2025-2026秋**（大二上）：
 - 机器学习 (With [Notes](https://github.com/MuLabPKU/MachineLearningCourse2025/tree/main/notes/2025/mvp))
@@ -129,4 +133,4 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 ## Friends
 - [Fanzt](https://fanzt.github.io/ ), B.S. in Physics, 2024-NOW, at SJTU.
 - [Whitney](https://phymani.me/), B.S. in Physics, 2024-NOW, at SDU.
-- [for_each](https://https://cwd316.com/).
+- [for_each](https://cwd316.com/).

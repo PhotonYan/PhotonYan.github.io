@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>课程关系图</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: #f8f9fa;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      overflow: hidden;
+    }
+    .graph-container {
+      position: relative;
+      width: 100%;
+      height: 100vh; /* 让 iframe 内全屏占位 */
+      background: #f8f9fa;
+      cursor: grab;
+    }
+    .graph-container:active { cursor: grabbing; }
+
+    /* 悬浮信息卡 */
+    .node-info {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      max-width: 320px;
+      display: none;
+      z-index: 100;
+      pointer-events: none;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .node-info h3 {
+      margin: 0 0 8px 0;
+      font-size: 15px;
+      color: #1f2937;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 6px;
+    }
+    .node-info .muted { color: #6b7280; }
+    .node-info .block { margin-top: 8px; }
+
+    /* 高亮样式 */
+    .node:hover, .node-highlight {
+      stroke: #111827;
+      stroke-width: 3px;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.25));
+    }
+    .link { stroke: #bdbdbd; stroke-width: 1.5; stroke-opacity: 0.6; }
+    .link-highlight { stroke: #ef4444; stroke-width: 2; stroke-opacity: 1; }
+
+    /* 右上角缩放按钮，左上角重置 */
+    .zoom-controls {
+      position: absolute; top: 12px; right: 12px;
+      display: flex; flex-direction: column; gap: 8px; z-index: 50;
+    }
+    .zoom-btn, .reset-btn {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 999px;
+      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-weight: 700;
+    }
+    .zoom-btn:hover, .reset-btn:hover { background: #f3f4f6; }
+    .reset-btn {
+      position: absolute; top: 12px; left: 12px; width: auto; padding: 0 12px; font-weight: 500;
+      color: #fff; background: #3b82f6; border-color: #3b82f6;
+    }
+    .reset-btn:hover { background: #2563eb; }
+  </style>
+</head>
+<body>
+  <div class="graph-container" id="graph">
+    <div class="zoom-controls">
+      <div class="zoom-btn" id="zoomIn">+</div>
+      <div class="zoom-btn" id="zoomOut">−</div>
+    </div>
+    <button class="reset-btn" id="resetView">重置视图</button>
+    <div class="node-info" id="nodeInfo"></div>
+  </div>
+
+  <script>
+    // ---------- 配置 ----------
+    // 兼容 GitHub Pages 项目页：{{ site.baseurl }} 若为空则为 ""，否则类似 "/repo"
+    const BASEURL = (typeof window.__J_BASEURL__ !== "undefined" && window.__J_BASEURL__) ||
+                    (document.currentScript && document.currentScript.dataset.baseurl) ||
+                    ""; // 你也可以在 iframe src 用 ?base=/repo 传参
+    const urlParams = new URLSearchParams(window.location.search);
+    const qsBase = urlParams.get("base");
+    const BASE = qsBase || BASEURL;
+
+    // JSON 路径：默认 /assets/html/curriculum_with_related.json
+    const DATA_URL = `${BASE}/assets/html/curriculum_with_related.json`;
+
+    // 类别配色（可按需扩展）
+    const categoryColors = {
+      "AI": "#3498db",
+      "CS": "#e74c3c",
+      "Math": "#2ecc71",
+      "Physics": "#f39c12",
+      "Chemistry": "#8e44ad",
+      "EarthScience": "#2c3e50",
+      "Finance": "#27ae60",
+      "Humanities": "#7f8c8d",
+      "OPT": "#16a085"
+    };
+    const stageMap = { "completed": "已完成", "ongoing": "进行中", "planned": "计划中", "audited": "旁听", "withdrawn": "退课" };
+
+    // ---------- 状态 ----------
+    let allCourses = [];
+    let simulation, svg, g, transform = d3.zoomIdentity, zoom;
+    const graphContainer = document.getElementById('graph');
+    const nodeInfo = document.getElementById('nodeInfo');
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const resetBtn = document.getElementById('resetView');
+
+    // ---------- 初始化图 ----------
+    function initGraph() {
+      if (svg) svg.remove();
+      const width = graphContainer.clientWidth;
+      const height = graphContainer.clientHeight;
+
+      svg = d3.select("#graph")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height])
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("background-color", "#f8f9fa");
+
+      g = svg.append("g");
+
+      simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(d => d.id).distance(120))
+        .force("charge", d3.forceManyBody().strength(-420))
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collision", d3.forceCollide().radius(45));
+
+      zoom = d3.zoom()
+        .scaleExtent([0.1, 5])
+        .on("zoom", (event) => {
+          transform = event.transform;
+          g.attr("transform", transform);
+        });
+
+      svg.call(zoom);
+    }
+
+    // ---------- 渲染 ----------
+    function renderGraph(courses) {
+      initGraph();
+      g.selectAll("*").remove();
+
+      const nodes = courses;
+      const links = [];
+      const idSet = new Set(nodes.map(n => n.id));
+      nodes.forEach(n => {
+        (n.related || []).forEach(tid => {
+          if (idSet.has(tid)) links.push({ source: n.id, target: tid });
+        });
+      });
+
+      const link = g.append("g")
+        .attr("class", "links")
+        .selectAll("line")
+        .data(links)
+        .enter().append("line")
+        .attr("class", "link");
+
+      const node = g.append("g")
+        .attr("class", "nodes")
+        .selectAll("circle")
+        .data(nodes)
+        .enter().append("circle")
+        .attr("class", "node")
+        .attr("r", 22)
+        .attr("fill", d => categoryColors[d.category] || "#95a5a6")
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 2)
+        .on("click", showNodeInfo)
+        .on("mouseover", handleNodeOver)
+        .on("mouseout", handleNodeOut)
+        .call(d3.drag()
+          .on("start", dragStarted)
+          .on("drag", dragged)
+          .on("end", dragEnded)
+        );
+
+      const label = g.append("g")
+        .attr("class", "labels")
+        .selectAll("text")
+        .data(nodes)
+        .enter().append("text")
+        .text(d => d.name)
+        .attr("text-anchor", "middle")
+        .attr("dy", 35)
+        .attr("font-size", 12)
+        .attr("fill", "#1f2937")
+        .attr("pointer-events", "none");
+
+      simulation.nodes(nodes);
+      simulation.force("link").links(links);
+      simulation.alpha(0.6).restart();
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+
+        label
+          .attr("x", d => d.x)
+          .attr("y", d => d.y);
+      });
+
+      // 事件函数
+      function handleNodeOver(event, d) {
+        d3.select(event.target).classed("node-highlight", true);
+        g.selectAll(".link").classed("link-highlight",
+          l => l.source.id === d.id || l.target.id === d.id);
+      }
+      function handleNodeOut(event, d) {
+        d3.select(event.target).classed("node-highlight", false);
+        g.selectAll(".link").classed("link-highlight", false);
+      }
+      function dragStarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x; d.fy = d.y;
+      }
+      function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
+      function dragEnded(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null; d.fy = null;
+      }
+    }
+
+    // ---------- 信息卡 ----------
+    function showNodeInfo(event, d) {
+      const relatedNames = (d.related || [])
+        .map(id => (allCourses.find(c => c.id === id) || {}).name || id)
+        .filter(Boolean)
+        .join("，");
+      nodeInfo.innerHTML = `
+        <h3>${d.name} <span class="muted">(${d.id})</span></h3>
+        <div><strong>类别：</strong>${d.category || "—"}</div>
+        <div><strong>状态：</strong>${stageMap[d.stage] || d.stage || "—"} <span class="muted">(${d.stage_detail || "—"})</span></div>
+        ${d.credits ? `<div><strong>学分：</strong>${d.credits}</div>` : ""}
+        ${d.description ? `<div class="muted block">${d.description}</div>` : ""}
+        <div class="block"><strong>相关课程：</strong>${relatedNames || "无"}</div>
+      `;
+      nodeInfo.style.display = "block";
+
+      // 让信息框出现在节点旁，并考虑缩放
+      const { x, y } = d;
+      const tx = transform.applyX(x), ty = transform.applyY(y);
+      const W = graphContainer.clientWidth, H = graphContainer.clientHeight;
+
+      let left = tx + 24, top = ty - 10;
+      if (left + nodeInfo.offsetWidth > W) left = tx - nodeInfo.offsetWidth - 24;
+      if (top + nodeInfo.offsetHeight > H) top = H - nodeInfo.offsetHeight - 12;
+      if (top < 12) top = 12;
+
+      nodeInfo.style.left = `${left}px`;
+      nodeInfo.style.top = `${top}px`;
+    }
+
+    // 点击空白处关闭信息卡
+    document.addEventListener("click", (e) => {
+      const isNode = e.target.tagName.toLowerCase() === "circle";
+      if (!isNode) nodeInfo.style.display = "none";
+    });
+
+    // ---------- 控件 ----------
+    function bindControls() {
+      zoomInBtn.addEventListener("click", () => svg.transition().call(zoom.scaleBy, 1.2));
+      zoomOutBtn.addEventListener("click", () => svg.transition().call(zoom.scaleBy, 0.8));
+      resetBtn.addEventListener("click", () => {
+        svg.transition().duration(600).call(zoom.transform, d3.zoomIdentity);
+      });
+      window.addEventListener("resize", () => {
+        if (allCourses.length) renderGraph(allCourses);
+      });
+    }
+
+    // ---------- 加载数据并启动 ----------
+    async function main() {
+      bindControls();
+      initGraph();
+      try {
+        const resp = await fetch(DATA_URL, { cache: "no-store" });
+        if (!resp.ok) throw new Error(`加载失败 ${resp.status}`);
+        const data = await resp.json();
+        allCourses = Array.isArray(data.nodes) ? data.nodes : [];
+        if (!allCourses.length) throw new Error("JSON 中未找到 nodes");
+        renderGraph(allCourses);
+      } catch (err) {
+        console.error(err);
+        // 最小降级：空画布 + 错误提示
+        const msg = d3.select("#graph").append("div")
+          .style("position","absolute").style("left","50%").style("top","50%")
+          .style("transform","translate(-50%,-50%)")
+          .style("color","#ef4444").style("font","14px/1.6 system-ui")
+          .style("background","#fff").style("padding","10px 14px")
+          .style("border","1px solid #e5e7eb").style("border-radius","8px")
+          .text("加载课程数据失败，请检查路径或 JSON 格式。");
+      }
+    }
+
+    // 启动
+    main();
+  </script>
+</body>
+</html>
