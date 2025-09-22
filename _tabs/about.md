@@ -12,8 +12,8 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 - Graph Machine Learning
 - AI4Chemistry
 - MLFF (Machine Learning Force Field)
-- VLM (Visual Language Model)
-- VFM (Visual Foundation Model)
+- VLM (Vision Language Model)
+- VFM (Vision Foundation Model )
 
 ## Education
 
