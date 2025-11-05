@@ -15,6 +15,7 @@ I'm now an undergraduate student of Peking University. I am currently majoring i
 
 ## Internship
 - **ByteDance** – *Algorithm Intern*, AI4S (AI for Science, Drug Discovery Track), Shanghai, China ; **Nov 2025 – Present**.
+  
 ## Education
 
 - Middle school, 2021-2024, at [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
