@@ -9,12 +9,12 @@ order: 1
 I'm now an undergraduate student of Peking University. I am currently majoring in *Artificial Intelligence* while pursuing a double degree in *Physics*, with a focus on exploring the intersection of these fields through interdisciplinary knowledge and research.
 
 ## Research Interest
-- Graph Machine Learning
-- AI4Chemistry
-- MLFF (Machine Learning Force Field)
-- VLM (Vision Language Model)
-- VFM (Vision Foundation Model )
+- Graph Representation Learning & Equivariant Neural Networks
+- Machine Learning for Molecular Modeling and Drug Discovery (AI4S / MLFF)
+- Computer Vision (as a side interest in perception and abstraction)
 
+## Internship
+- **ByteDance** – *Algorithm Intern*, AI4S (AI for Science, Drug Discovery Track), Shanghai, China ; **Nov 2025 – Present**.
 ## Education
 
 - Middle school, 2021-2024, at [Beijing NO.4 High School](http://bhsf.lezhiyun.com).
