@@ -27,37 +27,59 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04   # 避免 20.04 的老 glibc
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # 先装系统依赖（sass-embedded 需要较新的 libstdc++）
+      - name: Install system deps for sass-embedded
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libstdc++6
+
       - name: Setup Ruby
-        # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
-        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
+          ruby-version: '3.1'
+          bundler-cache: false   # 先别让它自动装，等我们准备好再装
+
+      # （可选）若 sass-embedded 最新版装不上，可锁定稳定分支
+      # - name: Pin sass-embedded version (optional)
+      #   run: |
+      #     if ! grep -q 'sass-embedded' Gemfile; then
+      #       echo 'gem "sass-embedded", "~> 1.77"' >> Gemfile
+      #     fi
+      #     bundle update sass-embedded
+
+      - name: Bundle install
+        env:
+          BUNDLE_WITHOUT: "development:test"
+        run: |
+          bundle config set path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v3
+        run: |
+          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
-  # Deployment job
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages
