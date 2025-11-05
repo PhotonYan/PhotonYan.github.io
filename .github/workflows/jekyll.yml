@@ -28,37 +28,49 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04   # 避免 20.04 的老 glibc
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 先装系统依赖（sass-embedded 需要较新的 libstdc++）
-      - name: Install system deps for sass-embedded
+      # 1) 预装系统依赖（保险起见）
+      - name: Install system deps
         run: |
           sudo apt-get update
           sudo apt-get install -y libstdc++6
 
+      # 2) 设置 Ruby（不启用 bundler 自动缓存，避免时序问题）
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-          bundler-cache: false   # 先别让它自动装，等我们准备好再装
+          bundler-cache: false
 
-      # （可选）若 sass-embedded 最新版装不上，可锁定稳定分支
-      # - name: Pin sass-embedded version (optional)
-      #   run: |
-      #     if ! grep -q 'sass-embedded' Gemfile; then
-      #       echo 'gem "sass-embedded", "~> 1.77"' >> Gemfile
-      #     fi
-      #     bundle update sass-embedded
+      # 3) 确保 Gemfile 中固定 sass-embedded 版本（若未写则追加）
+      - name: Pin sass-embedded version
+        run: |
+          if ! grep -q 'sass-embedded' Gemfile; then
+            echo 'gem "sass-embedded", "~> 1.77"' >> Gemfile
+          else
+            sed -i 's/gem\s\+"sass-embedded".*/gem "sass-embedded", "~> 1.77"/' Gemfile || true
+          fi
 
+      # 4) 彻底清理残留安装目录，避免 ENOENT/竞态
+      - name: Clean bundle vendor cache
+        run: |
+          rm -rf vendor/bundle
+          rm -rf ~/.bundle
+          rm -rf .bundle
+
+      # 5) 严格按顺序安装，禁用并行，减少竞态
       - name: Bundle install
         env:
           BUNDLE_WITHOUT: "development:test"
+          BUNDLE_JOBS: "1"
         run: |
           bundle config set path vendor/bundle
-          bundle install --jobs 4 --retry 3
+          bundle config set without 'development:test'
+          bundle install --jobs 1 --retry 3
 
       - name: Setup Pages
         id: pages
