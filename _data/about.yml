@@ -56,76 +56,101 @@ publications:
         url: https://arxiv.org/abs/2512.04957
 
 # Curriculum
-# Note: Styles for icons: text-info for regular, text-muted for auditing/books
-ongoing_studies_sem: "2025-2026 Fall / Year 2 Sem 1"
+# Spring 2026 (Upcoming)
+ongoing_studies_sem: "2025-2026 Spring / Year 2 Sem 2 (Upcoming)"
 ongoing_column_1:
-  - name: Machine Learning
-    icon: fas fa-brain
-    icon_style: text-info
-    badge: Notes
-    url: https://github.com/MuLabPKU/MachineLearningCourse2025/tree/main/notes/2025/mvp
-  - name: Reinforcement Learning
-    icon: fas fa-robot
-    icon_style: text-info
-  - name: Quantum Mechanics A
-    icon: fas fa-atom
-    icon_style: text-info
-  - name: Intro to Modern Physics I
-    icon: fas fa-book-open
-    icon_style: text-info
-    tag: w/ Notes
-  - name: Functional Analysis
-    icon: fas fa-square-root-alt
-    icon_style: text-info
-  - name: Optimization Theory (GTM 258)
-    icon: fas fa-chart-line
-    icon_style: text-info
+  - name: Mechanics (Exemption)
+    icon: fas fa-check-circle
+    icon_style: text-success
+  - name: Thermal Physics (Exemption)
+    icon: fas fa-check-circle
+    icon_style: text-success
+  - name: Theoretical Mechanics
+    icon: fas fa-book
+    icon_style: text-primary
+  - name: General Relativity
+    icon: fas fa-globe
+    icon_style: text-primary
+  - name: General Physics Lab (II)
+    icon: fas fa-flask
+    icon_style: text-primary
+  - name: Intro to Cloud Physics
+    icon: fas fa-cloud
+    icon_style: text-primary
 
 ongoing_column_2:
-  - name: AI System Practice (III)
+  - name: Deep Generative Models
+    icon: fas fa-brain
+    icon_style: text-primary
+  - name: Multi-Agent Systems
+    icon: fas fa-users
+    icon_style: text-primary
+  - name: Intro to Robotics
+    icon: fas fa-robot
+    icon_style: text-primary
+  - name: Math for AI
+    icon: fas fa-square-root-alt
+    icon_style: text-primary
+  - name: AI System Practice (I)
     icon: fas fa-cogs
-    icon_style: text-info
-  - name: Data Structures & Algorithms A
-    icon: fas fa-code
-    icon_style: text-info
-  - name: Discrete Math (Turing Class)
-    icon: fas fa-project-diagram
-    icon_style: text-info
-    details:
-      - Logic, Type Theory
-      - Abstract Algebra, Stochastic Processes
-  - name: Financial Time Series
-    icon: fas fa-chart-area
-    icon_style: text-info
-  - name: The Republic
-    icon: fas fa-book
-    icon_style: text-info
-  - name: Quantum Field Theory (Weinberg)
-    icon: fas fa-globe
-    icon_style: text-info
+    icon_style: text-primary
+  - name: Concise Quantum Mechanics
+    icon: fas fa-atom
+    icon_style: text-primary
 
 # Course Archive
 course_archive:
-  - title: "2025-2026 Spring (Year 2 Sem 2) [Planned]"
-    items:
-    - name: Mechanics (Exemption)
-    - name: Thermal Physics (Exemption)
-    - name: Theoretical Mechanics
-    - name: General Relativity
-    - name: General Physics Lab (II)
-    - name: Intro to Cloud Physics
-    - name: Deep Generative Models
-    - name: Multi-Agent Systems
-    - name: Intro to Robotics
-    - name: Math for AI
-    - name: AI System Practice (I)
-    - name: Concise Quantum Mechanics
-
-  - title: "2025-2026 Fall (Year 2 Sem 1 - Credits)"
+  - title: "2025-2026 Fall (Year 2 Sem 1)"
     items:
       - name: Electromagnetism (Exemption)
         icon: fas fa-check
         icon_style: text-success
+      - name: Machine Learning
+        icon: fas fa-brain
+        icon_style: text-info
+        badge: Notes
+        url: https://github.com/MuLabPKU/MachineLearningCourse2025/tree/main/notes/2025/mvp
+      - name: Reinforcement Learning
+        icon: fas fa-robot
+        icon_style: text-info
+      - name: Quantum Mechanics A
+        icon: fas fa-atom
+        icon_style: text-info
+      - name: Intro to Modern Physics I
+        icon: fas fa-book-open
+        icon_style: text-info
+        tag: w/ Notes
+      - name: Discrete Math (Turing Class)
+        icon: fas fa-project-diagram
+        icon_style: text-info
+        details:
+          - Logic, Type Theory
+          - Abstract Algebra, Stochastic Processes
+      - name: Data Structures & Algorithms A
+        icon: fas fa-code
+        icon_style: text-info
+      - name: AI System Practice (III)
+        icon: fas fa-cogs
+        icon_style: text-info
+      - name: Financial Time Series
+        icon: fas fa-chart-area
+        icon_style: text-muted
+        tag: Withdraw
+      - name: The Republic
+        icon: fas fa-book
+        icon_style: text-info
+      - name: Quantum Field Theory (Weinberg)
+        icon: fas fa-globe
+        icon_style: text-muted
+        tag: Partial
+      - name: Functional Analysis
+        icon: fas fa-square-root-alt
+        icon_style: text-muted
+        tag: Partial
+      - name: Optimization Theory (GTM 258)
+        icon: fas fa-chart-line
+        icon_style: text-muted
+        tag: Partial
 
   - title: "2024-2025 Summer"
     items:

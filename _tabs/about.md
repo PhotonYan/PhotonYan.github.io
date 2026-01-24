@@ -33,10 +33,10 @@ order: 1
 
 <!-- Interactive Demo -->
 <div class="my-4">
-    <iframe src="{{ site.baseurl }}/assets/html/demo.html" style="width:100%;height:600px;border:none;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);"></iframe>
+    <iframe src="{{ site.baseurl }}/assets/html/demo.html" style="width:100%;height:600px;border:none;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.1);"></iframe>
 </div>
 
-### 🏃 Ongoing ({{ site.data.about.ongoing_studies_sem }})
+### ⏳ Upcoming / Ongoing ({{ site.data.about.ongoing_studies_sem }})
 {% include about/ongoing_studies.html %}
 
 {% include about/course_archive.html %}
