@@ -1,8 +1,14 @@
 <div class="row row-cols-1 row-cols-md-2 g-3">
     {% for book in site.data.about.books %}
     <div class="col">
-        <div class="p-3 border rounded h-100">
+        <div class="p-3 border rounded h-100 book-card">
+            {% if book.url %}
+            <a href="{{ book.url }}" class="text-decoration-none" target="_blank" rel="noopener noreferrer">
+                <h6 class="mb-1">{{ book.title }} <i class="fas fa-external-link-alt fa-xs ms-1"></i></h6>
+            </a>
+            {% else %}
             <h6 class="mb-1">{{ book.title }}</h6>
+            {% endif %}
             {% if book.status %}
             <small class="{{ book.status_color }}">{{ book.status }}</small>
             {% endif %}

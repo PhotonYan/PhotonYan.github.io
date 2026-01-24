@@ -216,6 +216,10 @@ future_plans:
 
 # Book Projects
 books:
+  - title: Machine Learning Lecture Notes
+    status: Completed
+    status_color: text-success
+    url: https://github.com/PhotonYan/MachineLearningCourse2025/blob/TeXNotes/notes/2025/mvp/main.pdf
   - title: 方兴未艾 —— Junior High Essays
   - title: High School Essays
   - title: New Lectures on Gaokao Chemistry

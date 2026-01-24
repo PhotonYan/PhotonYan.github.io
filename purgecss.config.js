@@ -17,7 +17,7 @@ module.exports = {
   output: `${DIST_PATH}/bootstrap.css`,
   // The `safelist` should be changed appropriately for future development
   safelist: {
-    standard: [/^collaps/, /^w-/, 'shadow', 'border', 'kbd'],
-    greedy: [/^col-/, /tooltip/]
+    standard: [/^collaps/, /^w-/, 'shadow', 'border', 'kbd', /^fa-/, /^text-/, /^bg-/, /^list-/, /^d-/, /^m-/, /^p-/, /^g-/, /^h-/, /^btn/, /^badge/, /^rounded/, 'fas', 'far', 'fab'],
+    greedy: [/^col-/, /tooltip/, /^flex-/, /^align-/, /^justify-/]
   }
 };

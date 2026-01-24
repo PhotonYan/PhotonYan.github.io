@@ -1,77 +1,243 @@
 <style>
-    /* Custom styles for the About page */
-    .about-section {
-        margin-bottom: 2rem;
-    }
+    /* Custom styles for the About page - Modern Enhanced Version */
 
+    /* Glass Card Effect with Enhanced Modern Styling */
     .glass-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(128, 128, 128, 0.15);
-        border-radius: 12px;
-        padding: 1.5rem;
-        transition: transform 0.2s, box-shadow 0.2s;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        padding: 1.75rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         height: 100%;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
     [data-mode="light"] .glass-card {
-        background: rgba(0, 0, 0, 0.02);
-        border-color: rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.85) 100%);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.05);
     }
 
     .glass-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-color: rgba(var(--link-color-rgb, 13, 110, 253), 0.4);
     }
 
+    [data-mode="light"] .glass-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Icon Box with Gradient Background */
     .icon-box {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: var(--link-color);
+        font-size: 2.5rem;
+        margin-bottom: 1.2rem;
+        background: linear-gradient(135deg, var(--link-color) 0%, #6366f1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        animation: pulse-subtle 3s ease-in-out infinite;
     }
 
+    @keyframes pulse-subtle {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    /* Enhanced Timeline */
     .timeline-item {
         position: relative;
-        border-left: 2px solid rgba(128, 128, 128, 0.3);
-        padding-left: 1.5rem;
-        padding-bottom: 1.5rem;
+        border-left: 2px solid rgba(13, 110, 253, 0.3);
+        padding-left: 1.75rem;
+        padding-bottom: 1.75rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .timeline-item:hover {
+        border-left-color: var(--link-color);
     }
 
     .timeline-item:last-child {
         border-left: none;
+        padding-bottom: 0;
     }
 
     .timeline-item::before {
         content: '';
         position: absolute;
-        left: -7px;
+        left: -9px;
         top: 0px;
-        width: 12px;
-        height: 12px;
-        background: var(--link-color);
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(135deg, var(--link-color) 0%, #6366f1 100%);
         border-radius: 50%;
-        border: 2px solid var(--card-bg);
+        border: 3px solid var(--card-bg);
+        box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+        transition: all 0.3s ease;
     }
 
+    .timeline-item:hover::before {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.3);
+    }
+
+    /* Modern Badge Styling */
     .course-badge {
         font-size: 0.75em;
-        padding: 0.2em 0.6em;
-        border-radius: 10px;
-        background: rgba(128, 128, 128, 0.1);
-        border: 1px solid rgba(128, 128, 128, 0.2);
-        margin-left: 5px;
-        font-weight: normal;
+        padding: 0.3em 0.8em;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(13, 110, 253, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+        border: 1px solid rgba(13, 110, 253, 0.25);
+        margin-left: 6px;
+        font-weight: 500;
+        transition: all 0.2s ease;
     }
 
+    .course-badge:hover {
+        background: linear-gradient(135deg, rgba(13, 110, 253, 0.25) 0%, rgba(99, 102, 241, 0.25) 100%);
+        transform: translateY(-1px);
+    }
+
+    /* Enhanced Typography */
+    .lead {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--text-color);
+        font-weight: 400;
+        letter-spacing: 0.01em;
+    }
+
+    /* Enhanced Book Cards */
+    .book-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.25rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    [data-mode="light"] .book-card {
+        background: rgba(255, 255, 255, 0.8);
+        border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .book-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(180deg, var(--link-color) 0%, #6366f1 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .book-card:hover {
+        transform: translateX(4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-color: rgba(var(--link-color-rgb, 13, 110, 253), 0.3);
+    }
+
+    .book-card:hover::before {
+        opacity: 1;
+    }
+
+    .book-card a {
+        color: var(--heading-color);
+        transition: color 0.2s ease;
+    }
+
+    .book-card a:hover {
+        color: var(--link-color);
+    }
+
+    /* Collapsible Summary Enhancements */
     summary {
         cursor: pointer;
-        font-weight: bold;
+        font-weight: 600;
         margin-bottom: 1rem;
         outline: none;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        background: rgba(13, 110, 253, 0.05);
     }
 
-    .lead {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        color: var(--text-color);
+    summary:hover {
+        background: rgba(13, 110, 253, 0.1);
+        transform: translateX(4px);
+    }
+
+    /* Publication Cards Enhancement */
+    .glass-card .d-flex {
+        transition: transform 0.2s ease;
+    }
+
+    .glass-card:hover .d-flex {
+        transform: translateX(4px);
+    }
+
+    /* Smooth Scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Badge Enhancements */
+    .badge {
+        font-weight: 500;
+        padding: 0.35em 0.75em;
+        border-radius: 8px;
+        letter-spacing: 0.02em;
+    }
+
+    /* Button Enhancements for Friends */
+    .btn-outline-secondary {
+        transition: all 0.3s ease;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+
+    .btn-outline-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .glass-card {
+            padding: 1.25rem;
+        }
+
+        .icon-box {
+            font-size: 2rem;
+        }
+
+        .timeline-item {
+            padding-left: 1.25rem;
+        }
+    }
+
+    /* Accessibility: Reduce Motion for Users Who Prefer It */
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 </style>
