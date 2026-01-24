@@ -1,0 +1,11 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+  {% for item in site.data.about.interests %}
+  <div class="col">
+    <div class="glass-card">
+      <div class="icon-box"><i class="{{ item.icon }}"></i></div>
+      <h5>{{ item.title }}</h5>
+      <p class="small text-muted mb-0">{{ item.desc }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>

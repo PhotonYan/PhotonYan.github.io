@@ -1,0 +1,214 @@
+# Bio
+basic_info:
+  lead: |
+    I am an undergraduate student at <strong>Peking University</strong>, YuanPei College. <br>
+    I am currently majoring in <em>Artificial Intelligence</em> while pursuing a double degree in <em>Physics</em>, focusing on exploring the intersection of these fields through interdisciplinary knowledge and research.
+
+# Research Interests
+interests:
+  - title: Graph Learning
+    icon: fas fa-project-diagram
+    desc: Graph Representation Learning & Equivariant Neural Networks.
+  - title: AI for Science
+    icon: fas fa-flask
+    desc: Machine Learning for Molecular Modeling and Drug Discovery (AI4S / MLFF).
+  - title: Computer Vision
+    icon: fas fa-eye
+    desc: A side interest in perception, abstraction, and visual understanding.
+
+# Experience
+internships:
+  - role: Algorithm Intern
+    company: ByteDance
+    team: AI4S / Drug Discovery
+    time: Nov 2025 – Present
+    location: Shanghai, China
+    icon: fas fa-briefcase
+
+# Education
+education:
+  - school: Peking University
+    college: YuanPei College
+    degree: B.E. in Artificial Intelligence<br>B.S. in Physics
+    time: 2024 – Present
+    icon: fas fa-graduation-cap
+  - school: Beijing NO.4 High School
+    degree: Middle School
+    time: 2021 – 2024
+    
+# Publications
+publications:
+  - title: "GeoRecon: Graph-Level Representation Learning for 3D Molecules via Reconstruction-Based Pretraining"
+    authors: "<strong>Shaoheng Yan</strong>, Zian Li, Muhan Zhang"
+    badges:
+      - text: Preprint
+        color: primary
+    links:
+      - text: arXiv
+        url: https://arxiv.org/abs/2506.13174
+  - title: "LLMs Know More Than Words: A Genre Study with Syntax, Metaphor & Phonetics"
+    authors: "Weiye Shi, Zhaowei Zhang, <strong>Shaoheng Yan</strong>, Yaodong Yang"
+    badges:
+      - text: Preprint
+        color: primary
+    links:
+      - text: arXiv
+        url: https://arxiv.org/abs/2512.04957
+
+# Curriculum
+# Note: Styles for icons: text-info for regular, text-muted for auditing/books
+ongoing_studies_sem: "2025-2026 Fall / Year 2 Sem 1"
+ongoing_column_1:
+  - name: Machine Learning
+    icon: fas fa-brain
+    icon_style: text-info
+    badge: Notes
+    url: https://github.com/MuLabPKU/MachineLearningCourse2025/tree/main/notes/2025/mvp
+  - name: Reinforcement Learning
+    icon: fas fa-robot
+    icon_style: text-info
+  - name: Quantum Mechanics A
+    icon: fas fa-atom
+    icon_style: text-info
+  - name: Intro to Modern Physics I
+    icon: fas fa-book-open
+    icon_style: text-info
+    tag: w/ Notes
+  - name: Functional Analysis
+    icon: fas fa-square-root-alt
+    icon_style: text-info
+  - name: Optimization Theory (GTM 258)
+    icon: fas fa-chart-line
+    icon_style: text-info
+
+ongoing_column_2:
+  - name: AI System Practice (III)
+    icon: fas fa-cogs
+    icon_style: text-info
+  - name: Data Structures & Algorithms A
+    icon: fas fa-code
+    icon_style: text-info
+  - name: Discrete Math (Turing Class)
+    icon: fas fa-project-diagram
+    icon_style: text-info
+    details:
+      - Logic, Type Theory
+      - Abstract Algebra, Stochastic Processes
+  - name: Financial Time Series
+    icon: fas fa-chart-area
+    icon_style: text-info
+  - name: The Republic
+    icon: fas fa-book
+    icon_style: text-info
+  - name: Quantum Field Theory (Weinberg)
+    icon: fas fa-globe
+    icon_style: text-info
+
+# Course Archive
+course_archive:
+  - title: "2025-2026 Spring (Year 2 Sem 2) [Planned]"
+    items:
+    - name: Mechanics (Exemption)
+    - name: Thermal Physics (Exemption)
+    - name: Theoretical Mechanics
+    - name: General Relativity
+    - name: General Physics Lab (II)
+    - name: Intro to Cloud Physics
+    - name: Deep Generative Models
+    - name: Multi-Agent Systems
+    - name: Intro to Robotics
+    - name: Math for AI
+    - name: AI System Practice (I)
+    - name: Concise Quantum Mechanics
+
+  - title: "2025-2026 Fall (Year 2 Sem 1 - Credits)"
+    items:
+      - name: Electromagnetism (Exemption)
+        icon: fas fa-check
+        icon_style: text-success
+
+  - title: "2024-2025 Summer"
+    items:
+      - name: "GTM 258: Foundations of Optimization"
+        icon: fas fa-book
+        icon_style: text-muted
+      - name: "Discrete Mathematics & Applications"
+        icon: fas fa-book
+        icon_style: text-muted
+      - name: "General Physics (Exemption Prep)"
+        icon: fas fa-book
+        icon_style: text-muted
+
+  - title: "2024-2025 Spring (Year 1 Sem 2)"
+    items:
+      - name: Advanced Mathematics
+        grade: A
+        grade_color: success
+      - name: Prob & Stats
+        grade: A
+        grade_color: success
+      - name: Electrodynamics
+        grade: A
+        grade_color: success
+      - name: Practice of Programming (C/C++) [Withdraw]
+      - name: Methods of Mathematical Physics
+      - name: Intro to AI
+      - name: AI System Practice (II)
+      - name: Real Analysis
+      - name: ODE & PDE
+      - name: "<i>Audited</i>: Intro to Computing Art, Psychology of Art, Psychophysics"
+
+  - title: "2024-2025 Fall (Year 1 Sem 1)"
+    items:
+      - name: Advanced Mathematics
+        grade: A
+        grade_color: success
+      - name: Linear Algebra
+        grade: A
+        grade_color: success
+      - name: Computing (C++)
+        grade: A
+        grade_color: success
+      - name: Probability Theory
+      - name: Mathematical Analysis
+      - name: "<i>Partial</i>: Modern QM, General Psychology"
+      - name: Introduction to Machine Learning (CS50)
+
+  - title: "High School Studies"
+    description: |
+      > **Advanced Placement / Self-Study**
+      >
+      > Advanced Mathematics, Linear Algebra, Analytic Geometry, General Physics, Theoretical Mechanics, Electrodynamics, Complex Analysis, Modern Optics, General Chemistry, Inorganic Chemistry, Geology, Atmospheric Physics.
+      > *Partial*: Diff Geometry & GR, Meteorology, Organic Chemistry.
+
+# Future Plans
+future_plans:
+  - Theoretical Mechanics, QM, Thermodynamics & Statistical Physics
+  - General Relativity, QFT
+  - Functional Analysis, Group Theory, Abstract Algebra
+  - Algebraic Geometry, Diff Manifolds, Riemannian Geometry
+  - Numerical Analysis
+
+# Book Projects
+books:
+  - title: 方兴未艾 —— Junior High Essays
+  - title: High School Essays
+  - title: New Lectures on Gaokao Chemistry
+    status: Prep for publication
+    status_color: text-success
+  - title: Gaokao Chinese Guide
+    status: Prep for publication
+    status_color: text-success
+  - title: Gaokao Geography Guide
+  - title: Beijing No.4 Physics Competition Notes
+    status: Ongoing
+    status_color: text-primary
+
+# Friends
+friends:
+  - name: Fanzt (SJTU)
+    url: https://fanzt.github.io/
+  - name: Whitney (SDU)
+    url: https://phymani.me/
+  - name: for_each
+    url: https://cwd316.com/

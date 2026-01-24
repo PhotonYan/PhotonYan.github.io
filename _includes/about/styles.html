@@ -1,0 +1,77 @@
+<style>
+    /* Custom styles for the About page */
+    .about-section {
+        margin-bottom: 2rem;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(128, 128, 128, 0.15);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+        height: 100%;
+    }
+
+    [data-mode="light"] .glass-card {
+        background: rgba(0, 0, 0, 0.02);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-box {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--link-color);
+    }
+
+    .timeline-item {
+        position: relative;
+        border-left: 2px solid rgba(128, 128, 128, 0.3);
+        padding-left: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .timeline-item:last-child {
+        border-left: none;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -7px;
+        top: 0px;
+        width: 12px;
+        height: 12px;
+        background: var(--link-color);
+        border-radius: 50%;
+        border: 2px solid var(--card-bg);
+    }
+
+    .course-badge {
+        font-size: 0.75em;
+        padding: 0.2em 0.6em;
+        border-radius: 10px;
+        background: rgba(128, 128, 128, 0.1);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        margin-left: 5px;
+        font-weight: normal;
+    }
+
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        outline: none;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--text-color);
+    }
+</style>

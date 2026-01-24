@@ -1,0 +1,30 @@
+<details>
+    <summary class="h5 text-primary"><i class="fas fa-check-circle me-2"></i><strong>Completed Courses Archive</strong>
+    </summary>
+
+    <div class="ps-3 border-start">
+        {% for section in site.data.about.course_archive %}
+        <h4 class="mt-3">{{ section.title }}</h4>
+        {% if section.description %}
+        {{ section.description | markdownify }}
+        {% endif %}
+
+        {% if section.items %}
+        <ul class="list-unstyled">
+            {% for item in section.items %}
+            <li>
+                {% if item.icon %}
+                <i class="{{ item.icon }} me-2 {{ item.icon_style }}"></i>
+                {% endif %}
+                {% if item.grade %}
+                <strong>{{ item.name }}</strong> <span class="badge bg-{{ item.grade_color }}">{{ item.grade }}</span>
+                {% else %}
+                {{ item.name }}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endfor %}
+    </div>
+</details>

@@ -1,0 +1,27 @@
+<div class="row row-cols-1 row-cols-lg-2 g-3 mb-4">
+    {% for col_name in "ongoing_column_1,ongoing_column_2" | split: "," %}
+    <div class="col">
+        <ul class="list-group list-group-flush bg-transparent">
+            {% for item in site.data.about[col_name] %}
+            <li class="list-group-item bg-transparent ps-0">
+                <i class="{{ item.icon }} me-2 {{ item.icon_style }}"></i>
+                {{ item.name }}
+                {% if item.badge %}
+                <a href="{{ item.url }}" class="course-badge text-decoration-none">{{ item.badge }}</a>
+                {% endif %}
+                {% if item.tag %}
+                <span class="course-badge">{{ item.tag }}</span>
+                {% endif %}
+                {% if item.details %}
+                <ul class="small mt-1 text-muted">
+                    {% for detail in item.details %}
+                    <li>{{ detail }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>

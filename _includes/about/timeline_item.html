@@ -1,0 +1,8 @@
+<div class="timeline-item">
+    <h5 class="mb-1">{{ include.title }}</h5>
+    <div class="{{ include.subtitle_class | default: 'text-muted' }} mb-2">{{ include.subtitle }}</div>
+    <span class="badge bg-secondary mb-2">{{ include.time }}</span>
+    {% if include.desc %}
+    <p class="small text-muted">{{ include.desc }}</p>
+    {% endif %}
+</div>
