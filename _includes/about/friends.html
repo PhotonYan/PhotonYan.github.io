@@ -1,6 +1,6 @@
 <div class="d-flex flex-wrap gap-2 mt-3">
     {% for friend in site.data.about.friends %}
-    <a href="{{ friend.url }}" class="btn btn-sm btn-outline-secondary rounded-pill"><i
-            class="fas fa-user-circle me-2"></i>{{ friend.name }}</a>
+    <a href="{{ friend.url }}" class="custom-btn-outline rounded-pill"><i
+            class="fas fa-user-circle me-2 text-muted"></i>{{ friend.name }}</a>
     {% endfor %}
 </div>
