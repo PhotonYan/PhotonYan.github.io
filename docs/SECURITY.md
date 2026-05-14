@@ -1,13 +1,30 @@
 # Security Policy
 
-## Supported Versions
+This is a static personal website deployed through GitHub Pages. Most security-sensitive changes are configuration changes, third-party embeds, dependency updates, JavaScript changes, or changes to generated assets.
 
-| Version    | Supported |
-| :--------- | :-------: |
-| >= `7.0.0` |     ✓     |
-| <= `6.0.0` |     ✗     |
+## Supported Site
 
-## Reporting a Vulnerability
+Only the current `gh-pages` branch of `PhotonYan.github.io` is maintained for the live website.
 
-If you find a vulnerability, please report it to `cotes.chung@gmail.com`.
-We will try our best to respond within a week. Thank you for your time!
+The archived folders in the parent workspace, including `olds/`, `website2/`, and `jekyll/`, are not maintained as live deploy targets unless explicitly revived.
+
+## Reporting
+
+If you find a vulnerability or unsafe configuration in the live site, report it to the site owner at `photonyan@stu.pku.edu.cn`.
+
+Please include:
+
+- Affected URL or file path.
+- Steps to reproduce.
+- Impact and any known exploit conditions.
+- Suggested fix, if available.
+
+Do not publicly disclose exploitable details before the owner has had time to respond.
+
+## Areas To Review Carefully
+
+- Third-party scripts, embeds, analytics, and comments.
+- Service worker and PWA cache behavior.
+- JavaScript bundles in `assets/js/dist/`.
+- Raw HTML in posts, tabs, and includes.
+- Downloadable files under `assets/pdfs/` or other static asset directories.
