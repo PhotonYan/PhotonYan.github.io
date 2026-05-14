@@ -2,19 +2,27 @@
 basic_info:
   lead: |
     I am an undergraduate student at <strong>Peking University</strong>, YuanPei College. <br>
-    I am currently majoring in <em>Artificial Intelligence</em> while pursuing a double degree in <em>Physics</em>, focusing on exploring the intersection of these fields through interdisciplinary knowledge and research.
+    I am currently majoring in <em>Artificial Intelligence</em> while pursuing a double degree in <em>Physics</em>, focusing on exploring the intersection of these fields through interdisciplinary knowledge and research. 
 
 # Research Interests
 interests:
-  - title: Graph Learning
-    icon: fas fa-project-diagram
-    desc: Graph Representation Learning & Equivariant Neural Networks.
   - title: AI for Science
     icon: fas fa-flask
-    desc: Machine Learning for Molecular Modeling and Drug Discovery (AI4S / MLFF).
-  - title: Computer Vision
-    icon: fas fa-eye
-    desc: A side interest in perception, abstraction, and visual understanding.
+    desc: AI-driven scientific modeling across molecules, proteins, chemistry, biology, and physics.
+    note: >
+      Current focus: AIDD, AI4Chem, AI4Bio, AI4Phy, molecule generation, protein cofolding,
+      molecular dynamics, and AI for LHC-style high-energy physics problems.
+  - title: General Machine Learning
+    icon: fas fa-brain
+    desc: Representation learning, pretraining paradigms, and model architecture design.
+    note: >
+      Current focus: designing objectives and architectures that transfer across domains, with
+      attention to structure, scale, data efficiency, and the inductive biases behind useful representations.
+  - title: Efficient Computation
+    icon: fas fa-microchip
+    desc: Algorithmic efficiency for scalable learning, simulation, and scientific computing.
+    note: >
+      Current focus: faster sampling and generation, efficient geometric algorithms, and computational methods that make large scientific models practical rather than merely expressive.
 
 # Experience
 internships:
@@ -78,6 +86,21 @@ publications:
     links:
       - text: arXiv
         url: https://arxiv.org/abs/2512.04957
+
+# Awards and Service
+honors:
+  - title: NeurIPS 2026 Reviewer Invitation
+    category: Invitation
+    time: 2026
+    desc: Invited to serve as a reviewer for NeurIPS 2026.
+  - title: ICML 2026 GenBio Workshop Reviewer
+    category: Academic service
+    time: 2026
+    desc: Invited reviewer for the ICML 2026 GenBio Workshop.
+  - title: Peking University Institute for Artificial Intelligence Dean's Scholarship
+    category: Award
+    time: 2025
+    desc: Awarded the 2025 Dean's Scholarship by the Peking University Institute for Artificial Intelligence.
 
 # Curriculum
 # Spring 2026 (Upcoming)
@@ -265,3 +288,5 @@ friends:
     url: https://phymani.me/
   - name: for_each
     url: https://cwd316.com/
+  - name: Jinshuo Li (SJTU)
+    url: https://jinshuo-li.github.io/

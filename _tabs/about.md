@@ -681,6 +681,54 @@ order: 1
     letter-spacing: 0;
   }
 
+  .honor-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1.45rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .honor-item {
+    display: grid;
+    grid-template-columns: 5.8rem minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0;
+  }
+
+  .honor-time {
+    color: var(--about-blue);
+    font-family: var(--about-display-font);
+    font-size: 0.92rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .honor-main strong {
+    display: block;
+    color: var(--about-ink);
+    font-family: var(--about-display-font);
+    font-size: 1.04rem;
+    line-height: 1.32;
+    font-weight: 700;
+  }
+
+  .honor-main span {
+    display: block;
+    margin-top: 0.26rem;
+    color: var(--about-muted);
+    line-height: 1.55;
+  }
+
+  .honor-category {
+    color: var(--about-soft);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
   .timeline-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1255,6 +1303,16 @@ order: 1
       justify-content: flex-start;
     }
 
+    .honor-item {
+      grid-template-columns: 4.9rem minmax(0, 1fr);
+      gap: 0.45rem 0.75rem;
+    }
+
+    .honor-category {
+      grid-column: 2;
+      white-space: normal;
+    }
+
     .book-item {
       display: grid;
     }
@@ -1287,9 +1345,11 @@ order: 1
         <h1 id="about-title">Shaoheng Yan <span>AI, physics, and the shape of scientific representation.</span></h1>
         <div class="about-lede">
           {{ about.basic_info.lead }}
-          <p>
-            I am interested in representations that stay faithful when the object is not flat: molecules with 3D geometry,
-            physical systems with symmetry, and learning problems where structure matters as much as scale.
+          <p style="margin-top: 0.5em;">
+            <i class="fas fa-envelope" aria-label="Email"></i>
+            <span style="margin-left: 0.25em; font-family: serif; font-style: italic;">
+              photonyan at stu.pku.edu.cn
+            </span>
           </p>
         </div>
       </div>
@@ -1303,12 +1363,11 @@ order: 1
   <section class="about-section" id="research" aria-labelledby="research-title">
     <div class="about-section-head">
       <div>
-        <p class="about-eyebrow">Research interests</p>
-        <h2 id="research-title">The common thread is structure.</h2>
+        <p class="about-eyebrow">Academic</p>
+        <h2 id="research-title">Research Interest</h2>
       </div>
-      <p>
-        My work sits near the boundary of machine learning and physical science. I care about models that can reason over
-        relations, preserve geometry, and make scientific objects easier to compare, reconstruct, and search.
+      <p style="text-align: right;">
+        This section may change frequently... Last updated: May 15, 2026
       </p>
     </div>
     <div class="about-research-grid">
@@ -1317,66 +1376,22 @@ order: 1
         <span class="research-icon"><i class="{{ item.icon }}" aria-hidden="true"></i></span>
         <h3>{{ item.title }}</h3>
         <p>{{ item.desc }}</p>
-        {% case item.title %}
-        {% when "Graph Learning" %}
-        <p class="research-note">Current angle: graph-level pretraining, reconstruction objectives, and models that respect permutation and spatial structure.</p>
-        {% when "AI for Science" %}
-        <p class="research-note">Current angle: molecular geometry, drug discovery, force fields, and representations useful beyond a single benchmark.</p>
-        {% when "Computer Vision" %}
-        <p class="research-note">Current angle: perception as abstraction, from visual grouping to the way models build reusable concepts.</p>
-        {% endcase %}
+        {% if item.note %}
+        <p class="research-note">{{ item.note }}</p>
+        {% endif %}
       </article>
       {% endfor %}
     </div>
   </section>
 
-  <section class="about-section" aria-labelledby="current-title">
+    <section class="about-section" id="publications" aria-labelledby="publications-title">
     <div class="about-section-head">
       <div>
-        <p class="about-eyebrow">Working mode</p>
-        <h2 id="current-title">Theory, implementation, and notes reinforce each other.</h2>
+        <p class="about-eyebrow">Research</p>
+        <h2 id="publications-title">Publications</h2>
       </div>
-      <p>
-        I use coursework as a long-term scaffold rather than a transcript. The goal is to keep mathematical physics,
-        machine learning, and practical systems close enough that ideas can move between them.
-      </p>
-    </div>
-    <div class="about-current">
-      <div class="about-statement">
-        <p>
-          A useful representation should do more than compress data. It should expose the coordinates that matter,
-          discard the ones that should not matter, and leave enough structure for the next model or scientist to act on it.
-        </p>
-        <p>
-          That is why this site mixes papers, lecture notes, course maps, and book projects. They are different outputs of
-          the same habit: build a precise object, then make it legible.
-        </p>
-      </div>
-      <ul class="about-thread-list">
-        <li>
-          <strong>Scientific ML</strong>
-          <span>From molecular graphs and 3D reconstruction to representations that can serve search, design, and interpretation.</span>
-        </li>
-        <li>
-          <strong>Physics grounding</strong>
-          <span>Classical mechanics, quantum mechanics, field theory, relativity, and mathematical methods as working vocabulary.</span>
-        </li>
-        <li>
-          <strong>Learning artifacts</strong>
-          <span>Lecture notes, essays, and course records kept as public memory instead of private scratch work.</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="about-section" id="publications" aria-labelledby="publications-title">
-    <div class="about-section-head">
-      <div>
-        <p class="about-eyebrow">Publications</p>
-        <h2 id="publications-title">Research outputs</h2>
-      </div>
-      <p>
-        Papers and preprints where I contributed to representation learning, scientific modeling, or language analysis.
+      <p style="text-align: right;">
+        List of my papers and preprints.
       </p>
     </div>
     <div class="publication-list">
@@ -1406,14 +1421,38 @@ order: 1
     </div>
   </section>
 
+  <section class="about-section" id="honors" aria-labelledby="honors-title">
+    <div class="about-section-head">
+      <div>
+        <p class="about-eyebrow">Academic</p>
+        <h2 id="honors-title">Awards & Service</h2>
+      </div>
+      <p style="text-align: right;">
+        Selected reviewing service and recognitions.
+      </p>
+    </div>
+    <ul class="honor-list" aria-label="Awards and academic service">
+      {% for item in about.honors %}
+      <li class="honor-item">
+        <time class="honor-time">{{ item.time }}</time>
+        <div class="honor-main">
+          <strong>{{ item.title }}</strong>
+          <span>{{ item.desc }}</span>
+        </div>
+        <span class="honor-category">{{ item.category }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
   <section class="about-section" aria-labelledby="timeline-title">
     <div class="about-section-head">
       <div>
-        <p class="about-eyebrow">Experience and education</p>
-        <h2 id="timeline-title">Where the work is happening</h2>
+        <p class="about-eyebrow">Background</p>
+        <h2 id="timeline-title">Experience & Education</h2>
       </div>
-      <p>
-        Current research and study are anchored at Peking University, with engineering practice connected to AI for Science and drug discovery.
+      <p style="text-align: right;">
+        Where I Studied and Worked
       </p>
     </div>
     <div class="timeline-grid">
@@ -1446,14 +1485,83 @@ order: 1
     </div>
   </section>
 
+  <section class="about-section" id="books" aria-labelledby="books-title">
+    <div class="about-section-head">
+      <div>
+        <p class="about-eyebrow">Notes</p>
+        <h2 id="books-title">Book Projects</h2>
+      </div>
+      <p style="text-align: right;">
+        These projects collect lecture notes, essays, guides, and competition material.
+      </p>
+    </div>
+    <div class="books-grid">
+      {% for book in about.books %}
+      <article class="book-item">
+        <div>
+          <strong>
+            {% if book.url %}
+            <a href="{{ book.url }}">{{ book.title }}</a>
+            {% else %}
+            {{ book.title }}
+            {% endif %}
+          </strong>
+        </div>
+        {% if book.status %}
+        <span class="status-pill">{{ book.status }}</span>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+
+  <section class="about-section" aria-labelledby="current-title">
+    <div class="about-section-head">
+      <div>
+        <p class="about-eyebrow">Working mode</p>
+        <h2 id="current-title">Theory, implementation, and notes reinforce each other.</h2>
+      </div>
+      <p style="text-align: right;">
+        Inspire Creativity, Enrich Life！
+      </p>
+    </div>
+    <div class="about-current">
+      <div class="about-statement">
+        <p>
+          A useful representation should do more than compress data. It should expose the coordinates that matter,
+          discard the ones that should not matter, and leave enough structure for the next model or scientist to act on it.
+        </p>
+        <p>
+          That is why this site mixes lots of things. They are different outputs of
+          the same habit: build a precise object, then make it legible.
+        </p>
+      </div>
+      <ul class="about-thread-list">
+        <li>
+          <strong>Scientific ML</strong>
+          <span>From molecular graphs and 3D reconstruction to representations that can serve search, design, and interpretation.</span>
+        </li>
+        <li>
+          <strong>Physics grounding</strong>
+          <span>Classical mechanics, quantum mechanics, field theory, relativity, and mathematical methods as working vocabulary.</span>
+        </li>
+        <li>
+          <strong>Learning artifacts</strong>
+          <span>Lecture notes, essays, and course records kept as public memory instead of private scratch work.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="about-section study-section" id="study" aria-labelledby="study-title">
     <div class="about-section-head">
       <div>
-        <p class="about-eyebrow">Curriculum and studies</p>
-        <h2 id="study-title">A running map of what I study</h2>
+        <p class="about-eyebrow">Curriculum</p>
+        <h2 id="study-title">Study Map</h2>
       </div>
       <p>
-        Political courses, PE, and some general education courses are omitted. The archive emphasizes technical courses,
+        The archive emphasizes technical courses,
         reading programs, and partially completed self-study tracks.
       </p>
     </div>
@@ -1462,7 +1570,7 @@ order: 1
       <aside class="study-atlas-meta">
         <div>
           <span class="study-atlas-label">Course atlas</span>
-          <p>The layout follows prerequisite relation and research adjacency, so semesters become paths rather than rows.</p>
+          <p>Click to see details.</p>
         </div>
         <ul class="study-atlas-legend" aria-label="Filter curriculum map by category">
           <li>
@@ -1577,46 +1685,12 @@ order: 1
     </details>
   </section>
 
-  <section class="about-section" id="books" aria-labelledby="books-title">
-    <div class="about-section-head">
-      <div>
-        <p class="about-eyebrow">Book projects and notes</p>
-        <h2 id="books-title">Longer artifacts in progress</h2>
-      </div>
-      <p>
-        These projects collect lecture notes, essays, guides, and competition material. Some are complete, some are public drafts,
-        and some remain active working documents.
-      </p>
-    </div>
-    <div class="books-grid">
-      {% for book in about.books %}
-      <article class="book-item">
-        <div>
-          <strong>
-            {% if book.url %}
-            <a href="{{ book.url }}">{{ book.title }}</a>
-            {% else %}
-            {{ book.title }}
-            {% endif %}
-          </strong>
-        </div>
-        {% if book.status %}
-        <span class="status-pill">{{ book.status }}</span>
-        {% endif %}
-      </article>
-      {% endfor %}
-    </div>
-  </section>
-
   <section class="about-section" aria-labelledby="friends-title">
     <div class="about-section-head">
       <div>
-        <p class="about-eyebrow">Friends</p>
-        <h2 id="friends-title">People nearby on the web</h2>
+        <p class="about-eyebrow">Links</p>
+        <h2 id="friends-title">Friends</h2>
       </div>
-      <p>
-        A small set of personal sites and peers I keep close to this page.
-      </p>
     </div>
     <div class="friends-grid">
       {% for friend in about.friends %}
