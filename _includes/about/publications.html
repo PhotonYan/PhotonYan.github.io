@@ -1,17 +1,16 @@
 <div class="glass-card mb-5">
     {% for pub in site.data.about.publications %}
     <div class="d-flex align-items-start {% unless forloop.last %}mb-4{% endunless %}">
-        <div class="me-3 fs-2 text-primary"><i class="far fa-file-alt"></i></div>
+        <div class="me-3 fs-2 text-muted"><i class="far fa-file-alt"></i></div>
         <div>
             <h5 class="mb-2">{{ pub.title }}</h5>
             <p class="mb-2">{{ pub.authors }}</p>
             <div class="d-flex align-items-center gap-2">
                 {% for badge in pub.badges %}
-                <span class="badge bg-{{ badge.color }}">{{ badge.text }}</span>
+                <span class="custom-badge">{{ badge.text }}</span>
                 {% endfor %}
                 {% for link in pub.links %}
-                <a href="{{ link.url }}" class="btn btn-sm btn-outline-primary py-0 px-2" style="font-size: 0.8rem;">{{
-                    link.text }}</a>
+                <a href="{{ link.url }}" class="custom-btn-outline">{{ link.text }}</a>
                 {% endfor %}
             </div>
         </div>

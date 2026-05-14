@@ -1,5 +1,6 @@
 <details>
-    <summary class="h5 text-primary"><i class="fas fa-check-circle me-2"></i><strong>Completed Courses Archive</strong>
+    <summary class="h5 text-body"><i class="fas fa-check-circle me-2 text-muted"></i><strong>Completed Courses
+            Archive</strong>
     </summary>
 
     <div class="ps-3 border-start">
@@ -17,7 +18,7 @@
                 <i class="{{ item.icon }} me-2 {{ item.icon_style }}"></i>
                 {% endif %}
                 {% if item.grade %}
-                <strong>{{ item.name }}</strong> <span class="badge bg-{{ item.grade_color }}">{{ item.grade }}</span>
+                <strong>{{ item.name }}</strong> <span class="custom-badge">{{ item.grade }}</span>
                 {% else %}
                 {{ item.name }}
                 {% endif %}
