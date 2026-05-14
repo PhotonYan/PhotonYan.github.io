@@ -6,17 +6,36 @@
   <title>课程关系图</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
+    :root {
+      --graph-paper: oklch(97.8% 0.006 246);
+      --graph-paper-soft: oklch(95.6% 0.011 244);
+      --graph-panel: oklch(98.7% 0.005 250 / 0.9);
+      --graph-ink: oklch(23% 0.027 248);
+      --graph-muted: oklch(48% 0.025 247);
+      --graph-faint: oklch(69% 0.025 246);
+      --graph-line: oklch(84% 0.019 244);
+      --graph-line-soft: oklch(88% 0.018 244);
+      --graph-blue: oklch(45% 0.092 231);
+      --graph-blue-soft: oklch(92% 0.026 231);
+      --graph-danger: oklch(58% 0.15 28);
+    }
+
     html, body { height: 100%; margin: 0; }
     body {
-      background: #f8f9fa;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: var(--graph-paper);
+      color: var(--graph-ink);
+      font-family: "Avenir Next", "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
       overflow: hidden;
     }
     .graph-container {
       position: relative;
       width: 100%;
       height: 100vh; /* 让 iframe 内全屏占位 */
-      background: #f8f9fa;
+      background:
+        linear-gradient(90deg, oklch(57% 0.055 230 / 0.06) 1px, transparent 1px),
+        linear-gradient(0deg, oklch(57% 0.055 230 / 0.05) 1px, transparent 1px),
+        var(--graph-paper);
+      background-size: 42px 42px, 42px 42px, auto;
       cursor: grab;
     }
     .graph-container:active { cursor: grabbing; }
@@ -24,11 +43,11 @@
     /* 悬浮信息卡 */
     .node-info {
       position: absolute;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
+      background: var(--graph-panel);
+      border: 1px solid var(--graph-line);
+      border-radius: 8px;
       padding: 12px 14px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 18px 36px oklch(28% 0.028 247 / 0.11);
       max-width: 320px;
       display: none;
       z-index: 100;
@@ -39,60 +58,123 @@
     .node-info h3 {
       margin: 0 0 8px 0;
       font-size: 15px;
-      color: #1f2937;
-      border-bottom: 2px solid #3b82f6;
+      color: var(--graph-ink);
+      border-bottom: 1px solid var(--graph-line-soft);
       padding-bottom: 6px;
     }
-    .node-info .muted { color: #6b7280; }
+    .node-info .muted { color: var(--graph-muted); }
     .node-info .block { margin-top: 8px; }
 
     /* 高亮样式 */
-    .node:hover, .node-highlight {
-      stroke: #111827;
-      stroke-width: 3px;
-      filter: drop-shadow(0 0 5px rgba(0,0,0,0.25));
+    .node {
+      cursor: pointer;
     }
-    .link { stroke: #bdbdbd; stroke-width: 1.5; stroke-opacity: 0.6; }
-    .link-highlight { stroke: #ef4444; stroke-width: 2; stroke-opacity: 1; }
+    .node-core {
+      stroke-opacity: 0.9;
+      fill-opacity: 0.38;
+      vector-effect: non-scaling-stroke;
+      transition: stroke-width 140ms ease, fill-opacity 140ms ease, opacity 140ms ease;
+    }
+    .node-halo {
+      fill: none;
+      stroke-opacity: 0.28;
+      stroke-width: 0.9;
+      vector-effect: non-scaling-stroke;
+      pointer-events: none;
+    }
+    .node-spark {
+      stroke-linecap: round;
+      stroke-opacity: 0.75;
+      stroke-width: 1.4;
+      vector-effect: non-scaling-stroke;
+      pointer-events: none;
+    }
+    .node:hover .node-core,
+    .node-highlight .node-core {
+      stroke-width: 1.8px;
+      fill-opacity: 0.62;
+    }
+    .node:hover .node-halo,
+    .node-highlight .node-halo {
+      stroke-opacity: 0.62;
+    }
+    .link { stroke: var(--graph-faint); stroke-width: 1.05; stroke-opacity: 0.24; }
+    .link-highlight { stroke: var(--graph-blue); stroke-width: 1.55; stroke-opacity: 0.58; }
 
     /* 控件：缩放 / 重置 */
     .zoom-controls {
       position: absolute; top: 12px; right: 12px;
-      display: flex; flex-direction: column; gap: 8px; z-index: 50;
+      display: flex; flex-direction: column; gap: 0; z-index: 50;
+      padding: 3px;
+      background: var(--graph-panel);
+      border: 1px solid var(--graph-line);
+      border-radius: 6px;
     }
     .zoom-btn, .reset-btn {
-      background: #fff; border: 1px solid #e5e7eb; border-radius: 999px;
-      width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-weight: 700;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: var(--graph-ink);
+      width: 31px; height: 31px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: none; font-weight: 700;
+      transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
     }
-    .zoom-btn:hover, .reset-btn:hover { background: #f3f4f6; }
+    .zoom-btn + .zoom-btn { margin-top: 2px; }
+    .zoom-btn:hover, .reset-btn:hover {
+      background: var(--graph-blue-soft);
+      border-color: oklch(75% 0.035 231);
+      color: var(--graph-blue);
+    }
     .reset-btn {
-      position: absolute; top: 12px; left: 12px; width: auto; padding: 0 12px; font-weight: 500;
-      color: #fff; background: #3b82f6; border-color: #3b82f6; z-index: 50;
+      position: absolute; top: 12px; left: 12px; width: auto; padding: 0 11px; font-weight: 650;
+      color: var(--graph-blue); background: var(--graph-panel); border-color: var(--graph-line); z-index: 50;
+      font-size: 12px;
     }
-    .reset-btn:hover { background: #2563eb; }
 
     /* 顶部工具条：类别 + 语言 */
     .category-bar {
       position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-      z-index: 60; display: flex; gap: 8px; align-items: center;
-      background: rgba(255,255,255,0.9); backdrop-filter: saturate(1.2) blur(2px);
-      border: 1px solid #e5e7eb; border-radius: 999px; padding: 6px 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      font-size: 13px; color: #374151;
+      z-index: 60; display: flex; gap: 6px; align-items: center;
+      background: var(--graph-panel);
+      border: 1px solid var(--graph-line); border-radius: 6px; padding: 5px;
+      box-shadow: none;
+      font-size: 12px; color: var(--graph-muted);
     }
     .category-bar select {
-      border: 1px solid #e5e7eb; border-radius: 999px; padding: 6px 10px; background: #fff;
-      font-size: 13px; outline: none;
+      min-width: 112px;
+      border: 1px solid transparent; border-radius: 4px; padding: 5px 9px; background: transparent;
+      color: var(--graph-ink);
+      font-size: 12px; outline: none;
     }
+    .category-bar select:hover,
+    .category-bar select:focus-visible { background: var(--graph-blue-soft); border-color: oklch(75% 0.035 231); }
     .category-bar .pill {
-      padding: 6px 10px; border-radius: 999px; background: #111827; color: #fff; font-weight: 600;
+      padding: 5px 10px 5px 5px;
+      border-right: 1px solid var(--graph-line);
+      color: var(--graph-blue);
+      font-weight: 720;
     }
     .lang-btn{
-      border: 1px solid #e5e7eb; border-radius: 999px; background:#fff;
-      padding: 6px 10px; cursor: pointer; font-weight: 600; font-size: 13px;
+      border: 1px solid transparent; border-radius: 4px; background: transparent;
+      padding: 5px 8px; cursor: pointer; font-weight: 700; font-size: 12px;
+      color: var(--graph-muted);
     }
-    .lang-btn:hover{ background:#f3f4f6; }
+    .lang-btn:hover{ background: var(--graph-blue-soft); border-color: oklch(75% 0.035 231); color: var(--graph-blue); }
+
+    @media (max-width: 640px) {
+      .category-bar {
+        right: 52px;
+        left: 12px;
+        transform: none;
+      }
+      .category-bar select {
+        min-width: 0;
+        width: 100%;
+      }
+      .reset-btn {
+        top: 54px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -107,8 +189,8 @@
     </div>
 
     <div class="zoom-controls">
-      <div class="zoom-btn" id="zoomIn">+</div>
-      <div class="zoom-btn" id="zoomOut">−</div>
+      <button class="zoom-btn" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      <button class="zoom-btn" id="zoomOut" type="button" aria-label="Zoom out">−</button>
     </div>
     <button class="reset-btn" id="resetView">重置视图</button>
     <div class="node-info" id="nodeInfo"></div>
@@ -125,17 +207,21 @@
     const DATA_URL = `${BASE}/assets/html/curriculum_with_related.json`;
 
     // 类别配色（可增补）
-    const categoryColors = {
-      "AI": "#3498db",
-      "CS": "#e74c3c",
-      "Math": "#2ecc71",
-      "Physics": "#f39c12",
-      "Chemistry": "#8e44ad",
-      "EarthScience": "#2c3e50",
-      "Finance": "#27ae60",
-      "Humanities": "#7f8c8d",
-      "OPT": "#16a085"
+    const categoryPalette = {
+      "AI": { base: "#78a9be", light: "#e7f1f5", stroke: "#2b7088", halo: "#8db7c7" },
+      "CS": { base: "#ba8781", light: "#f0dfdc", stroke: "#865852", halo: "#c39b96" },
+      "Math": { base: "#88b89a", light: "#e1efe6", stroke: "#4f8463", halo: "#9bc5aa" },
+      "Physics": { base: "#c5a46b", light: "#f1e6cc", stroke: "#816733", halo: "#d0b47f" },
+      "Chemistry": { base: "#9e91bf", light: "#e6e1f3", stroke: "#665b88", halo: "#aea3ce" },
+      "EarthScience": { base: "#87959b", light: "#e2e8ea", stroke: "#5f6d74", halo: "#9ca8ad" },
+      "Finance": { base: "#82b091", light: "#dfeee4", stroke: "#577b61", halo: "#94bf9f" },
+      "Humanities": { base: "#969d9e", light: "#e5e9ea", stroke: "#686f70", halo: "#a8aeaf" },
+      "OPT": { base: "#7bb5ad", light: "#dcedea", stroke: "#4f817a", halo: "#91c3bc" }
     };
+
+    const fallbackPalette = { base: "#94a2aa", light: "#e4e9ec", stroke: "#65737b", halo: "#a8b3b9" };
+    const paletteFor = (category) => categoryPalette[category] || fallbackPalette;
+    const nodeFill = (category) => paletteFor(category).light;
 
     // —— 多语言文案 —— //
     let currentLang = 'en';
@@ -143,6 +229,7 @@
       zh: {
         pill: '类别',
         all: '所有类别',
+        general: '通识课程',
         reset: '重置视图',
         category: '类别',
         status: '状态',
@@ -159,6 +246,7 @@
       en: {
         pill: 'Category',
         all: 'All',
+        general: 'General studies',
         reset: 'Reset',
         category: 'Category',
         status: 'Status',
@@ -202,6 +290,13 @@
       return ((d.stage || '').toLowerCase() === 'ongoing') ? "4 2" : "none";
     }
 
+    const primaryCategories = new Set(["AI", "Physics", "Math"]);
+    const isKnownCategoryFilter = (value) => (
+      value === "__all__" ||
+      value === "__general__" ||
+      Boolean(categoryPalette[value])
+    );
+
     // ---------- 状态 ----------
     let allCourses = [];
     let currentCategory = "__all__";
@@ -229,15 +324,15 @@
         .attr("height", height)
         .attr("viewBox", [0, 0, width, height])
         .attr("preserveAspectRatio", "xMidYMid meet")
-        .style("background-color", "#f8f9fa");
+        .style("background-color", "transparent");
 
       g = svg.append("g");
 
       simulation = d3.forceSimulation()
-        .force("link", d3.forceLink().id(d => d.id).distance(120))
-        .force("charge", d3.forceManyBody().strength(-420))
+        .force("link", d3.forceLink().id(d => d.id).distance(116))
+        .force("charge", d3.forceManyBody().strength(-390))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("collision", d3.forceCollide().radius(45));
+        .force("collision", d3.forceCollide().radius(42));
 
       zoom = d3.zoom()
         .scaleExtent([0.1, 5])
@@ -256,6 +351,8 @@
       // 更新“所有类别/All”这个选项的显示文本（保留 value 不变）
       const firstOpt = categorySelect.querySelector('option[value="__all__"]');
       if (firstOpt) firstOpt.textContent = t.all;
+      const generalOpt = categorySelect.querySelector('option[value="__general__"]');
+      if (generalOpt) generalOpt.textContent = t.general;
       resetBtn.textContent = t.reset;
       langToggle.textContent = t.langBtn;
     }
@@ -263,7 +360,18 @@
     // ---------- 过滤 ----------
     function getFilteredCourses() {
       if (currentCategory === "__all__") return [...allCourses];
+      if (currentCategory === "__general__") {
+        return allCourses.filter(c => !primaryCategories.has(c.category));
+      }
       return allCourses.filter(c => c.category === currentCategory);
+    }
+
+    function setCategoryFilter(value) {
+      currentCategory = isKnownCategoryFilter(value) ? value : "__all__";
+      if (Array.from(categorySelect.options).some(option => option.value === currentCategory)) {
+        categorySelect.value = currentCategory;
+      }
+      if (allCourses.length) renderGraph(getFilteredCourses());
     }
 
     // ---------- 渲染 ----------
@@ -289,16 +397,11 @@
 
       const node = g.append("g")
         .attr("class", "nodes")
-        .selectAll("circle")
+        .selectAll("g")
         .data(nodes)
-        .enter().append("circle")
+        .enter().append("g")
         .attr("class", "node")
-        .attr("r", 22)
-        .attr("fill", d => categoryColors[d.category] || "#95a5a6")
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 2)
         .style("opacity", d => nodeOpacity(d))
-        .style("stroke-dasharray", d => nodeDash(d))
         .on("click", showNodeInfo)
         .on("mouseover", handleNodeOver)
         .on("mouseout", handleNodeOut)
@@ -308,6 +411,35 @@
           .on("end", dragEnded)
         );
 
+      node.append("rect")
+        .attr("class", "node-halo")
+        .attr("x", -15)
+        .attr("y", -15)
+        .attr("width", 30)
+        .attr("height", 30)
+        .attr("rx", 6)
+        .attr("stroke", d => paletteFor(d.category).halo);
+
+      node.append("rect")
+        .attr("class", "node-core")
+        .attr("x", -9.5)
+        .attr("y", -9.5)
+        .attr("width", 19)
+        .attr("height", 19)
+        .attr("rx", 4)
+        .attr("fill", d => nodeFill(d.category))
+        .attr("stroke", d => paletteFor(d.category).stroke)
+        .attr("stroke-width", 1.15)
+        .style("stroke-dasharray", d => nodeDash(d));
+
+      node.append("line")
+        .attr("class", "node-spark")
+        .attr("x1", -4.2)
+        .attr("x2", 4.2)
+        .attr("y1", 0)
+        .attr("y2", 0)
+        .attr("stroke", d => paletteFor(d.category).stroke);
+
       const label = g.append("g")
         .attr("class", "labels")
         .selectAll("text")
@@ -315,9 +447,10 @@
         .enter().append("text")
         .text(d => displayName(d))
         .attr("text-anchor", "middle")
-        .attr("dy", 35)
-        .attr("font-size", 12)
-        .attr("fill", "#1f2937")
+        .attr("dy", 29)
+        .attr("font-size", 11.5)
+        .attr("font-weight", 520)
+        .attr("fill", "oklch(31% 0.025 247)")
         .attr("pointer-events", "none");
 
       simulation.nodes(nodes);
@@ -332,8 +465,7 @@
           .attr("y2", d => d.target.y);
 
         node
-          .attr("cx", d => d.x)
-          .attr("cy", d => d.y);
+          .attr("transform", d => `translate(${d.x},${d.y})`);
 
         label
           .attr("x", d => d.x)
@@ -341,12 +473,12 @@
       });
 
       function handleNodeOver(event, d) {
-        d3.select(event.target).classed("node-highlight", true);
+        d3.select(event.currentTarget).classed("node-highlight", true);
         g.selectAll(".link").classed("link-highlight",
           l => l.source.id === d.id || l.target.id === d.id);
       }
       function handleNodeOut(event, d) {
-        d3.select(event.target).classed("node-highlight", false);
+        d3.select(event.currentTarget).classed("node-highlight", false);
         g.selectAll(".link").classed("link-highlight", false);
       }
       function dragStarted(event, d) {
@@ -394,7 +526,7 @@
 
     // 点击空白处关闭信息卡
     document.addEventListener("click", (e) => {
-      const isNode = e.target.tagName.toLowerCase() === "circle";
+      const isNode = e.target.closest?.(".node");
       if (!isNode) nodeInfo.style.display = "none";
     });
 
@@ -408,8 +540,7 @@
 
       // 类别下拉：变更后重绘
       categorySelect.addEventListener("change", () => {
-        currentCategory = categorySelect.value;
-        renderGraph(getFilteredCourses());
+        setCategoryFilter(categorySelect.value);
       });
 
       // 语言切换
@@ -421,6 +552,11 @@
 
       window.addEventListener("resize", () => {
         if (allCourses.length) renderGraph(getFilteredCourses());
+      });
+
+      window.addEventListener("message", (event) => {
+        if (!event.data || event.data.type !== "study-map-filter") return;
+        setCategoryFilter(event.data.category);
       });
     }
 
@@ -437,12 +573,18 @@
 
         // 自动填充现有类别
         const categories = Array.from(new Set(allCourses.map(d => d.category).filter(Boolean))).sort();
+        const generalOpt = document.createElement("option");
+        generalOpt.value = "__general__";
+        generalOpt.textContent = i18n[currentLang].general;
+        categorySelect.appendChild(generalOpt);
+
         for (const cat of categories) {
           const opt = document.createElement("option");
           opt.value = cat;
           opt.textContent = cat;
           categorySelect.appendChild(opt);
         }
+        categorySelect.value = currentCategory;
 
         refreshStaticTexts();              // 初次文案
         renderGraph(getFilteredCourses()); // 初次渲染
@@ -451,9 +593,9 @@
         d3.select("#graph").append("div")
           .style("position","absolute").style("left","50%").style("top","50%")
           .style("transform","translate(-50%,-50%)")
-          .style("color","#ef4444").style("font","14px/1.6 system-ui")
-          .style("background","#fff").style("padding","10px 14px")
-          .style("border","1px solid #e5e7eb").style("border-radius","8px")
+          .style("color","var(--graph-danger)").style("font","14px/1.6 system-ui")
+          .style("background","var(--graph-panel)").style("padding","10px 14px")
+          .style("border","1px solid var(--graph-line)").style("border-radius","8px")
           .text("加载课程数据失败，请检查路径或 JSON 格式。");
       }
     }

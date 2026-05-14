@@ -19,8 +19,8 @@ interests:
 # Experience
 internships:
   - role: Algorithm Intern
-    company: ByteDance
-    team: AI4S / Drug Discovery
+    company: Bytedance
+    team: Seed/ Drug Design
     time: Nov 2025 – Present
     location: Shanghai, China
     icon: fas fa-briefcase
@@ -38,7 +38,29 @@ education:
     
 # Publications
 publications:
+  - title: "Toward Better Geometric Representations for Molecule Generative Models"
+    date: "2026-05-02"
+    date_label: "2026-5"
+    authors: "<strong>Shaoheng Yan</strong>, Zian Li, Cai Zhou, Qiaojing Huang, Kai Liu, Muhan Zhang"
+    badges:
+      - text: Preprint
+        color: primary
+    links:
+      - text: arXiv
+        url: https://arxiv.org/abs/2605.07693
+  - title: "FlashMol: High-Quality Molecule Generation in as Few as Four Steps"
+    date: "2026-05-01"
+    date_label: "2026-5"
+    authors: "Xinyuan Wei, Zian Li, <strong>Shaoheng Yan</strong>, Cai Zhou, Muhan Zhang"
+    badges:
+      - text: Preprint
+        color: primary
+    links:
+      - text: arXiv
+        url: https://arxiv.org/abs/2605.07020
   - title: "GeoRecon: Graph-Level Representation Learning for 3D Molecules via Reconstruction-Based Pretraining"
+    date: "2025-05"
+    date_label: "2025-5"
     authors: "<strong>Shaoheng Yan</strong>, Zian Li, Muhan Zhang"
     badges:
       - text: Preprint
@@ -47,6 +69,8 @@ publications:
       - text: arXiv
         url: https://arxiv.org/abs/2506.13174
   - title: "LLMs Know More Than Words: A Genre Study with Syntax, Metaphor & Phonetics"
+    date: "2025-08"
+    date_label: "2025-8"
     authors: "Weiye Shi, Zhaowei Zhang, <strong>Shaoheng Yan</strong>, Yaodong Yang"
     badges:
       - text: Preprint
