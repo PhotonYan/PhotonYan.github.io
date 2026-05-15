@@ -1286,6 +1286,20 @@ order: 1
     .about-hero {
       grid-template-columns: minmax(0, 1fr) !important;
     }
+
+    .about-hero h1 span {
+      margin-top: 0.7em;
+      line-height: 1.38;
+    }
+
+    .about-portrait {
+      display: none;
+    }
+
+    .study-section > .about-section-head,
+    .study-atlas {
+      display: none;
+    }
   }
 
   @media (max-width: 760px) {
@@ -1307,10 +1321,6 @@ order: 1
 
     .about-detail {
       padding: 3.4rem 1rem 4.5rem;
-    }
-
-    .about-portrait img {
-      max-height: min(38svh, 360px);
     }
 
     .about-chalk-arrow {
