@@ -282,6 +282,8 @@ books:
 
 # Friends
 friends:
+  - name: qqqqingmo (PKU)
+    url: https://qqqqingmo.github.io/
   - name: Fanzt (SJTU)
     url: https://fanzt.github.io/
   - name: Whitney (SDU)

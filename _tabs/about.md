@@ -371,6 +371,7 @@ order: 1
     align-self: center;
     display: grid;
     margin: 0;
+    overflow: visible;
   }
 
   .about-portrait img {
@@ -382,6 +383,74 @@ order: 1
     border: 1px solid oklch(54% 0.05 246);
     border-radius: 0;
     filter: saturate(0.92) contrast(1.05);
+  }
+
+  .about-chalk-doodle {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    overflow: visible;
+    color: oklch(80% 0.17 80);
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    filter:
+      drop-shadow(0 0 2px oklch(83% 0.17 80 / 0.5))
+      drop-shadow(0 0 8px oklch(77% 0.18 78 / 0.22));
+    mix-blend-mode: screen;
+  }
+
+  .about-chalk-doodle path,
+  .about-chalk-doodle circle {
+    vector-effect: non-scaling-stroke;
+  }
+
+  .about-chalk-main {
+    stroke-width: 4.8;
+  }
+
+  .about-chalk-rub {
+    stroke-width: 1.55;
+    stroke-dasharray: 1 8;
+    opacity: 0.62;
+  }
+
+  .about-chalk-faint {
+    stroke-width: 3.2;
+    opacity: 0.5;
+  }
+
+  .about-chalk-arrow {
+    top: 50%;
+    left: clamp(-6.5rem, -6.2vw, -4.7rem);
+    width: clamp(4.7rem, 6.2vw, 6.4rem);
+    transform: translateY(-44%);
+  }
+
+  .about-chalk-bulb {
+    top: clamp(-6.45rem, -8.4vw, -4.7rem);
+    right: clamp(-6rem, -5.1vw, -3.7rem);
+    width: clamp(8.6rem, 10.2vw, 10.8rem);
+  }
+
+  .about-chalk-streaks {
+    right: clamp(-3.95rem, -4vw, -2.4rem);
+    bottom: clamp(-2.35rem, -3.1vw, -1.45rem);
+    width: clamp(7.7rem, 8.4vw, 9.7rem);
+  }
+
+  @media (max-width: 1320px) and (min-width: 981px) {
+    .about-chalk-bulb {
+      right: -2rem;
+      width: 8.7rem;
+    }
+
+    .about-chalk-streaks {
+      right: -1.9rem;
+      width: 8.2rem;
+    }
   }
 
   .about-detail {
@@ -1244,6 +1313,24 @@ order: 1
       max-height: min(38svh, 360px);
     }
 
+    .about-chalk-arrow {
+      left: -1.95rem;
+      width: 4.15rem;
+      opacity: 0.82;
+    }
+
+    .about-chalk-bulb {
+      top: -4rem;
+      right: -1.65rem;
+      width: 6.9rem;
+    }
+
+    .about-chalk-streaks {
+      right: -1.35rem;
+      bottom: -1.45rem;
+      width: 6.6rem;
+    }
+
     .about-section h2 {
       font-size: 1.62rem;
     }
@@ -1355,6 +1442,37 @@ order: 1
       </div>
       <figure class="about-portrait">
         <img src="{{ site.baseurl }}/assets/img/about/portrait.jpg" alt="Portrait of Shaoheng Yan">
+        <svg class="about-chalk-doodle about-chalk-arrow" viewBox="0 0 96 152" aria-hidden="true">
+          <path class="about-chalk-faint" d="M31 143C9 128 9 96 30 82C48 70 71 79 67 96C64 111 44 111 35 97C23 79 36 54 53 36C64 24 75 16 88 8" />
+          <path class="about-chalk-main" d="M29 142C8 126 10 97 31 83C49 72 70 79 66 95C63 108 45 109 36 96C24 79 37 55 54 37C65 25 76 16 88 8" />
+          <path class="about-chalk-main" d="M88 8C83 24 80 39 82 53" />
+          <path class="about-chalk-main" d="M88 8C73 12 60 19 49 31" />
+          <path class="about-chalk-rub" d="M29 142C8 126 10 97 31 83C49 72 70 79 66 95C63 108 45 109 36 96C24 79 37 55 54 37C65 25 76 16 88 8M88 8C83 24 80 39 82 53M88 8C73 12 60 19 49 31" />
+        </svg>
+        <svg class="about-chalk-doodle about-chalk-bulb" viewBox="0 0 180 190" aria-hidden="true">
+          <path class="about-chalk-faint" d="M91 29C57 29 33 54 33 87C33 111 45 125 59 138C68 146 68 156 77 161C85 166 99 166 108 161C117 156 115 146 124 138C138 125 149 110 149 87C149 54 125 29 91 29Z" />
+          <path class="about-chalk-main" d="M91 30C58 30 34 55 34 87C34 110 46 124 60 137C69 146 69 156 78 160C86 165 99 165 107 160C116 156 114 146 123 137C137 124 148 109 148 87C148 55 124 30 91 30Z" />
+          <path class="about-chalk-rub" d="M91 30C58 30 34 55 34 87C34 110 46 124 60 137C69 146 69 156 78 160C86 165 99 165 107 160C116 156 114 146 123 137C137 124 148 109 148 87C148 55 124 30 91 30Z" />
+          <path class="about-chalk-main" d="M68 155C73 164 76 175 83 181C89 186 99 186 106 181C112 175 113 164 118 155" />
+          <path class="about-chalk-main" d="M67 157C81 163 103 163 117 157" />
+          <path class="about-chalk-main" d="M69 167C83 172 102 172 115 167" />
+          <path class="about-chalk-main" d="M73 177C84 182 100 182 110 177" />
+          <path class="about-chalk-main" d="M80 186C88 189 98 189 105 186" />
+          <path class="about-chalk-main" d="M75 126C79 109 78 92 84 87C90 82 96 100 88 104C80 108 78 90 86 84C96 77 105 98 97 105C91 110 91 91 98 87C104 84 106 110 108 126" />
+          <path class="about-chalk-faint" d="M122 45C134 54 140 68 140 84" />
+          <path class="about-chalk-main" d="M31 52L18 46" />
+          <path class="about-chalk-main" d="M56 22L49 8" />
+          <path class="about-chalk-main" d="M98 17L101 3" />
+          <path class="about-chalk-main" d="M134 31L149 16" />
+          <path class="about-chalk-main" d="M157 73L174 70" />
+          <path class="about-chalk-rub" d="M68 155C73 164 76 175 83 181C89 186 99 186 106 181C112 175 113 164 118 155M67 157C81 163 103 163 117 157M69 167C83 172 102 172 115 167M73 177C84 182 100 182 110 177M80 186C88 189 98 189 105 186M75 126C79 109 78 92 84 87C90 82 96 100 88 104C80 108 78 90 86 84C96 77 105 98 97 105C91 110 91 91 98 87C104 84 106 110 108 126" />
+        </svg>
+        <svg class="about-chalk-doodle about-chalk-streaks" viewBox="0 0 170 70" aria-hidden="true">
+          <path class="about-chalk-main" d="M10 37C53 25 96 13 147 5" />
+          <path class="about-chalk-main" d="M32 54C75 42 117 31 158 20" />
+          <path class="about-chalk-main" d="M92 64C113 58 134 51 154 45" />
+          <path class="about-chalk-rub" d="M10 37C53 25 96 13 147 5M32 54C75 42 117 31 158 20M92 64C113 58 134 51 154 45" />
+        </svg>
       </figure>
     </section>
   </div>
