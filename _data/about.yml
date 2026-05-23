@@ -302,7 +302,7 @@ books:
 
 # Friends
 friends:
-  - name: Jiangyue Zeng (qingmo/PKU)
+  - name: Jiangyue Zeng (qingmo/ Tong Class, PKU)
     url: https://qqqqingmo.github.io/
   - name: Fanzt (SJTU)
     url: https://fanzt.github.io/
@@ -312,5 +312,7 @@ friends:
     url: https://cwd316.com/
   - name: Jinshuo Li (SJTU)
     url: https://jinshuo-li.github.io/
-  - name: Jiayi Ni (rochelleni/PKU)
+  - name: Jiayi Ni (rochelleni/ Tong Class, PKU)
     url: https://rochelleni.github.io/
+  - name: Wenqi Deng (Turing Class, PKU)
+    url: https://wenqi-sdeng.github.io/
