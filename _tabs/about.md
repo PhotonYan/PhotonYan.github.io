@@ -122,6 +122,36 @@ order: 1
     --about-green: oklch(53% 0.088 156);
     --about-panel: oklch(99% 0.004 245);
     --about-shadow: 0 18px 50px oklch(22% 0.03 247 / 0.08);
+    --pub-line-left: 111.5px;
+    --pub-list-gap: 2px;
+    --pub-date-col: 63px;
+    --pub-node-col: 63px;
+    --pub-item-gap: 17px;
+    --pub-item-padding-top: 0px;
+    --pub-item-padding-bottom: 0px;
+    --pub-date-padding-top: 15px;
+    --pub-node-margin-top: 15px;
+    --pub-content-padding-top: 10px;
+    --pub-content-padding-bottom: 13px;
+    --pub-badge-margin-top: 11px;
+    --pub-badge-column-gap: 6.5px;
+    --pub-badge-row-gap: 11px;
+    --pub-spotlight-offset-x: -6.5px;
+    --pub-spotlight-offset-y: 0px;
+    --pub-spotlight-margin-left: -1.5px;
+    --pub-spotlight-margin-right: 0px;
+    --pub-spotlight-padding-x: 8px;
+    --pub-spotlight-padding-y: 1px;
+    --pub-line-color: oklch(72% 0.021 250);
+    --pub-date-color: oklch(0.45 0.105 236);
+    --pub-node-color: oklch(0.45 0.105 236);
+    --pub-title-color: oklch(0.22 0.024 252);
+    --pub-author-color: oklch(0.46 0.024 252);
+    --pub-link-color: oklch(0.45 0.105 236);
+    --pub-badge-color: oklch(0.61 0.02 252);
+    --pub-spotlight-bg: oklch(0.96 0.025 35);
+    --pub-spotlight-color: oklch(0.52 0.35 78);
+    --pub-venue-color: oklch(0.46 0.024 252);
     color: var(--about-ink);
     font-family: var(--about-text-font);
     width: 100%;
@@ -563,6 +593,10 @@ order: 1
     line-height: 1.62;
   }
 
+  .publication-item p {
+    color: var(--pub-author-color, var(--about-muted));
+  }
+
   .research-note {
     margin-top: 0.8rem !important;
     padding-top: 0.78rem;
@@ -628,7 +662,7 @@ order: 1
   .publication-list {
     position: relative;
     display: grid;
-    gap: 0.72rem;
+    gap: var(--pub-list-gap, 0.72rem);
     margin-top: 1.55rem;
     padding-left: 0;
   }
@@ -638,13 +672,13 @@ order: 1
     position: absolute;
     top: 0.78rem;
     bottom: 0.78rem;
-    left: 7.15rem;
+    left: var(--pub-line-left, 7.15rem);
     width: 1px;
     background: linear-gradient(
       to bottom,
       transparent,
-      var(--about-line-strong) 8%,
-      var(--about-line-strong) 92%,
+      var(--pub-line-color, var(--about-line-strong)) 8%,
+      var(--pub-line-color, var(--about-line-strong)) 92%,
       transparent
     );
   }
@@ -652,18 +686,24 @@ order: 1
   .publication-item {
     position: relative;
     display: grid;
-    grid-template-columns: 6.3rem 1.7rem minmax(0, 1fr);
+    grid-template-columns:
+      var(--pub-date-col, 6.3rem)
+      var(--pub-node-col, 1.7rem)
+      minmax(0, 1fr);
     align-items: start;
-    gap: 1rem;
-    padding: 0.25rem 0 1rem;
+    gap: var(--pub-item-gap, 1rem);
+    padding:
+      var(--pub-item-padding-top, 0.25rem)
+      0
+      var(--pub-item-padding-bottom, 1rem);
     border: 0;
     background: transparent;
   }
 
   .publication-date {
     display: block;
-    padding-top: 0.95rem;
-    color: var(--about-blue);
+    padding-top: var(--pub-date-padding-top, 0.95rem);
+    color: var(--pub-date-color, var(--about-blue));
     font-family: var(--about-display-font);
     font-size: 0.92rem;
     font-weight: 700;
@@ -676,8 +716,8 @@ order: 1
     z-index: 1;
     width: 0.78rem;
     height: 0.78rem;
-    margin: 0.92rem auto 0;
-    border: 2px solid var(--about-blue);
+    margin: var(--pub-node-margin-top, 0.92rem) auto 0;
+    border: 2px solid var(--pub-node-color, var(--about-blue));
     border-radius: 999px;
     background: var(--about-day-bg);
     box-shadow: 0 0 0 6px var(--about-day-bg);
@@ -687,7 +727,10 @@ order: 1
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.72rem 1rem;
-    padding: 0.74rem 0 1.12rem;
+    padding:
+      var(--pub-content-padding-top, 0.74rem)
+      0
+      var(--pub-content-padding-bottom, 1.12rem);
     border-bottom: 0;
     background: transparent;
   }
@@ -698,7 +741,7 @@ order: 1
 
   .publication-item h3 {
     margin: 0 0 0.45rem;
-    color: var(--about-ink);
+    color: var(--pub-title-color, var(--about-ink));
     font-family: var(--about-display-font);
     font-size: 1.06rem;
     line-height: 1.35;
@@ -711,6 +754,11 @@ order: 1
     flex-wrap: wrap;
     gap: 0.45rem;
     align-items: center;
+  }
+
+  .publication-content .about-badges {
+    gap: var(--pub-badge-row-gap, 0.45rem) var(--pub-badge-column-gap, 0.45rem);
+    margin-top: var(--pub-badge-margin-top, 0);
   }
 
   .about-badge,
@@ -731,7 +779,7 @@ order: 1
   }
 
   .publication-links a {
-    color: var(--about-blue);
+    color: var(--pub-link-color, var(--about-blue));
   }
 
   .publication-content .about-badge,
@@ -744,34 +792,39 @@ order: 1
   }
 
   .publication-content .about-badge {
-    color: var(--about-soft);
+    color: var(--pub-badge-color, var(--about-soft));
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0;
   }
 
   .publication-content .about-badge-spotlight {
-    padding: 0.12rem 0.56rem;
+    margin-left: var(--pub-spotlight-margin-left, 0);
+    margin-right: var(--pub-spotlight-margin-right, 0);
+    padding:
+      var(--pub-spotlight-padding-y, 0.12rem)
+      var(--pub-spotlight-padding-x, 0.56rem);
     border: 0;
     border-radius: 999px;
-    background: oklch(91% 0.085 82);
-    color: oklch(43% 0.13 78);
+    background: var(--pub-spotlight-bg, oklch(91% 0.085 82));
+    color: var(--pub-spotlight-color, oklch(43% 0.13 78));
     font-size: 0.75rem;
     font-weight: 800;
     line-height: 1.25;
     text-transform: none;
+    transform: translate(var(--pub-spotlight-offset-x, 0), var(--pub-spotlight-offset-y, 0));
   }
 
   .publication-badge-venue {
-    color: var(--about-muted);
+    color: var(--pub-venue-color, var(--about-muted));
     font-size: 0.78rem;
     font-weight: 650;
     line-height: 1.35;
   }
 
   [data-mode="dark"] .publication-content .about-badge-spotlight {
-    background: oklch(79% 0.105 82);
-    color: oklch(34% 0.12 78);
+    background: var(--pub-spotlight-bg, oklch(79% 0.105 82));
+    color: var(--pub-spotlight-color, oklch(34% 0.12 78));
   }
 
   .honor-list {
@@ -1408,12 +1461,15 @@ order: 1
     }
 
     .publication-list::before {
-      left: 5.45rem;
+      left: var(--pub-line-left, 5.45rem);
     }
 
     .publication-item {
-      grid-template-columns: 4.9rem 1.1rem minmax(0, 1fr);
-      gap: 0.7rem;
+      grid-template-columns:
+        var(--pub-date-col, 4.9rem)
+        var(--pub-node-col, 1.1rem)
+        minmax(0, 1fr);
+      gap: var(--pub-item-gap, 0.7rem);
     }
 
     .publication-content {
@@ -2171,5 +2227,369 @@ order: 1
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
     reducedMotion.addEventListener?.("change", requestUpdate);
+  })();
+</script>
+
+<script>
+  (() => {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has("publicationTuner")) return;
+
+    const page = document.querySelector(".about-page");
+    const list = document.querySelector(".publication-list");
+    const firstItem = document.querySelector(".publication-item");
+    if (!page || !list || !firstItem) return;
+
+    const storageKey = "publicationTunerState";
+    const panelStyle = document.createElement("style");
+    panelStyle.textContent = `
+      .publication-tuner {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 3000;
+        width: min(360px, calc(100vw - 2rem));
+        max-height: calc(100vh - 2rem);
+        overflow: auto;
+        padding: 0.9rem;
+        border: 1px solid oklch(78% 0.018 250 / 0.85);
+        border-radius: 8px;
+        background: oklch(98% 0.006 250 / 0.98);
+        box-shadow: 0 18px 50px oklch(20% 0.02 250 / 0.18);
+        color: oklch(22% 0.024 252);
+        font-family: var(--about-text-font, system-ui, sans-serif);
+      }
+
+      [data-mode="dark"] .publication-tuner {
+        border-color: oklch(43% 0.026 250);
+        background: oklch(21% 0.018 250 / 0.98);
+        color: oklch(91% 0.011 245);
+      }
+
+      .publication-tuner h2 {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.2;
+      }
+
+      .publication-tuner p {
+        margin: 0.35rem 0 0;
+        color: oklch(52% 0.022 250);
+        font-size: 0.78rem;
+        line-height: 1.45;
+      }
+
+      [data-mode="dark"] .publication-tuner p {
+        color: oklch(72% 0.018 246);
+      }
+
+      .publication-tuner-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 0.8rem 0;
+      }
+
+      .publication-tuner button {
+        min-height: 2rem;
+        padding: 0.3rem 0.56rem;
+        border: 0;
+        border-radius: 6px;
+        background: oklch(90% 0.012 250);
+        color: inherit;
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      [data-mode="dark"] .publication-tuner button {
+        background: oklch(30% 0.021 249);
+      }
+
+      .publication-tuner fieldset {
+        margin: 0.75rem 0 0;
+        padding: 0.75rem;
+        border: 1px solid oklch(86% 0.012 252);
+        border-radius: 8px;
+      }
+
+      [data-mode="dark"] .publication-tuner fieldset {
+        border-color: oklch(39% 0.024 249);
+      }
+
+      .publication-tuner legend {
+        padding: 0 0.35rem;
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+
+      .publication-tuner-row {
+        display: grid;
+        grid-template-columns: 6.7rem minmax(0, 1fr) 3.6rem;
+        gap: 0.5rem;
+        align-items: center;
+        margin-top: 0.55rem;
+        font-size: 0.74rem;
+      }
+
+      .publication-tuner-row input[type="range"] {
+        width: 100%;
+      }
+
+      .publication-tuner-row input[type="text"] {
+        grid-column: 2 / 4;
+        width: 100%;
+        min-height: 1.9rem;
+        padding: 0.24rem 0.4rem;
+        border: 1px solid oklch(82% 0.012 252);
+        border-radius: 6px;
+        background: oklch(99% 0.004 245);
+        color: inherit;
+        font: 0.72rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      [data-mode="dark"] .publication-tuner-row input[type="text"] {
+        border-color: oklch(42% 0.024 249);
+        background: oklch(25% 0.022 249);
+      }
+
+      .publication-tuner output {
+        color: oklch(46% 0.024 252);
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+      }
+
+      [data-mode="dark"] .publication-tuner output {
+        color: oklch(74% 0.018 246);
+      }
+
+      .publication-tuner-css {
+        width: 100%;
+        min-height: 7rem;
+        margin-top: 0.65rem;
+        padding: 0.55rem;
+        border: 1px solid oklch(84% 0.012 252);
+        border-radius: 8px;
+        background: oklch(99% 0.004 245);
+        color: inherit;
+        font: 0.7rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+        resize: vertical;
+      }
+
+      [data-mode="dark"] .publication-tuner-css {
+        border-color: oklch(42% 0.024 249);
+        background: oklch(25% 0.022 249);
+      }
+    `;
+    document.head.appendChild(panelStyle);
+
+    const numberFromCss = (value, fallback = 0) => {
+      const parsed = Number.parseFloat(value);
+      return Number.isFinite(parsed) ? parsed : fallback;
+    };
+
+    const px = (value) => `${Number(value).toFixed(1).replace(/\.0$/, "")}px`;
+    const css = (element, property, pseudo = null) => getComputedStyle(element, pseudo).getPropertyValue(property).trim();
+    const columns = css(firstItem, "grid-template-columns").split(" ");
+    const content = firstItem.querySelector(".publication-content");
+    const badges = firstItem.querySelector(".about-badges");
+    const date = firstItem.querySelector(".publication-date");
+    const node = firstItem.querySelector(".publication-node");
+    const title = firstItem.querySelector("h3");
+    const authors = firstItem.querySelector("p");
+    const link = firstItem.querySelector(".publication-links a");
+    const badge = firstItem.querySelector(".about-badge");
+    const spotlight = document.querySelector(".about-badge-spotlight");
+    const venue = document.querySelector(".publication-badge-venue");
+    const beforeLeft = numberFromCss(css(list, "left", "::before"));
+
+    const initialState = {
+      "--pub-line-left": px(beforeLeft),
+      "--pub-list-gap": px(numberFromCss(css(list, "row-gap"))),
+      "--pub-date-col": px(numberFromCss(columns[0], 80)),
+      "--pub-node-col": px(numberFromCss(columns[1], 24)),
+      "--pub-item-gap": px(numberFromCss(css(firstItem, "column-gap"))),
+      "--pub-item-padding-top": px(numberFromCss(css(firstItem, "padding-top"))),
+      "--pub-item-padding-bottom": px(numberFromCss(css(firstItem, "padding-bottom"))),
+      "--pub-date-padding-top": px(numberFromCss(css(date, "padding-top"))),
+      "--pub-node-margin-top": px(numberFromCss(css(node, "margin-top"))),
+      "--pub-content-padding-top": px(numberFromCss(css(content, "padding-top"))),
+      "--pub-content-padding-bottom": px(numberFromCss(css(content, "padding-bottom"))),
+      "--pub-badge-margin-top": px(numberFromCss(css(badges, "margin-top"))),
+      "--pub-badge-column-gap": px(numberFromCss(css(badges, "column-gap"))),
+      "--pub-badge-row-gap": px(numberFromCss(css(badges, "row-gap"))),
+      "--pub-spotlight-offset-x": css(page, "--pub-spotlight-offset-x") || "0px",
+      "--pub-spotlight-offset-y": css(page, "--pub-spotlight-offset-y") || "0px",
+      "--pub-spotlight-margin-left": spotlight ? px(numberFromCss(css(spotlight, "margin-left"))) : "0px",
+      "--pub-spotlight-margin-right": spotlight ? px(numberFromCss(css(spotlight, "margin-right"))) : "0px",
+      "--pub-spotlight-padding-x": spotlight ? px(numberFromCss(css(spotlight, "padding-left"))) : "8.96px",
+      "--pub-spotlight-padding-y": spotlight ? px(numberFromCss(css(spotlight, "padding-top"))) : "1.92px",
+      "--pub-line-color": css(page, "--about-line-strong") || css(node, "border-top-color"),
+      "--pub-date-color": css(date, "color"),
+      "--pub-node-color": css(node, "border-top-color"),
+      "--pub-title-color": css(title, "color"),
+      "--pub-author-color": css(authors, "color"),
+      "--pub-link-color": css(link, "color"),
+      "--pub-badge-color": css(badge, "color"),
+      "--pub-spotlight-bg": spotlight ? css(spotlight, "background-color") : "oklch(91% 0.085 82)",
+      "--pub-spotlight-color": spotlight ? css(spotlight, "color") : "oklch(43% 0.13 78)",
+      "--pub-venue-color": venue ? css(venue, "color") : css(authors, "color")
+    };
+
+    const savedState = JSON.parse(localStorage.getItem(storageKey) || "{}");
+    const state = { ...initialState, ...savedState };
+    const rangeControls = [
+      ["--pub-line-left", "竖线 X", 40, 180, 0.5],
+      ["--pub-list-gap", "条目间距", 0, 80, 1],
+      ["--pub-date-col", "日期列宽", 40, 150, 1],
+      ["--pub-node-col", "圆点列宽", 8, 70, 1],
+      ["--pub-item-gap", "列间距", 0, 48, 1],
+      ["--pub-item-padding-top", "条目上距", 0, 48, 1],
+      ["--pub-item-padding-bottom", "条目下距", 0, 72, 1],
+      ["--pub-date-padding-top", "日期上距", 0, 48, 1],
+      ["--pub-node-margin-top", "圆点上距", 0, 48, 1],
+      ["--pub-content-padding-top", "内容上距", 0, 48, 1],
+      ["--pub-content-padding-bottom", "内容下距", 0, 72, 1],
+      ["--pub-badge-margin-top", "Badge 上距", -24, 48, 0.5],
+      ["--pub-badge-column-gap", "Badge 左右距", 0, 48, 0.5],
+      ["--pub-badge-row-gap", "Badge 行距", 0, 48, 0.5],
+      ["--pub-spotlight-offset-x", "Spotlight X", -48, 48, 0.5],
+      ["--pub-spotlight-offset-y", "Spotlight Y", -32, 32, 0.5],
+      ["--pub-spotlight-margin-left", "Spotlight 左距", -32, 48, 0.5],
+      ["--pub-spotlight-margin-right", "Spotlight 右距", -32, 48, 0.5],
+      ["--pub-spotlight-padding-x", "Spotlight 左右内距", 0, 28, 0.5],
+      ["--pub-spotlight-padding-y", "Spotlight 上下内距", 0, 16, 0.5]
+    ];
+    const colorControls = [
+      ["--pub-line-color", "竖线颜色"],
+      ["--pub-date-color", "日期颜色"],
+      ["--pub-node-color", "圆点颜色"],
+      ["--pub-title-color", "标题颜色"],
+      ["--pub-author-color", "作者颜色"],
+      ["--pub-link-color", "链接颜色"],
+      ["--pub-badge-color", "普通标签颜色"],
+      ["--pub-spotlight-bg", "Spotlight 背景"],
+      ["--pub-spotlight-color", "Spotlight 文字"],
+      ["--pub-venue-color", "会议文字"]
+    ];
+
+    const panel = document.createElement("aside");
+    panel.className = "publication-tuner";
+    panel.setAttribute("aria-label", "Publication style tuner");
+    panel.innerHTML = `
+      <h2>Publication Tuner</h2>
+      <p>实时调 Publications 区域。当前设置保存在本浏览器 localStorage 里。</p>
+      <div class="publication-tuner-actions">
+        <button type="button" data-action="align">圆点对齐竖线</button>
+        <button type="button" data-action="copy">复制 CSS</button>
+        <button type="button" data-action="reset">重置</button>
+        <button type="button" data-action="close">关闭</button>
+      </div>
+      <fieldset>
+        <legend>Spacing</legend>
+        <div data-range-controls></div>
+      </fieldset>
+      <fieldset>
+        <legend>Color</legend>
+        <div data-color-controls></div>
+      </fieldset>
+      <textarea class="publication-tuner-css" readonly spellcheck="false"></textarea>
+    `;
+    document.body.appendChild(panel);
+
+    const rangeHost = panel.querySelector("[data-range-controls]");
+    const colorHost = panel.querySelector("[data-color-controls]");
+    const cssOutput = panel.querySelector(".publication-tuner-css");
+
+    const renderCssText = () => {
+      cssOutput.value = `.about-page {\n${Object.entries(state)
+        .map(([key, value]) => `  ${key}: ${value};`)
+        .join("\n")}\n}`;
+    };
+
+    const applyState = () => {
+      Object.entries(state).forEach(([key, value]) => {
+        page.style.setProperty(key, value);
+      });
+      localStorage.setItem(storageKey, JSON.stringify(state));
+      renderCssText();
+    };
+
+    const syncRangeOutput = (input) => {
+      const output = input.closest(".publication-tuner-row").querySelector("output");
+      output.value = px(input.value);
+    };
+
+    rangeControls.forEach(([key, label, min, max, step]) => {
+      const row = document.createElement("label");
+      row.className = "publication-tuner-row";
+      const current = numberFromCss(state[key], min);
+      row.innerHTML = `
+        <span>${label}</span>
+        <input type="range" min="${min}" max="${max}" step="${step}" value="${current}" data-key="${key}">
+        <output>${px(current)}</output>
+      `;
+      const input = row.querySelector("input");
+      input.addEventListener("input", () => {
+        state[key] = px(input.value);
+        syncRangeOutput(input);
+        applyState();
+      });
+      rangeHost.appendChild(row);
+    });
+
+    colorControls.forEach(([key, label]) => {
+      const row = document.createElement("label");
+      row.className = "publication-tuner-row";
+      row.innerHTML = `
+        <span>${label}</span>
+        <input type="text" value="${state[key].replace(/"/g, "&quot;")}" data-key="${key}" spellcheck="false">
+      `;
+      const input = row.querySelector("input");
+      input.addEventListener("input", () => {
+        state[key] = input.value.trim();
+        applyState();
+      });
+      colorHost.appendChild(row);
+    });
+
+    panel.addEventListener("click", async (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+
+      if (button.dataset.action === "align") {
+        const listRect = list.getBoundingClientRect();
+        const nodeRect = document.querySelector(".publication-node").getBoundingClientRect();
+        state["--pub-line-left"] = px(nodeRect.left + nodeRect.width / 2 - listRect.left);
+        const input = panel.querySelector('input[data-key="--pub-line-left"]');
+        input.value = numberFromCss(state["--pub-line-left"]);
+        syncRangeOutput(input);
+        applyState();
+      }
+
+      if (button.dataset.action === "copy") {
+        renderCssText();
+        cssOutput.select();
+        try {
+          await navigator.clipboard.writeText(cssOutput.value);
+          button.textContent = "已复制";
+          window.setTimeout(() => {
+            button.textContent = "复制 CSS";
+          }, 1100);
+        } catch {
+          document.execCommand("copy");
+        }
+      }
+
+      if (button.dataset.action === "reset") {
+        localStorage.removeItem(storageKey);
+        window.location.reload();
+      }
+
+      if (button.dataset.action === "close") {
+        panel.remove();
+      }
+    });
+
+    applyState();
   })();
 </script>
