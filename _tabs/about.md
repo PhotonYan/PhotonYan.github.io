@@ -750,6 +750,30 @@ order: 1
     letter-spacing: 0;
   }
 
+  .publication-content .about-badge-spotlight {
+    padding: 0.12rem 0.56rem;
+    border: 0;
+    border-radius: 999px;
+    background: oklch(91% 0.085 82);
+    color: oklch(43% 0.13 78);
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-transform: none;
+  }
+
+  .publication-badge-venue {
+    color: var(--about-muted);
+    font-size: 0.78rem;
+    font-weight: 650;
+    line-height: 1.35;
+  }
+
+  [data-mode="dark"] .publication-content .about-badge-spotlight {
+    background: oklch(79% 0.105 82);
+    color: oklch(34% 0.12 78);
+  }
+
   .honor-list {
     display: grid;
     gap: 1rem;
@@ -1534,7 +1558,10 @@ order: 1
             <p>{{ pub.authors }}</p>
             <div class="about-badges" aria-label="Publication status">
               {% for badge in pub.badges %}
-              <span class="about-badge">{{ badge.text }}</span>
+              <span class="about-badge about-badge-{{ badge.color | default: 'default' }}">{{ badge.text }}</span>
+              {% if badge.venue %}
+              <span class="publication-badge-venue">{{ badge.venue }}</span>
+              {% endif %}
               {% endfor %}
             </div>
           </div>

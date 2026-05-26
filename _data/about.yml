@@ -71,8 +71,9 @@ publications:
     date_label: "2025-5"
     authors: "<strong>Shaoheng Yan</strong>, Zian Li, Muhan Zhang"
     badges:
-      - text: Preprint
-        color: primary
+      - text: Spotlight
+        color: spotlight
+        venue: ICML GenBio 2026
     links:
       - text: arXiv
         url: https://arxiv.org/abs/2506.13174
