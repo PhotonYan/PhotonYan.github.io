@@ -90,6 +90,10 @@ publications:
 
 # Awards and Service
 honors:
+  - title: Peking University Institute for Artificial Intelligence Dean's Scholarship
+    category: Award
+    time: 2026
+    # desc: Spotlight presentation at the ICML 2026 GenBio Workshop for the paper "GeoRecon: Graph-Level Representation Learning for 3D Molecules via Reconstruction-Based Pretraining".
   - title: NeurIPS 2026 Reviewer Invitation
     category: Academic service
     time: 2026
@@ -98,7 +102,7 @@ honors:
     category: Academic service
     time: 2026
     desc: Invited reviewer for the ICML 2026 GenBio Workshop.
-  - title: Key Student Leader, Tong Class Student Self-Governance Committee
+  - title: Chair, Tong Class Student Self-Governance Committee
     category: Service
     time: 2025
     # desc: Served as a key student leader in the Tong Class Student Self-Governance Committee.
