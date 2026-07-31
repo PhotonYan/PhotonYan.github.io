@@ -29,7 +29,12 @@ internships:
   - role: Algorithm Intern
     company: Bytedance
     team: Seed/ Drug Design
-    time: Nov 2025 – Present
+    time: Nov 2025 – July 2026
+    location: Shanghai, China
+    icon: fas fa-briefcase
+  - role: Algorithm Intern
+    company: Anew Lab
+    time: Aug 2025 – Present
     location: Shanghai, China
     icon: fas fa-briefcase
 
