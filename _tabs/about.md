@@ -1575,7 +1575,7 @@ order: 1
         <h2 id="research-title">Research Interest</h2>
       </div>
       <p style="text-align: right;">
-        This section may change frequently... Last updated: May 15, 2026
+        This section may change frequently... Last updated: Aug. 21, 2026
       </p>
     </div>
     <div class="about-research-grid">
