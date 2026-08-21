@@ -6,26 +6,30 @@ basic_info:
 
 # Research Interests
 interests:
-  - title: AI for Science
+  - title: AI for Science / AIDD
     icon: fas fa-flask
     desc: AI-driven scientific modeling across molecules, proteins, chemistry, biology, and physics.
     note: >
-      Current focus: AIDD, AI4Chem, AI4Bio, AI4Phy, molecule generation, protein cofolding,
-      molecular dynamics, and AI for LHC-style high-energy physics problems.
+      Current focus: Folding, CryoEM-Guided Folding, etc.
   - title: General Machine Learning
     icon: fas fa-brain
     desc: Representation learning, pretraining paradigms, and model architecture design.
     note: >
-      Current focus: designing objectives and architectures that transfer across domains, with
-      attention to structure, scale, data efficiency, and the inductive biases behind useful representations.
-  - title: Efficient Computation
-    icon: fas fa-microchip
-    desc: Algorithmic efficiency for scalable learning, simulation, and scientific computing.
+      Current focus: Pretraining paradigm design.
+  - title: Continual Learning
+    icon: fas fa-sync-alt
+    desc: Learning systems that adapt continuously while retaining knowledge from prior tasks and data.
     note: >
-      Current focus: faster sampling and generation, efficient geometric algorithms, and computational methods that make large scientific models practical rather than merely expressive.
+      Current focus: continual adaptation, knowledge retention, and recursive learning mechanisms that improve through iterative feedback.
 
 # Experience
 internships:
+  - role: Research Intern
+    company: Mμ Lab, Peking University
+    team: Advised by Prof. Muhan Zhang
+    time: Oct 2024 – Present
+    location: Beijing, China
+    icon: fas fa-flask
   - role: Algorithm Intern
     company: Bytedance
     team: Seed/ Drug Design
@@ -95,6 +99,12 @@ publications:
 
 # Awards and Service
 honors:
+  - title: Teaching Assistant, Discrete Mathematics and Structures (Honors), Peking University
+    category: Teaching
+    time: 2026
+  - title: Teaching Assistant, Machine Learning, Peking University
+    category: Teaching
+    time: 2026
   - title: Peking University Institute for Artificial Intelligence Dean's Scholarship
     category: Award
     time: 2026
@@ -327,4 +337,4 @@ friends:
   - name: Jiayi Ni (rochelleni/ Tong Class, PKU)
     url: https://rochelleni.github.io/
   - name: Wenqi Deng (Turing Class, PKU)
-    url: https://wenqi-sdeng.github.io/
+    url: https://wenqi-deng.github.io/
