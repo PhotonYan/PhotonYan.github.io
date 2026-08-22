@@ -30,17 +30,21 @@ internships:
     time: Oct 2024 – Present
     location: Beijing, China
     icon: fas fa-flask
+    logo: /assets/img/about/logos/mmu-lab.png
+    logo_class: timeline-logo--invert-dark
   - role: Algorithm Intern
-    company: Bytedance
-    team: Seed/ Drug Design
+    company: ByteDance, Seed
+    team: Drug Design
     time: Nov 2025 – July 2026
     location: Shanghai, China
     icon: fas fa-briefcase
+    logo: /assets/img/about/logos/bytedance-icon.svg
   - role: Algorithm Intern
     company: Anew Lab
     time: Aug 2026 – Present
     location: Shanghai, China
     icon: fas fa-briefcase
+    logo: /assets/img/about/logos/anew-icon.svg
 
 # Education
 education:
@@ -49,9 +53,11 @@ education:
     degree: B.E. in Artificial Intelligence<br>B.S. in Physics
     time: 2024 – Present
     icon: fas fa-graduation-cap
+    logo: /assets/img/about/logos/peking-university.png
   - school: Beijing NO.4 High School
     degree: Middle School
     time: 2021 – 2024
+    logo: /assets/img/about/logos/beijing-no4-icon.png
     
 # Publications
 publications:

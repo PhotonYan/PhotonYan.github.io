@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metro Timeline — 10 Derivations</title>
+<style>
+  :root {
+    --paper: oklch(98% 0.004 252);
+    --ink: oklch(22% 0.024 252);
+    --muted: oklch(46% 0.024 252);
+    --soft: oklch(61% 0.02 252);
+    --line: oklch(88% 0.012 252);
+    --line-strong: oklch(72% 0.021 250);
+    --copper: oklch(50% 0.101 235);
+    --blue: oklch(45% 0.105 236);
+    --green: oklch(53% 0.088 156);
+    --panel: oklch(99% 0.004 245);
+    --df: "Avenir Next", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --tf: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--tf);
+    padding: 3rem 1.25rem 6rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .picker-head { width: min(860px, 100%); margin: 0 auto 3rem; }
+  .picker-head h1 { font-family: var(--df); font-size: 2rem; }
+  .picker-head p { color: var(--muted); margin-top: 0.5rem; }
+
+  .variant { width: min(860px, 100%); margin: 0 auto 4.5rem; }
+  .variant-tag {
+    display: flex; align-items: baseline; gap: 0.7rem;
+    margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--ink);
+  }
+  .variant-tag b { font-family: var(--df); font-size: 1.05rem; }
+  .variant-tag span { color: var(--soft); font-size: 0.85rem; }
+
+  .grp-label {
+    font-family: var(--df); font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.8rem;
+  }
+  .grp + .grp { margin-top: 1.6rem; }
+  img { display: block; }
+
+  /* ============================================================
+     5.1 Classic Metro — 基准款：粗线圆环站，公司跟在职位后
+     ============================================================ */
+  .m1-line { position: relative; list-style: none; padding-left: 1.5rem; }
+  .m1-line::before {
+    content: ""; position: absolute; top: 10px; bottom: 10px; left: 8px; width: 6px;
+    border-radius: 4px; background: var(--blue);
+  }
+  .m1-line.edu::before { background: var(--green); }
+  .m1-stop { position: relative; display: grid; grid-template-columns: minmax(0,1fr) 3rem; gap: 0.8rem; align-items: center; padding: 0.55rem 0 0.55rem 0.6rem; }
+  .m1-stop::before {
+    content: ""; position: absolute; left: -1.5rem; top: 50%; transform: translate(2px, -50%);
+    width: 12px; height: 12px; border: 3px solid #fff; border-radius: 999px;
+    background: var(--blue); box-shadow: 0 0 0 2px var(--blue);
+  }
+  .m1-line.edu .m1-stop::before { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
+  .m1-stop strong { font-family: var(--df); font-size: 0.97rem; }
+  .m1-stop strong em { font-style: normal; color: var(--blue); }
+  .m1-line.edu .m1-stop strong em { color: var(--green); }
+  .m1-stop small { display: block; color: var(--muted); font-size: 0.84rem; }
+  .m1-stop time { color: var(--copper); font-family: var(--df); font-size: 0.78rem; font-weight: 700; }
+  .m1-stop img { width: 2.6rem; height: 2.6rem; object-fit: contain; justify-self: end; opacity: 0.9; }
+
+  /* ============================================================
+     5.2 Logo Stations — logo 本身就是车站（白圆骑在线上）
+     ============================================================ */
+  .m2-line { position: relative; list-style: none; }
+  .m2-line::before {
+    content: ""; position: absolute; top: 12px; bottom: 12px; left: 23px; width: 5px;
+    border-radius: 3px; background: var(--blue);
+  }
+  .m2-line.edu::before { background: var(--green); }
+  .m2-stop { position: relative; display: grid; grid-template-columns: 52px minmax(0,1fr); gap: 0.9rem; align-items: center; }
+  .m2-stop + .m2-stop { margin-top: 0.85rem; }
+  .m2-med {
+    position: relative; z-index: 1; width: 52px; height: 52px; display: grid; place-items: center;
+    background: #fff; border: 3.5px solid var(--blue); border-radius: 999px;
+    box-shadow: 0 0 0 3px var(--paper);
+  }
+  .m2-line.edu .m2-med { border-color: var(--green); }
+  .m2-med img { max-width: 66%; max-height: 66%; }
+  .m2-body strong { font-family: var(--df); font-size: 0.98rem; }
+  .m2-body strong em { font-style: normal; color: var(--muted); font-weight: 600; }
+  .m2-body small { display: block; color: var(--muted); font-size: 0.84rem; }
+  .m2-body time { color: var(--copper); font-family: var(--df); font-size: 0.78rem; font-weight: 700; }
+
+  /* ============================================================
+     5.3 Line Chips — 线路编号牌 + 换乘大环（当前站）
+     ============================================================ */
+  .m3-head {
+    display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;
+  }
+  .m3-chip {
+    padding: 0.12rem 0.55rem; border-radius: 6px; background: var(--blue); color: #fff;
+    font-family: var(--df); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em;
+  }
+  .m3-chip.green { background: var(--green); }
+  .m3-head span { font-family: var(--df); font-size: 0.86rem; font-weight: 700; color: var(--ink); }
+  .m3-line { position: relative; list-style: none; padding-left: 1.6rem; }
+  .m3-line::before {
+    content: ""; position: absolute; top: 8px; bottom: 8px; left: 9px; width: 4px;
+    border-radius: 2px; background: var(--blue);
+  }
+  .m3-line.edu::before { background: var(--green); }
+  .m3-stop { position: relative; padding: 0.5rem 0 0.5rem 0.7rem; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 0.6rem; align-items: center; }
+  .m3-stop::before {
+    content: ""; position: absolute; left: -1.6rem; top: 50%; transform: translate(3.5px, -50%);
+    width: 9px; height: 9px; border-radius: 999px; background: #fff; border: 2.5px solid var(--blue);
+  }
+  .m3-line.edu .m3-stop::before { border-color: var(--green); }
+  .m3-stop.now::before {
+    width: 13px; height: 13px; transform: translate(1.5px, -50%);
+    border-width: 3.5px; box-shadow: 0 0 0 3px oklch(45% 0.105 236 / 0.18);
+  }
+  .m3-line.edu .m3-stop.now::before { box-shadow: 0 0 0 3px oklch(53% 0.088 156 / 0.18); }
+  .m3-stop strong { font-family: var(--df); font-size: 0.96rem; }
+  .m3-stop strong em { font-style: normal; color: var(--blue); }
+  .m3-line.edu .m3-stop strong em { color: var(--green); }
+  .m3-stop small { display: block; color: var(--muted); font-size: 0.83rem; }
+  .m3-stop time { color: var(--copper); font-family: var(--df); font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+  .m3-stop img { width: 2.2rem; height: 2.2rem; object-fit: contain; opacity: 0.9; }
+
+  /* ============================================================
+     5.4 Horizontal Metro — 水平线路，站名上下交错
+     ============================================================ */
+  .m4-track { position: relative; padding: 3.4rem 0 3.4rem; }
+  .m4-track::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 6px;
+    transform: translateY(-50%); border-radius: 4px; background: var(--blue);
+  }
+  .m4-track.edu::before { background: var(--green); }
+  .m4-row { position: relative; display: flex; justify-content: space-between; }
+  .m4-stop { position: relative; width: 30%; text-align: center; }
+  .m4-stop::before {
+    content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 14px; height: 14px; border: 3.5px solid #fff; border-radius: 999px;
+    background: var(--blue); box-shadow: 0 0 0 2px var(--blue); z-index: 1;
+  }
+  .m4-track.edu .m4-stop::before { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
+  .m4-stop .up, .m4-stop .down { position: absolute; left: 50%; transform: translateX(-50%); width: 11rem; }
+  .m4-stop .up { bottom: calc(50% + 16px); }
+  .m4-stop .down { top: calc(50% + 16px); }
+  .m4-stop img { width: 2rem; height: 2rem; object-fit: contain; margin: 0 auto 0.25rem; }
+  .m4-stop strong { font-family: var(--df); font-size: 0.85rem; display: block; line-height: 1.3; }
+  .m4-stop strong em { font-style: normal; color: var(--muted); font-weight: 600; }
+  .m4-stop time { color: var(--copper); font-family: var(--df); font-size: 0.72rem; font-weight: 700; display: block; }
+  @media (max-width: 640px) {
+    .m4-track { overflow-x: auto; }
+    .m4-row { min-width: 560px; }
+  }
+
+  /* ============================================================
+     5.5 Terminus — 终点站制式：最新站是大换乘枢纽
+     ============================================================ */
+  .m5-line { position: relative; list-style: none; padding-left: 1.7rem; }
+  .m5-line::before {
+    content: ""; position: absolute; top: 14px; bottom: 12px; left: 10px; width: 5px;
+    border-radius: 3px; background: linear-gradient(to bottom, var(--blue), oklch(45% 0.105 236 / 0.35));
+  }
+  .m5-line.edu::before { background: linear-gradient(to bottom, var(--green), oklch(53% 0.088 156 / 0.35)); }
+  .m5-stop { position: relative; padding: 0.42rem 0 0.42rem 0.75rem; display: grid; grid-template-columns: minmax(0,1fr) auto auto; gap: 0.7rem; align-items: center; }
+  .m5-stop::before {
+    content: ""; position: absolute; left: -1.7rem; top: 50%; transform: translate(4px, -50%);
+    width: 8px; height: 8px; border-radius: 999px; background: #fff; border: 2.5px solid var(--blue);
+  }
+  .m5-line.edu .m5-stop::before { border-color: var(--green); }
+  .m5-stop.first { padding: 0.8rem 0 0.9rem 0.75rem; }
+  .m5-stop.first::before {
+    width: 16px; height: 16px; transform: translate(0, -50%);
+    border-width: 4px; box-shadow: 0 0 0 4px var(--paper), 0 0 0 6px var(--blue);
+  }
+  .m5-line.edu .m5-stop.first::before { box-shadow: 0 0 0 4px var(--paper), 0 0 0 6px var(--green); }
+  .m5-stop.first strong { font-size: 1.08rem; }
+  .m5-stop strong { font-family: var(--df); font-size: 0.92rem; }
+  .m5-stop strong em { font-style: normal; color: var(--blue); }
+  .m5-line.edu .m5-stop strong em { color: var(--green); }
+  .m5-stop small { display: block; color: var(--muted); font-size: 0.82rem; }
+  .m5-stop time { color: var(--copper); font-family: var(--df); font-size: 0.76rem; font-weight: 700; white-space: nowrap; }
+  .m5-stop img { width: 2rem; height: 2rem; object-fit: contain; opacity: 0.9; }
+  .m5-stop.first img { width: 2.7rem; height: 2.7rem; }
+
+  /* ============================================================
+     5.6 Gradient Flow — 渐变色流 + 当前站呼吸光晕
+     ============================================================ */
+  .m6-line { position: relative; list-style: none; padding-left: 1.6rem; }
+  .m6-line::before {
+    content: ""; position: absolute; top: 10px; bottom: 10px; left: 8px; width: 5px; border-radius: 3px;
+    background: linear-gradient(to bottom, var(--copper), var(--blue) 55%, oklch(60% 0.06 236));
+  }
+  .m6-line.edu::before { background: linear-gradient(to bottom, var(--copper), var(--green) 55%, oklch(63% 0.07 160)); }
+  .m6-stop { position: relative; padding: 0.55rem 0 0.55rem 0.7rem; display: grid; grid-template-columns: minmax(0,1fr) 2.6rem; gap: 0.7rem; align-items: center; }
+  .m6-stop::before {
+    content: ""; position: absolute; left: -1.6rem; top: 50%; transform: translate(2.5px, -50%);
+    width: 11px; height: 11px; border-radius: 999px; background: var(--paper);
+    border: 3px solid var(--blue);
+  }
+  .m6-line.edu .m6-stop::before { border-color: var(--green); }
+  .m6-stop.now::after {
+    content: ""; position: absolute; left: -1.6rem; top: 50%; transform: translate(-0.5px, -50%);
+    width: 22px; height: 22px; border-radius: 999px;
+    background: oklch(45% 0.105 236 / 0.22); animation: m6-breathe 2.4s ease-in-out infinite;
+  }
+  .m6-line.edu .m6-stop.now::after { background: oklch(53% 0.088 156 / 0.22); }
+  @keyframes m6-breathe { 0%,100% { transform: translate(-0.5px,-50%) scale(0.8); opacity: 0.9; } 50% { transform: translate(-0.5px,-50%) scale(1.35); opacity: 0.35; } }
+  .m6-stop strong { font-family: var(--df); font-size: 0.96rem; }
+  .m6-stop strong em { font-style: normal; color: var(--blue); }
+  .m6-line.edu .m6-stop strong em { color: var(--green); }
+  .m6-stop small { display: block; color: var(--muted); font-size: 0.83rem; }
+  .m6-stop time { color: var(--copper); font-family: var(--df); font-size: 0.78rem; font-weight: 700; }
+  .m6-stop img { width: 2.3rem; height: 2.3rem; object-fit: contain; justify-self: end; opacity: 0.9; }
+
+  /* ============================================================
+     5.7 Sketch Line — 手绘虚线 + 铅笔字站牌
+     ============================================================ */
+  .m7-line { position: relative; list-style: none; padding-left: 1.7rem; }
+  .m7-line::before {
+    content: ""; position: absolute; top: 10px; bottom: 10px; left: 9px; width: 3px;
+    background: repeating-linear-gradient(to bottom, var(--soft) 0 7px, transparent 7px 13px);
+    border-radius: 2px;
+  }
+  .m7-stop { position: relative; padding: 0.6rem 0 0.6rem 0.8rem; display: grid; grid-template-columns: minmax(0,1fr) 2.6rem; gap: 0.7rem; align-items: center; }
+  .m7-stop::before {
+    content: ""; position: absolute; left: -1.7rem; top: 50%;
+    width: 13px; height: 13px; transform: translate(2px, -50%) rotate(-8deg);
+    border: 2.5px solid var(--copper); border-radius: 46% 54% 52% 48% / 55% 48% 52% 45%;
+    background: var(--paper);
+  }
+  .m7-stop strong { font-family: var(--df); font-size: 0.97rem; letter-spacing: 0.01em; }
+  .m7-stop strong em { font-style: normal; color: var(--copper); }
+  .m7-stop small { display: block; color: var(--muted); font-size: 0.84rem; }
+  .m7-stop time { color: var(--soft); font-family: var(--df); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; }
+  .m7-stop img { width: 2.4rem; height: 2.4rem; object-fit: contain; justify-self: end; opacity: 0.85; filter: saturate(0.85); }
+
+  /* ============================================================
+     5.8 Interchange — 双线图：Mμ Lab ↔ 北大 画换乘通道
+     ============================================================ */
+  .m8-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+  .m8-line { position: relative; list-style: none; padding-left: 1.5rem; }
+  .m8-line::before {
+    content: ""; position: absolute; top: 10px; bottom: 10px; left: 8px; width: 5px; border-radius: 3px;
+    background: var(--blue);
+  }
+  .m8-line.edu::before { background: var(--green); }
+  .m8-stop { position: relative; padding: 0.55rem 0 0.55rem 0.65rem; display: grid; grid-template-columns: minmax(0,1fr) 2.4rem; gap: 0.6rem; align-items: center; }
+  .m8-stop::before {
+    content: ""; position: absolute; left: -1.5rem; top: 50%; transform: translate(2px, -50%);
+    width: 12px; height: 12px; border: 3px solid #fff; border-radius: 999px;
+    background: var(--blue); box-shadow: 0 0 0 2px var(--blue);
+  }
+  .m8-line.edu .m8-stop::before { background: var(--green); box-shadow: 0 0 0 2px var(--green); }
+  .m8-stop strong { font-family: var(--df); font-size: 0.92rem; }
+  .m8-stop strong em { font-style: normal; color: var(--blue); }
+  .m8-line.edu .m8-stop strong em { color: var(--green); }
+  .m8-stop small { display: block; color: var(--muted); font-size: 0.8rem; }
+  .m8-stop time { color: var(--copper); font-family: var(--df); font-size: 0.75rem; font-weight: 700; }
+  .m8-stop img { width: 2.1rem; height: 2.1rem; object-fit: contain; justify-self: end; opacity: 0.9; }
+  .m8-transfer {
+    position: relative; margin: 0.2rem 0; padding: 0.35rem 0.7rem;
+    border: 1.5px dashed var(--line-strong); border-radius: 999px;
+    display: flex; align-items: center; gap: 0.5rem;
+    color: var(--muted); font-size: 0.76rem; font-weight: 600;
+  }
+  .m8-transfer b { color: var(--copper); font-family: var(--df); font-size: 0.72rem; letter-spacing: 0.08em; }
+  @media (max-width: 640px) { .m8-wrap { grid-template-columns: 1fr; } }
+
+  /* ============================================================
+     5.9 Signage Board — 地铁站台指示牌：深底白字 + 色点
+     ============================================================ */
+  .m9-board {
+    border-radius: 12px; overflow: hidden;
+    background: oklch(24% 0.03 252); color: oklch(93% 0.01 245);
+    box-shadow: 0 14px 34px oklch(22% 0.03 247 / 0.18);
+  }
+  .m9-board-head {
+    display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem;
+    background: oklch(20% 0.028 252); font-family: var(--df); font-size: 0.78rem; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase; color: oklch(80% 0.02 245);
+  }
+  .m9-board-head i { width: 0.7rem; height: 0.7rem; border-radius: 999px; background: var(--blue); font-style: normal; }
+  .m9-board-head i.green { background: var(--green); }
+  .m9-row {
+    display: grid; grid-template-columns: auto minmax(0,1fr) auto auto; gap: 0.8rem; align-items: center;
+    padding: 0.62rem 1rem; border-top: 1px solid oklch(32% 0.03 250);
+  }
+  .m9-row img { width: 1.9rem; height: 1.9rem; object-fit: contain; background: #fff; border-radius: 6px; padding: 0.15rem; }
+  .m9-row strong { font-family: var(--df); font-size: 0.92rem; font-weight: 600; }
+  .m9-row strong em { font-style: normal; color: oklch(75% 0.09 232); }
+  .m9-row small { display: block; color: oklch(66% 0.02 246); font-size: 0.78rem; }
+  .m9-row time { font-family: var(--df); font-size: 0.76rem; font-weight: 700; color: oklch(80% 0.1 90); white-space: nowrap; }
+  .m9-arrow { color: oklch(60% 0.03 248); font-size: 0.9rem; }
+  .m9 + .m9 { margin-top: 1rem; }
+
+  /* ============================================================
+     5.10 Timetable — 时刻表：左色条到点时刻，像车站显示屏
+     ============================================================ */
+  .m10-table { list-style: none; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); }
+  .m10-row {
+    display: grid; grid-template-columns: 5rem 2.4rem minmax(0,1fr) auto; gap: 0.8rem; align-items: center;
+    padding: 0.55rem 0.95rem; border-top: 1px solid var(--line);
+  }
+  .m10-row:first-child { border-top: 0; }
+  .m10-row time {
+    font-family: var(--df); font-size: 0.8rem; font-weight: 800; color: var(--blue);
+    border-left: 3px solid var(--blue); padding-left: 0.55rem; line-height: 1.25;
+  }
+  .m10-table.edu .m10-row time { color: var(--green); border-left-color: var(--green); }
+  .m10-row img { width: 2rem; height: 2rem; object-fit: contain; }
+  .m10-row strong { font-family: var(--df); font-size: 0.94rem; display: block; }
+  .m10-row strong em { font-style: normal; color: var(--muted); font-weight: 600; }
+  .m10-row small { color: var(--muted); font-size: 0.8rem; }
+  .m10-status {
+    font-family: var(--df); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+    padding: 0.14rem 0.5rem; border-radius: 4px; text-transform: uppercase;
+    color: var(--soft); border: 1px solid var(--line);
+  }
+  .m10-status.now { color: oklch(48% 0.11 152); border-color: oklch(58% 0.14 150 / 0.45); background: oklch(58% 0.14 150 / 0.1); }
+  @media (max-width: 560px) {
+    .m10-row { grid-template-columns: 4.2rem 2rem minmax(0,1fr); }
+    .m10-status { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="picker-head">
+  <h1>Metro Timeline — 10 Derivations</h1>
+  <p>都从 5 号地铁图出发，公司名跟在职位后面。选一个编号，我嵌进 about 页。</p>
+</header>
+
+<!-- ============ 5.1 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.1</b><span>Classic Metro — 基准款微调：公司直接跟在职位后（em 蓝/绿色）</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience</p>
+    <ul class="m1-line">
+      <li class="m1-stop"><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small><time>Oct 2024 – Present</time></div><img src="../img/about/logos/mmu-lab.png" alt=""></li>
+      <li class="m1-stop"><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small><time>Nov 2025 – Jul 2026</time></div><img src="../img/about/logos/bytedance-icon.svg" alt=""></li>
+      <li class="m1-stop"><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small><time>Aug 2026 – Present</time></div><img src="../img/about/logos/anew-icon.svg" alt=""></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education</p>
+    <ul class="m1-line edu">
+      <li class="m1-stop"><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. in AI + B.S. in Physics</small><time>2024 – Present</time></div><img src="../img/about/logos/peking-university.png" alt=""></li>
+      <li class="m1-stop"><div><strong>Beijing No.4 High School</strong><small>Middle School</small><time>2021 – 2024</time></div><img src="../img/about/logos/beijing-no4-icon.png" alt=""></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5.2 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.2</b><span>Logo Stations — logo 描边圆牌本身就是车站，骑在线路上</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience</p>
+    <ul class="m2-line">
+      <li class="m2-stop"><span class="m2-med"><img src="../img/about/logos/mmu-lab.png" alt=""></span><div class="m2-body"><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small><time>Oct 2024 – Present</time></div></li>
+      <li class="m2-stop"><span class="m2-med"><img src="../img/about/logos/bytedance-icon.svg" alt=""></span><div class="m2-body"><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small><time>Nov 2025 – Jul 2026</time></div></li>
+      <li class="m2-stop"><span class="m2-med"><img src="../img/about/logos/anew-icon.svg" alt=""></span><div class="m2-body"><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small><time>Aug 2026 – Present</time></div></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education</p>
+    <ul class="m2-line edu">
+      <li class="m2-stop"><span class="m2-med"><img src="../img/about/logos/peking-university.png" alt=""></span><div class="m2-body"><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. in AI + B.S. in Physics</small><time>2024 – Present</time></div></li>
+      <li class="m2-stop"><span class="m2-med"><img src="../img/about/logos/beijing-no4-icon.png" alt=""></span><div class="m2-body"><strong>Beijing No.4 High School</strong><small>Middle School</small><time>2021 – 2024</time></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5.3 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.3</b><span>Line Chips — 线路编号牌（EXP/EDU 线），当前站是大换乘环</span></div>
+  <div class="grp">
+    <div class="m3-head"><span class="m3-chip">EXP</span><span>Experience Line</span></div>
+    <ul class="m3-line">
+      <li class="m3-stop now"><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small></div><time>Oct 2024 – Present</time></li>
+      <li class="m3-stop"><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small></div><time>Nov 2025 – Jul 2026</time></li>
+      <li class="m3-stop now"><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small></div><time>Aug 2026 – Present</time></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <div class="m3-head"><span class="m3-chip green">EDU</span><span>Education Line</span></div>
+    <ul class="m3-line edu">
+      <li class="m3-stop now"><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. in AI + B.S. in Physics</small></div><time>2024 – Present</time></li>
+      <li class="m3-stop"><div><strong>Beijing No.4 High School</strong><small>Middle School</small></div><time>2021 – 2024</time></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5.4 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.4</b><span>Horizontal Metro — 水平线路，站名/logo 上下交错（窄屏可横滑）</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience →</p>
+    <div class="m4-track"><div class="m4-row">
+      <div class="m4-stop"><div class="up"><img src="../img/about/logos/mmu-lab.png" alt=""><strong>Research Intern <em>· Mμ Lab</em></strong><time>Oct 2024 – Present</time></div></div>
+      <div class="m4-stop"><div class="down"><img src="../img/about/logos/bytedance-icon.svg" alt=""><strong>Algorithm Intern <em>· ByteDance</em></strong><time>Nov 2025 – Jul 2026</time></div></div>
+      <div class="m4-stop"><div class="up"><img src="../img/about/logos/anew-icon.svg" alt=""><strong>Algorithm Intern <em>· Anew Lab</em></strong><time>Aug 2026 – Present</time></div></div>
+    </div></div>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education →</p>
+    <div class="m4-track edu"><div class="m4-row" style="justify-content: space-around;">
+      <div class="m4-stop"><div class="up"><img src="../img/about/logos/peking-university.png" alt=""><strong>Peking University <em>· YuanPei</em></strong><time>2024 – Present</time></div></div>
+      <div class="m4-stop"><div class="down"><img src="../img/about/logos/beijing-no4-icon.png" alt=""><strong>Beijing No.4 High School</strong><time>2021 – 2024</time></div></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 5.5 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.5</b><span>Terminus — 最新站是加粗枢纽大环，向后渐细渐淡</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience</p>
+    <ul class="m5-line">
+      <li class="m5-stop first"><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small></div><time>Aug 2026 – Present</time><img src="../img/about/logos/anew-icon.svg" alt=""></li>
+      <li class="m5-stop"><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small></div><time>Nov 2025 – Jul 2026</time><img src="../img/about/logos/bytedance-icon.svg" alt=""></li>
+      <li class="m5-stop"><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small></div><time>Oct 2024 – Present</time><img src="../img/about/logos/mmu-lab.png" alt=""></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education</p>
+    <ul class="m5-line edu">
+      <li class="m5-stop first"><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. in AI + B.S. in Physics</small></div><time>2024 – Present</time><img src="../img/about/logos/peking-university.png" alt=""></li>
+      <li class="m5-stop"><div><strong>Beijing No.4 High School</strong><small>Middle School</small></div><time>2021 – 2024</time><img src="../img/about/logos/beijing-no4-icon.png" alt=""></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5.6 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.6</b><span>Gradient Flow — 铜→蓝/绿的渐变色流，当前站呼吸光晕</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience</p>
+    <ul class="m6-line">
+      <li class="m6-stop now"><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small><time>Oct 2024 – Present</time></div><img src="../img/about/logos/mmu-lab.png" alt=""></li>
+      <li class="m6-stop"><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small><time>Nov 2025 – Jul 2026</time></div><img src="../img/about/logos/bytedance-icon.svg" alt=""></li>
+      <li class="m6-stop now"><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small><time>Aug 2026 – Present</time></div><img src="../img/about/logos/anew-icon.svg" alt=""></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education</p>
+    <ul class="m6-line edu">
+      <li class="m6-stop now"><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. in AI + B.S. in Physics</small><time>2024 – Present</time></div><img src="../img/about/logos/peking-university.png" alt=""></li>
+      <li class="m6-stop"><div><strong>Beijing No.4 High School</strong><small>Middle School</small><time>2021 – 2024</time></div><img src="../img/about/logos/beijing-no4-icon.png" alt=""></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5.7 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.7</b><span>Sketch Line — 手绘虚线 + 不规则圆环，呼应 hero 粉笔涂鸦</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience</p>
+    <ul class="m7-line">
+      <li class="m7-stop"><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small><time>Oct 2024 – Present</time></div><img src="../img/about/logos/mmu-lab.png" alt=""></li>
+      <li class="m7-stop"><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small><time>Nov 2025 – Jul 2026</time></div><img src="../img/about/logos/bytedance-icon.svg" alt=""></li>
+      <li class="m7-stop"><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small><time>Aug 2026 – Present</time></div><img src="../img/about/logos/anew-icon.svg" alt=""></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education</p>
+    <ul class="m7-line">
+      <li class="m7-stop"><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. in AI + B.S. in Physics</small><time>2024 – Present</time></div><img src="../img/about/logos/peking-university.png" alt=""></li>
+      <li class="m7-stop"><div><strong>Beijing No.4 High School</strong><small>Middle School</small><time>2021 – 2024</time></div><img src="../img/about/logos/beijing-no4-icon.png" alt=""></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 5.8 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.8</b><span>Interchange — 左右双线图，Mμ Lab ↔ 北大 之间画换乘通道</span></div>
+  <div class="m8-wrap">
+    <div class="grp">
+      <p class="grp-label">Experience</p>
+      <ul class="m8-line">
+        <li class="m8-stop"><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small><time>Aug 2026 – Present</time></div><img src="../img/about/logos/anew-icon.svg" alt=""></li>
+        <li class="m8-stop"><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design</small><time>Nov 2025 – Jul 2026</time></div><img src="../img/about/logos/bytedance-icon.svg" alt=""></li>
+        <li class="m8-stop"><div><strong>Research Intern <em>· Mμ Lab</em></strong><small>Prof. Muhan Zhang</small><time>Oct 2024 – Present</time></div><img src="../img/about/logos/mmu-lab.png" alt=""></li>
+      </ul>
+    </div>
+    <div class="grp">
+      <p class="grp-label" style="color: var(--green);">Education</p>
+      <ul class="m8-line edu">
+        <li class="m8-stop"><div><strong>Peking University <em>· YuanPei</em></strong><small>B.E. AI + B.S. Physics</small><time>2024 – Present</time></div><img src="../img/about/logos/peking-university.png" alt=""></li>
+        <li class="m8-stop"><div><strong>Beijing No.4 High School</strong><small>Middle School</small><time>2021 – 2024</time></div><img src="../img/about/logos/beijing-no4-icon.png" alt=""></li>
+      </ul>
+    </div>
+  </div>
+  <div class="m8-transfer" style="margin-top: 0.8rem;"><b>⇄ TRANSFER</b> Mμ Lab, PKU ↔ Peking University — same station, two lines</div>
+</section>
+
+<!-- ============ 5.9 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.9</b><span>Signage Board — 站台指示牌：深底面板 + 线路色点 + 箭头</span></div>
+  <div class="m9">
+    <div class="m9-board">
+      <div class="m9-board-head"><i></i>Experience · This way</div>
+      <div class="m9-row"><img src="../img/about/logos/mmu-lab.png" alt=""><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Beijing</small></div><time>2024.10 – Now</time><span class="m9-arrow">→</span></div>
+      <div class="m9-row"><img src="../img/about/logos/bytedance-icon.svg" alt=""><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design</small></div><time>2025.11 – 2026.07</time><span class="m9-arrow">→</span></div>
+      <div class="m9-row"><img src="../img/about/logos/anew-icon.svg" alt=""><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small></div><time>2026.08 – Now</time><span class="m9-arrow">→</span></div>
+    </div>
+  </div>
+  <div class="m9">
+    <div class="m9-board">
+      <div class="m9-board-head"><i class="green"></i>Education · This way</div>
+      <div class="m9-row"><img src="../img/about/logos/peking-university.png" alt=""><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. AI + B.S. Physics</small></div><time>2024 – Now</time><span class="m9-arrow">→</span></div>
+      <div class="m9-row"><img src="../img/about/logos/beijing-no4-icon.png" alt=""><div><strong>Beijing No.4 High School</strong><small>Middle School</small></div><time>2021 – 2024</time><span class="m9-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5.10 ============ -->
+<section class="variant">
+  <div class="variant-tag"><b>5.10</b><span>Timetable — 车站时刻表：左色条"到点" + ON TIME/NOW 状态牌</span></div>
+  <div class="grp">
+    <p class="grp-label">Experience — Departures</p>
+    <ul class="m10-table">
+      <li class="m10-row"><time>2024.10</time><img src="../img/about/logos/mmu-lab.png" alt=""><div><strong>Research Intern <em>· Mμ Lab, PKU</em></strong><small>Advised by Prof. Muhan Zhang · Beijing</small></div><span class="m10-status now">Now</span></li>
+      <li class="m10-row"><time>2025.11</time><img src="../img/about/logos/bytedance-icon.svg" alt=""><div><strong>Algorithm Intern <em>· ByteDance</em></strong><small>Seed / Drug Design · Shanghai</small></div><span class="m10-status">Done</span></li>
+      <li class="m10-row"><time>2026.08</time><img src="../img/about/logos/anew-icon.svg" alt=""><div><strong>Algorithm Intern <em>· Anew Lab</em></strong><small>Shanghai</small></div><span class="m10-status now">Now</span></li>
+    </ul>
+  </div>
+  <div class="grp">
+    <p class="grp-label" style="color: var(--green);">Education — Arrivals</p>
+    <ul class="m10-table edu">
+      <li class="m10-row"><time>2024</time><img src="../img/about/logos/peking-university.png" alt=""><div><strong>Peking University <em>· YuanPei College</em></strong><small>B.E. AI + B.S. Physics</small></div><span class="m10-status now">Now</span></li>
+      <li class="m10-row"><time>2021</time><img src="../img/about/logos/beijing-no4-icon.png" alt=""><div><strong>Beijing No.4 High School</strong><small>Middle School · – 2024</small></div><span class="m10-status">Done</span></li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>

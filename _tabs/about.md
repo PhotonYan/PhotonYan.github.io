@@ -875,57 +875,202 @@ order: 1
     white-space: nowrap;
   }
 
-  .timeline-grid {
+  /* Dual-line metro timeline (glass stations) */
+  .metro-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    margin-top: 1.25rem;
+    gap: 0 2.4rem;
+    align-items: stretch;
+    margin-top: 1.35rem;
   }
 
-  .timeline-panel {
-    padding: 1.12rem 1.35rem 1.22rem 0;
+  .metro-col {
+    display: flex;
+    flex-direction: column;
   }
 
-  .timeline-panel + .timeline-panel {
-    padding-right: 0;
-    padding-left: 1.35rem;
-    border-left: 1px solid var(--about-line);
+  .metro-col-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.95rem 0.15rem;
+    color: var(--about-blue);
+    font-family: var(--about-display-font);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
-  .timeline-list {
-    display: grid;
-    gap: 0.85rem;
-    margin: 0.9rem 0 0;
-    padding: 0;
+  .metro-col-label::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 999px;
+    background: var(--about-blue);
+  }
+
+  .metro-col.edu .metro-col-label {
+    color: var(--about-green);
+  }
+
+  .metro-col.edu .metro-col-label::before {
+    background: var(--about-green);
+  }
+
+  .metro-line {
+    --metro-acc: var(--about-blue);
+    --metro-axis: 1.3rem;
+    --metro-gutter: 3.4rem;
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0 0 0 var(--metro-gutter);
     list-style: none;
   }
 
-  .timeline-list li {
-    padding-top: 0;
+  .metro-col.edu .metro-line {
+    --metro-acc: var(--about-green);
+    justify-content: space-between;
   }
 
-  .timeline-list strong {
+  /* the only element that fades: the line itself, past (faint) -> present (solid) */
+  .metro-line::before {
+    content: "";
+    position: absolute;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    left: var(--metro-axis);
+    width: 5px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklch, var(--metro-acc) 10%, transparent),
+      color-mix(in oklch, var(--metro-acc) 45%, transparent) 42%,
+      var(--metro-acc) 80%,
+      var(--about-copper)
+    );
+    box-shadow:
+      0 0 12px color-mix(in oklch, var(--metro-acc) 35%, transparent),
+      0 0 3px color-mix(in oklch, var(--metro-acc) 50%, transparent);
+  }
+
+  .metro-stop {
+    position: relative;
+  }
+
+  .metro-stop + .metro-stop {
+    margin-top: 1.15rem;
+  }
+
+  .metro-col.edu .metro-stop + .metro-stop {
+    margin-top: 0;
+  }
+
+  /* frosted-glass logo medallion = the station, riding the line at left */
+  .metro-med {
+    position: absolute;
+    left: calc(var(--metro-axis) - var(--metro-gutter));
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.7rem;
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: oklch(99.5% 0.003 250 / 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 2.5px solid var(--metro-acc);
+    border-radius: 999px;
+    box-shadow:
+      0 0 0 3.5px var(--about-paper),
+      0 8px 20px oklch(22% 0.03 247 / 0.14);
+    z-index: 1;
+  }
+
+  .metro-med img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
+    width: 64%;
+    height: 64%;
+    margin: 0;
+    object-fit: contain;
+    object-position: center;
+    transform: translate(-50%, -50%);
+  }
+
+  /* breathing halo on every "Present" station */
+  .metro-stop.now .metro-med::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--metro-acc) 22%, transparent);
+    animation: metro-breathe 2.4s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes metro-breathe {
+    0%,
+    100% {
+      transform: scale(0.82);
+      opacity: 0.95;
+    }
+    50% {
+      transform: scale(1.28);
+      opacity: 0.3;
+    }
+  }
+
+  .metro-stop strong {
     color: var(--about-ink);
     font-family: var(--about-display-font);
-    font-size: 1.04rem;
+    font-size: 0.98rem;
     font-weight: 700;
-    line-height: 1.28;
+    line-height: 1.32;
+    letter-spacing: 0.01em;
   }
 
-  .timeline-list span {
+  .metro-stop strong em {
+    font-style: normal;
+    color: var(--metro-acc);
+  }
+
+  .metro-stop small {
     display: block;
+    margin-top: 0.12rem;
     color: var(--about-muted);
+    font-size: 0.85rem;
     line-height: 1.5;
   }
 
-  .timeline-list time {
+  .metro-stop time {
     display: block;
-    margin-top: 0.24rem;
+    margin-top: 0.2rem;
     color: var(--about-copper);
-    font-size: 0.88rem;
     font-family: var(--about-display-font);
-    font-weight: 600;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  [data-mode="dark"] .metro-med {
+    background: oklch(96% 0.006 250 / 0.9);
+    box-shadow:
+      0 0 0 3.5px var(--about-paper),
+      0 8px 22px oklch(8% 0.018 250 / 0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .metro-stop.now .metro-med::after {
+      animation: none;
+      opacity: 0.3;
+    }
   }
 
   .study-section .about-section-head {
@@ -1422,7 +1567,7 @@ order: 1
       font-size: 1.62rem;
     }
 
-    .timeline-grid,
+    .metro-grid,
     .study-grid,
     .books-grid {
       grid-template-columns: 1fr;
@@ -1449,15 +1594,16 @@ order: 1
       height: 500px;
     }
 
-    .timeline-panel,
-    .timeline-panel + .timeline-panel {
-      padding-right: 0;
-      padding-left: 0;
-      border-left: 0;
+    .metro-grid {
+      gap: 1.9rem 0;
     }
 
-    .timeline-panel + .timeline-panel {
-      border-top: 0;
+    .metro-col.edu .metro-line {
+      justify-content: flex-start;
+    }
+
+    .metro-col.edu .metro-stop + .metro-stop {
+      margin-top: 1.15rem;
     }
 
     .publication-list::before {
@@ -1666,28 +1812,34 @@ order: 1
         Where I Studied and Worked
       </p>
     </div>
-    <div class="timeline-grid">
-      <section class="timeline-panel" aria-labelledby="experience-title">
-        <h3 id="experience-title"><i class="fas fa-briefcase me-2" aria-hidden="true"></i>Experience</h3>
-        <ul class="timeline-list">
+    <div class="metro-grid">
+      <section class="metro-col" aria-labelledby="experience-title">
+        <p class="metro-col-label" id="experience-title">Experience</p>
+        <ul class="metro-line">
           {% for item in about.internships %}
-          <li>
-            <strong>{{ item.role }}</strong>
-            <span>{{ item.company }}{% if item.team %}, {{ item.team }}{% endif %}</span>
-            <span>{{ item.location }}</span>
+          {% assign item_time = item.time | downcase %}
+          <li class="metro-stop{% if item_time contains 'present' %} now{% endif %}">
+            <span class="metro-med" aria-hidden="true">
+              {% if item.logo %}<img src="{{ item.logo | relative_url }}" alt="" loading="lazy">{% endif %}
+            </span>
+            <strong>{{ item.role }} <em>&middot; {{ item.company }}</em></strong>
+            <small>{% if item.team %}{{ item.team }} &middot; {% endif %}{{ item.location }}</small>
             <time>{{ item.time }}</time>
           </li>
           {% endfor %}
         </ul>
       </section>
-      <section class="timeline-panel" aria-labelledby="education-title">
-        <h3 id="education-title"><i class="fas fa-graduation-cap me-2" aria-hidden="true"></i>Education</h3>
-        <ul class="timeline-list">
-          {% for item in about.education %}
-          <li>
-            <strong>{{ item.school }}</strong>
-            {% if item.college %}<span>{{ item.college }}</span>{% endif %}
-            {% if item.degree %}<span>{{ item.degree }}</span>{% endif %}
+      <section class="metro-col edu" aria-labelledby="education-title">
+        <p class="metro-col-label" id="education-title">Education</p>
+        <ul class="metro-line">
+          {% for item in about.education reversed %}
+          {% assign item_time = item.time | downcase %}
+          <li class="metro-stop{% if item_time contains 'present' %} now{% endif %}">
+            <span class="metro-med" aria-hidden="true">
+              {% if item.logo %}<img src="{{ item.logo | relative_url }}" alt="" loading="lazy">{% endif %}
+            </span>
+            <strong>{{ item.school }}{% if item.college %} <em>&middot; {{ item.college }}</em>{% endif %}</strong>
+            {% if item.degree %}<small>{{ item.degree }}</small>{% endif %}
             <time>{{ item.time }}</time>
           </li>
           {% endfor %}
