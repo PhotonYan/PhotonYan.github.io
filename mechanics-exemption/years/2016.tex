@@ -1,0 +1,236 @@
+\chapter{2016 年秋季力学免修考试}
+\noindent\yearbadge{2016}\quad\sourcebadge{试卷照片}\qquad 日期为 2016 年 9 月 18 日，共 9 题。
+
+\begin{problem}{第 1 题｜欠阻尼振动}
+求 $\ddot x+2\beta\dot x+\omega_0^2x=0$ 在欠阻尼情形的通解，并画出典型曲线。
+\end{problem}
+\begin{solution}
+欠阻尼条件为 $\beta<\omega_0$。令 $\omega_d=\sqrt{\omega_0^2-\beta^2}$，则
+\[
+x(t)=\ee^{-\beta t}(C_1\cos\omega_dt+C_2\sin\omega_dt)
+=A\ee^{-\beta t}\cos(\omega_dt+\varphi).
+\]
+振幅由 $\pm A\ee^{-\beta t}$ 包络，周期为 $2\pi/\omega_d$。这与 2014 年第 4 题相同。
+\end{solution}
+
+\begin{problem}{第 2 题｜伯努利方程与旋转球}
+写出伯努利方程及成立条件，并判断三个以相同初速度水平抛出的球在无自转、回旋和上旋时的轨迹高低。
+\FigMagnus
+\end{problem}
+\begin{solution}
+稳恒、不可压缩、无黏流体沿流线满足
+\[
+p+\frac12\rho v^2+\rho gz=\text{常量}.
+\]
+回旋球上方相对气流更快、压强更低，产生向上 Magnus 力，轨迹最高；无自转球居中；上旋球受向下 Magnus 力，轨迹最低。若流场无旋，伯努利常量可跨流线使用。
+\end{solution}
+
+\begin{problem}{第 3 题｜开普勒第三定律中的两体修正}
+开普勒第三定律写为 $a^3/T^2=k$。把太阳、地球视为仅受万有引力的二体系统：
+
+（1）若近似把太阳固定，求 $k$；（2）解释为何这个表达式不具有 $M\leftrightarrow m$ 对称性，并给出正确结果。
+\end{problem}
+\begin{solution}
+若把太阳质量 $M$ 固定，对地球质量 $m$ 的圆轨道写
+\[
+\frac{mv^2}{a}=\frac{GMm}{a^2},
+\qquad v=\frac{2\pi a}{T},
+\]
+得到近似式
+\[
+\frac{a^3}{T^2}=\frac{GM}{4\pi^2}.
+\]
+它不对称的原因是“太阳固定”只在 $M\gg m$ 的近似下成立；地球系若被当作静止惯性系则遗漏了地球自身的加速度。
+
+正确做法是使用相对坐标 $\vect r=\vect r_m-\vect r_M$。二体方程化为
+\[
+\ddot{\vect r}=-\frac{G(M+m)}{r^3}\vect r.
+\]
+于是对相对轨道半长轴 $a$，
+\result{$\displaystyle \frac{a^3}{T^2}=\frac{G(M+m)}{4\pi^2}$，显然在 $M,m$ 互换下不变。}
+\end{solution}
+
+\begin{problem}{第 4 题｜LHC 质子与光速的微小差别}
+大型强子对撞机中两束质子相向运动，每个质子的总能量为 \SI{6.5}{TeV}，质子静止能量约为 \SI{0.936}{GeV}。
+
+（1）一个质子在实验室中运动 \SI{1}{s}，比光少走多少距离？
+
+（2）以两质子间的相对速度运动 \SI{1}{s}，比光少走多少距离？只要求一位有效数字。
+\end{problem}
+\begin{solution}
+单个质子的 Lorentz 因子为
+\[
+\gamma=\frac{E}{m_pc^2}\approx\frac{6500}{0.936}\approx6.94\times10^3.
+\]
+在 $\gamma\gg1$ 时
+\[
+1-\beta\approx\frac1{2\gamma^2}.
+\]
+因此一秒内光领先
+\[
+\Delta x=c(1-\beta)t\approx\frac{c}{2\gamma^2}
+\approx\SI{3.1}{m}\approx\boxed{\SI{3}{m}}.
+\]
+
+两束速度大小均为 $v$、方向相反。相对速度为
+\[
+w=\frac{2v}{1+v^2/c^2},
+\]
+对应 Lorentz 因子
+\[
+\gamma_{\rm rel}=\gamma^2(1+\beta^2)=2\gamma^2-1
+\approx9.64\times10^7.
+\]
+于是
+\[
+\Delta x_{\rm rel}\approx\frac{c}{2\gamma_{\rm rel}^2}
+\approx1.6\times10^{-8}\ \mathrm m
+\approx\boxed{2\times10^{-8}\ \mathrm m}.
+\]
+这是约 \SI{20}{nm} 的量级。
+\end{solution}
+
+\begin{problem}{第 5 题｜固定端反射形成驻波}
+弦左端固定。频率为 $\omega$、振幅为 $A$ 的简谐波从右向左入射；距固定端 $7\lambda/8$ 的点 $O$ 上，入射波位移为 $\xi_i(O,t)=A\sin\omega t$。反射波振幅、频率、波长均不变，并在固定端发生 $\pi$ 相变。
+
+（1）求弦上的驻波表达式；（2）求 $O$ 点合振幅。
+\FigStandingWave
+\end{problem}
+\begin{solution}
+取固定端为 $x=0$，$x$ 向右。向左传播的入射波可写为
+\[
+\xi_i=A\sin(\omega t+kx+\phi).
+\]
+由 $kx_O=2\pi(7/8)=7\pi/4$ 且 $\xi_i(O,t)=A\sin\omega t$，可取 $\phi=\pi/4$。固定端条件 $\xi_i(0,t)+\xi_r(0,t)=0$ 给出反射波
+\[
+\xi_r=A\sin(\omega t-kx+5\pi/4).
+\]
+相加得到
+\[
+\boxed{\xi(x,t)=2A\sin kx\cos(\omega t+\pi/4)}.
+\]
+在 $O$ 点，
+\[
+A_O=2A\abs{\sin(7\pi/4)}=\sqrt2A.
+\]
+\end{solution}
+
+\begin{problem}{第 6 题｜实验室系中的弹性斜碰}
+质量为 $m$、速率为 $v_0$ 的粒子与质量为 $\alpha m$ 的静止靶粒子弹性碰撞。求正碰时最佳质量比、靶粒子散射角上限及其动能。
+\end{problem}
+\begin{solution}
+设靶粒子速度为 $V$，与入射方向夹角为 $\beta$。联立动量和能量守恒，消去入射粒子末速度，得到
+\[
+V=\frac{2v_0\cos\beta}{1+\alpha},
+\qquad
+K_t=\frac{2\alpha m v_0^2\cos^2\beta}{(1+\alpha)^2}.
+\]
+因此 $0\le\beta<\pi/2$，上限为 $\pi/2$。正碰时 $K_t\propto\alpha/(1+\alpha)^2$，在 $\alpha=1$ 最大。
+\end{solution}
+
+\begin{problem}{第 7 题｜相向飞船之间的光信号}
+在惯性系 $S$ 中，飞船 1、2 分别以 $+v$、$-v$ 沿 $x$ 轴运动，二者同时经过原点时各自时钟置零。当飞船 1 到达 $x=l$ 时向飞船 2 发出光信号。
+
+（1）在飞船 1 系中求发射时刻 $t_{11}$ 及此时两船距离 $d_{11}$；
+
+（2）在飞船 2 系中求发射时刻 $t_{21}$ 及距离 $d_{21}$；
+
+（3）在飞船 2 系中求接收时刻 $t_{22}$ 及此时两船距离 $d_{22}$。
+\FigShips
+\end{problem}
+\begin{solution}
+记
+\[
+\beta=\frac vc,
+\qquad
+\gamma=\frac1{\sqrt{1-\beta^2}},
+\qquad
+w=\frac{2v}{1+\beta^2}
+\]
+为两船的相对速率。
+
+发射事件在 $S$ 中为 $(t,x)=(l/v,l)$。变换到飞船 1 系：
+\[
+t_{11}=\gamma\left(\frac lv-\frac{vl}{c^2}\right)=\frac{l}{\gamma v}.
+\]
+飞船 2 在该系以速率 $w$ 远离，故
+\[
+d_{11}=wt_{11}=\frac{2l}{\gamma(1+\beta^2)}.
+\]
+变换到飞船 2 系：
+\[
+t_{21}=\gamma\left(\frac lv+\frac{vl}{c^2}\right)
+=\frac{\gamma l}{v}(1+\beta^2),
+\qquad
+d_{21}=wt_{21}=2\gamma l.
+\]
+光从距离 $d_{21}$ 处传播到飞船 2 原点，故
+\[
+t_{22}=t_{21}+\frac{d_{21}}c
+=\frac{\gamma l}{v}(1+\beta)^2.
+\]
+此时飞船 1 距离为
+\[
+d_{22}=wt_{22}
+=\frac{2\gamma l(1+\beta)^2}{1+\beta^2}.
+\]
+\end{solution}
+
+\begin{problem}{第 8 题｜摆线与等时性}
+半径为 $R$ 的圆在水平直线下方无滑动滚动。圆上一点 $P$ 初始与坐标原点重合，圆心转过角度 $\theta$。
+
+（1）写出 $P$ 的轨迹参数方程；（2）沿该摆线固定一条光滑细轨，把小环从 $\theta_0\in[0,\pi]$ 静止释放，求振动周期。
+\FigCycloid
+\end{problem}
+\begin{solution}
+取 $y$ 轴竖直向下。圆心坐标为 $(R\theta,R)$，初始指向上方的半径随圆顺时针转过 $\theta$，故
+\[
+\boxed{x=R(\theta-\sin\theta),\qquad y=R(1-\cos\theta)}.
+\]
+弧长元为
+\[
+\frac{\dd s}{\dd\theta}
+=R\sqrt{(1-\cos\theta)^2+\sin^2\theta}
+=2R\sin\frac\theta2.
+\]
+从转折点 $\theta_0$ 到最低点 $\pi$，机械能守恒给出
+\[
+\dd t=\sqrt{\frac Rg}
+\sqrt{\frac{1-\cos\theta}{\cos\theta_0-\cos\theta}}\,\dd\theta.
+\]
+利用题给积分，
+\[
+t_{\theta_0\to\pi}=\pi\sqrt{\frac Rg},
+\]
+与释放位置无关。这是四分之一周期。
+\result{$\displaystyle T=4\pi\sqrt{R/g}$，说明倒摆线具有等时性。}
+\end{solution}
+
+\begin{problem}{第 9 题｜均匀半圆柱的冲击与小振动}
+题目与 2014 年第 9 题相同：均匀实心半圆柱置于光滑水平面，求质心、转动惯量、冲量后的质心加速度、翻倒阈值与小振动周期。
+\FigSemicylinder
+\end{problem}
+\begin{solution}
+质心和质心转动惯量为
+\[
+z_C=\frac{4R}{3\pi},
+\qquad
+I_C=mR^2\left(\frac12-\frac{16}{9\pi^2}\right).
+\]
+令冲量作用点相对质心的竖直力臂 $d=R/2-z_C$，则
+\[
+v_C=\frac Jm,
+\qquad
+\omega_0=\frac{Jd}{I_C},
+\qquad
+\vect a_C=z_C\omega_0^2\,\unitv y.
+\]
+能量达到 $mgz_C$ 时恰能转到平面边缘，故
+\[
+J_{\max}=\frac{\sqrt{2mgz_CI_C}}d.
+\]
+小振动方程为 $I_C\ddot\theta+mgz_C\theta=0$，所以
+\[
+T=2\pi\sqrt{\frac{I_C}{mgz_C}}.
+\]
+\end{solution}
