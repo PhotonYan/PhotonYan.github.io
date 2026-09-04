@@ -1,0 +1,305 @@
+\chapter{2023 年秋季力学免修考试回忆版}
+\noindent\yearbadge{2023}\quad\sourcebadge{电子回忆版}\qquad 日期为 2023 年 9 月 9 日，原资料注明可携带计算器。
+
+\begin{problem}{第 1 题｜线性中心力中的两个守恒方程}
+质点质量为 $m$，受力 $\vect F=\alpha\vect r$。初始位置如图，可取 $\vect r_0=(-a,a)$，初速度 $\vect v_0=(v_0,0)$。某时刻 $\vect v_e\perp\vect r_e$。为求 $r_e,v_e$，列出两个独立守恒方程。
+\begin{center}\begin{tikzpicture}[scale=.78]
+\draw[axis](0,0)--(3.2,0);\draw[axis](0,0)--(0,3.2);\fill[Navy](0,0)circle(2pt)node[below left]{$O$};\fill[Coral](-2.2,2.2)circle(2.4pt);\draw[velocity](-2.2,2.2)--(-.9,2.2)node[above]{$v_0$};\draw[Indigo,line width=1pt](0,0)--(-2.2,2.2)node[midway,right]{$r_0$};\draw[dashed,TextGray](-2.2,0)--(-2.2,2.2);\draw[dashed,TextGray](-2.2,0)--(0,0);\node[left]at(-2.2,1.1){$a$};\node[below]at(-1.1,0){$a$};
+\end{tikzpicture}\end{center}
+\end{problem}
+\begin{solution}
+力是中心力，故角动量守恒。初态角动量大小为 $ma v_0$；末态速度与位矢垂直，所以
+\[
+\boxed{mr_ev_e=ma v_0}.
+\]
+由 $\vect F=-\nabla U$ 得
+\[
+U(r)=-\frac12\alpha r^2.
+\]
+初始 $r_0^2=2a^2$，机械能守恒为
+\[
+\boxed{\frac12mv_e^2-\frac12\alpha r_e^2
+=\frac12mv_0^2-\alpha a^2}.
+\]
+这两式彼此独立，足以求 $r_e,v_e$。
+\end{solution}
+
+\begin{problem}{第 2 题｜圆管层流}
+半径为 $R$、长度为 $L$ 的直圆管两端压强为 $P_A>P_B$。流体为不可压缩牛顿流体，黏滞系数为 $\eta$，流动为充分发展层流。求流速分布 $v(\rho)$ 与体积流量 $Q$。
+\FigPoiseuille
+\end{problem}
+\begin{solution}
+取轴向为 $z$，压强梯度为
+\[
+\frac{\dd p}{\dd z}=-\frac{P_A-P_B}{L}.
+\]
+稳态 Navier--Stokes 方程的轴向分量化为
+\[
+0=-\frac{\dd p}{\dd z}+\eta\frac1\rho\frac{\dd}{\dd\rho}
+\left(\rho\frac{\dd v}{\dd\rho}\right).
+\]
+在 $\rho=0$ 处有限、在管壁 $\rho=R$ 处无滑移，积分得
+\[
+\boxed{v(\rho)=\frac{P_A-P_B}{4\eta L}(R^2-\rho^2)}.
+\]
+体积流量
+\[
+Q=\int_0^R v(\rho)2\pi\rho\dd\rho
+=\boxed{\frac{\pi R^4(P_A-P_B)}{8\eta L}}.
+\]
+\end{solution}
+
+\begin{problem}{第 3 题｜星体喷流的视在超光速}
+在 $O$ 处发生爆炸，一块碎片以真实速度 $v$ 沿与 $+x$ 轴夹角 $\phi$ 的方向运动。远处观测者位于 $x$ 轴上，距 $O$ 为 $D$。
+
+（1）经过实验室时间 $t$，碎片走过 $R=vt$，求视在横向速度 $v_s$；（2）求固定 $v$ 下的最大视在速度；取 $v=2c/3$，判断是否存在 $v_s>c$ 的角度范围。
+\FigSuperluminal
+\end{problem}
+\begin{solution}
+相对于 $O$ 处爆炸光信号，碎片在时刻 $t$ 发出的光少走了约 $vt\cos\phi$，所以到达观测者的时间间隔为
+\[
+\Delta t_{\rm obs}=t\left(1-\frac vc\cos\phi\right).
+\]
+观测到的横向位移为 $vt\sin\phi$，故
+\[
+\boxed{v_s=\frac{v\sin\phi}{1-\beta\cos\phi}},
+\qquad \beta=\frac vc.
+\]
+对 $\phi$ 求极值，
+\[
+\frac{\dd v_s}{\dd\phi}=0
+\quad\Longrightarrow\quad
+\cos\phi=\beta.
+\]
+因此
+\[
+\boxed{v_{s,\max}=\gamma v},
+\qquad \gamma=(1-\beta^2)^{-1/2}.
+\]
+当 $v=2c/3$ 时，
+\[
+v_{s,\max}=\frac{2}{\sqrt5}c\approx0.894c<c.
+\]
+所以不存在任何 $\phi$ 使视在速度超过光速；这也是本题设置 $2c/3$ 的一个反直觉检查。
+\end{solution}
+
+\begin{problem}{第 4 题｜静止释放的轻绳为何会立即松弛}
+长为 $l$ 的不可伸长轻绳一端固定在 $O$，另一端连接小球。初态绳与水平线夹角为 $\theta$，小球静止释放，并设之后小球能脱离绳的束缚。求脱离条件、脱离后的最高点，以及使最高点最大的 $\theta$。
+\FigPendulumSlack
+\end{problem}
+\begin{identification}
+按原回忆版的“轻绳、静止释放、球位于水平线上方”三个条件，绳在初始瞬间就需要提供负张力，题目会退化为立即松绳。原题很可能遗漏了初速度或“光滑圆轨道”等条件。本解先严格回答现有文字。
+\end{identification}
+\begin{solution}
+沿指向固定点的径向取正。初始 $v=0$，所需向心加速度为零；重力在该方向的分量为 $mg\sin\theta$，于是径向方程为
+\[
+T+mg\sin\theta=0.
+\]
+对于图示 $0<\theta\le\pi/2$，这要求 $T<0$，而轻绳不能受压，所以绳在释放瞬间立即松弛。$\theta=0$ 时初始张力为零，随后自由落体也会使球与 $O$ 的距离增大，故同样立即失去约束。
+
+球从静止开始自由下落，之后高度只会降低；其相对 $O$ 的最高高度就是初始高度：
+\[
+\boxed{h_m=l\sin\theta}.
+\]
+在给定范围内最大值发生在 $\theta=\pi/2$：
+\[
+\boxed{h_{m,\max}=l}.
+\]
+\end{solution}
+
+\begin{problem}{第 5 题｜加速滑轮下不摆动的悬挂绳}
+各接触面均光滑。大块 $m_1$ 可在水平面运动，小块 $m_2$ 位于其顶部；轻绳从 $m_2$ 经过固定在 $m_1$ 上的滑轮后连接 $m_3$。若连接 $m_3$ 的绳段与重力方向夹角为 $\theta$，要求释放后该角度保持不变。已知
+\[
+m_2=m_3=\frac{m_1}{2}.
+\]
+求 $\theta$ 与 $m_1$ 的加速度 $a_1$。
+\FigThreeMass
+\end{problem}
+\begin{solution}
+记 $M=m_1$，$m_2=m_3=M/2$，$q=\sin\theta$、$c_\theta=\cos\theta$。设大块和滑轮向右加速度为 $A$，斜绳长度为 $r$，张力为 $T$。
+
+小块 $m_2$ 受水平张力向左，故
+\[
+a_2=-\frac{T}{m_2}=-\frac{2T}{M}.
+\]
+绳长不变给出 $\ddot r=A-a_2=A+2T/M$。大块所受滑轮处两段绳的水平合力为 $T-Tq$，所以
+\[
+MA=T(1-q).
+\]
+于是
+\[
+\ddot r=\frac{T}{M}(3-q).
+\]
+$m_3$ 的水平加速度是 $A-\ddot r q$。其水平动力学方程为
+\[
+\frac M2(A-\ddot r q)=Tq.
+\]
+代入上式并约去 $T$，得到
+\[
+q^2-6q+1=0.
+\]
+物理解为 $0<q<1$，故
+\[
+\boxed{\sin\theta=3-2\sqrt2},
+\qquad
+\theta\approx9.88^\circ.
+\]
+$m_3$ 的竖直方程为
+\[
+\frac M2\ddot r\cos\theta=\frac M2g-T\cos\theta.
+\]
+从而
+\[
+\frac TM=\frac{g}{(5-q)\cos\theta}.
+\]
+最后
+\result{$\displaystyle a_1=A=\frac{g(1-q)}{(5-q)\cos\theta},\quad q=3-2\sqrt2$，数值约为 $0.1742g$，方向向右。}
+\end{solution}
+
+\begin{problem}{第 6 题｜虫子沿阿基米德螺线爬过自由圆盘}
+质量为 $m$、半径为 $R$ 的均匀圆盘放在光滑水平桌面上。圆盘上刻有轨迹
+\[
+r=\frac{2R}{\pi}\theta.
+\]
+另一只质量同为 $m$ 的虫子从圆盘中心缓慢沿轨迹爬到边缘。
+
+（1）求圆盘总转角及方向；（2）求虫子在桌面惯性系中的轨迹。
+\FigBugDisk
+\end{problem}
+\begin{solution}
+系统无水平外力、无外力矩。设圆盘相对桌面的转角为 $\phi$，虫子相对圆盘极角为 $\theta$，虫子相对圆盘中心的矢量长度为 $r$。系统质心固定，因此圆盘中心和虫子相对系统质心的位置分别为 $-\vect r/2$ 与 $+\vect r/2$。
+
+系统关于质心的角动量为
+\[
+I_d\dot\phi+\frac{mr^2}{2}(\dot\phi+\dot\theta)=0,
+\qquad I_d=\frac12mR^2.
+\]
+所以
+\[
+\frac{\dd\phi}{\dd\theta}=-\frac{r^2}{R^2+r^2}.
+\]
+代入 $r=2R\theta/\pi$ 并从 $0$ 积到终点 $\theta_f=\pi/2$：
+\[
+\phi_f=-\frac\pi2\int_0^1\frac{u^2}{1+u^2}\dd u
+=-\frac\pi2\left(1-\frac\pi4\right).
+\]
+故圆盘转向与虫子相反，转角大小
+\[
+\boxed{\abs{\phi_f}=\frac{\pi(4-\pi)}8}.
+\]
+
+积分到任意 $\theta$ 得
+\[
+\phi(\theta)=-\theta+\frac\pi2\arctan\frac{2\theta}{\pi}.
+\]
+虫子在桌面系中相对系统质心的极径为
+\[
+\rho=\frac r2=\frac{R\theta}{\pi},
+\]
+极角为
+\[
+\psi=\theta+\phi=\frac\pi2\arctan\frac{2\theta}{\pi}.
+\]
+消去 $\theta$：
+\result{$\displaystyle \tan\frac{2\psi}{\pi}=\frac{2\rho}{R},\qquad 0\le\rho\le\frac R2.$}
+\end{solution}
+
+\begin{problem}{第 7 题｜圆弧内的双圆盘小车}
+半径为 $R$ 的圆弧固定在竖直面内。两个质量均为 $m$、半径均为 $r$ 的均匀圆盘，其圆心以长度 $R-r$、质量也为 $m$ 的均匀细杆连接。小车放在圆弧内，两个圆盘始终纯滚动。
+
+（1）求平衡附近微振动周期；（2）若整体角振幅为 $\theta_0$，求运动到平衡位置时每个圆盘受到的支持力 $N$ 与摩擦力 $f$。
+\FigTwoDiskCar
+\end{problem}
+\begin{solution}
+令
+\[
+d=R-r.
+\]
+图中两圆盘中心到圆心 $O$ 的距离和两中心间距都等于 $d$，故形成正三角形。杆中点以及整个系统质心均位于 $O$ 下方
+\[
+h=\frac{\sqrt3}{2}d
+\]
+处。以整体绕 $O$ 的角位移 $\theta$ 为广义坐标。
+
+两个圆盘的平动动能总和为 $md^2\dot\theta^2$。纯滚动给出每个圆盘自转角速度大小 $d\dot\theta/r$，两个圆盘自转动能总和为 $\frac12md^2\dot\theta^2$。杆关于 $O$ 的转动惯量
+\[
+I_{O,\rm rod}=m\left(\frac{d^2}{12}+h^2\right)=\frac56md^2,
+\]
+对应动能 $5md^2\dot\theta^2/12$。因此
+\[
+T=\frac12I_{\rm eff}\dot\theta^2,
+\qquad
+I_{\rm eff}=\frac{23}{6}md^2.
+\]
+势能为
+\[
+U=3mgh(1-\cos\theta).
+\]
+小振动角频率
+\[
+\Omega^2=\frac{3mgh}{I_{\rm eff}}
+=\frac{9\sqrt3g}{23d}.
+\]
+所以
+\[
+\boxed{T=2\pi\sqrt{\frac{23(R-r)}{9\sqrt3g}}}.
+\]
+
+从振幅 $\theta_0$ 到平衡位置，能量守恒给出
+\[
+\dot\theta_{\rm eq}^2
+=\frac{18\sqrt3g}{23d}(1-\cos\theta_0).
+\]
+在平衡位置，$\ddot\theta=0$，圆盘自转角加速度也为零。支持力和杆力均过圆盘中心，只有摩擦能提供自转力矩，因此此瞬间
+\[
+\boxed{f=0}.
+\]
+对整个系统写竖直方向方程：两个支持力的竖直分量之和为 $\sqrt3N$，系统质心向上加速度为 $h\dot\theta_{\rm eq}^2$，故
+\[
+\sqrt3N-3mg=3mh\dot\theta_{\rm eq}^2.
+\]
+代入上式，得到每个圆盘
+\result{$\displaystyle N=\sqrt3mg\left[1+\frac{27}{23}(1-\cos\theta_0)\right],\qquad f=0.$}
+\end{solution}
+
+\begin{problem}{第 8 题｜恒定固有加速度的星际旅行}
+某星座与地球相距 $D=200$ 光年。飞船从地球静止出发，前半程在自身瞬时共动惯性系中保持恒定固有加速度 $a_0$，到中点后反向为 $-a_0$，最终在星座处静止。
+
+（1）求加速阶段的 $x(t)$；（2）求地球系总用时与飞船固有时，代入 $a_0=\SI{1}{m/s^2}$。
+\end{problem}
+\begin{solution}
+恒定固有加速度的标准参数式为
+\[
+t=\frac c{a_0}\sinh\frac{a_0\tau}{c},
+\qquad
+x=\frac{c^2}{a_0}\left(\cosh\frac{a_0\tau}{c}-1\right).
+\]
+消去 $\tau$，得到
+\[
+\boxed{x(t)=\frac{c^2}{a_0}\left[\sqrt{1+\left(\frac{a_0t}{c}\right)^2}-1\right]}.
+\]
+令
+\[
+\chi=\frac{a_0D}{2c^2}.
+\]
+到中点时
+\[
+t_h=\frac c{a_0}\sqrt{\chi(\chi+2)},
+\qquad
+\tau_h=\frac c{a_0}\operatorname{arcosh}(1+\chi).
+\]
+前后两半对称，因此
+\[
+\boxed{t_{\rm Earth}=\frac{2c}{a_0}\sqrt{\chi(\chi+2)}},
+\qquad
+\boxed{\tau_{\rm ship}=\frac{2c}{a_0}\operatorname{arcosh}(1+\chi)}.
+\]
+取一儒略年 $=365.25$ 天，$D=200\,\mathrm{ly}$、$a_0=\SI{1}{m/s^2}$ 时
+\[
+\chi\approx10.5265,
+\qquad
+t_{\rm Earth}\approx218.17\ \text{年},
+\qquad
+\tau_{\rm ship}\approx59.58\ \text{年}.
+\]
+\end{solution}
