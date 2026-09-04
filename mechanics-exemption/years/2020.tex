@@ -1,0 +1,410 @@
+\chapter{2020 年力学免修考试回忆版}
+\noindent\yearbadge{2020}\quad\sourcebadge{手写回忆版}\qquad 原资料标注考试时长“150+15 min”。若题面缺字，本章会明确写出采用的重建版本。
+
+\begin{problem}{第 1 题｜中点铰接的双质点轻杆}
+两个质量均为 $m$ 的小球固定在长度为 $2l$ 的轻杆两端，杆中点与一条固定竖直轴光滑铰接。初速度如图：两端速度大小均为 $v_0$，方向分别垂直纸面向里、向外。
+
+（1）判断系统有哪些常用力学量守恒；（2）定性说明以后的运动。
+\FigHingedRod
+\end{problem}
+\begin{identification}
+原回忆图只写“中间光滑铰接”，未说明铰链自由度。本解按图中竖直线为固定转轴、杆与轴夹角由铰链结构保持不变的通常解释作答。
+\end{identification}
+\begin{solution}
+固定铰链可给系统冲量，因此总线动量一般不守恒；铰链反力对转轴的力矩为零，所以绕轴的角动量分量 $L_z$ 守恒。两端质量关于中点对称，总质心就在铰点；两球重力势能之和与方位角无关。光滑铰链不做功，故机械能、也即转动动能守恒。
+
+系统只有绕固定轴的方位角这一自由度。由
+\[
+L_z=I_z\dot\varphi=\text{常量},
+\qquad
+T=\frac12I_z\dot\varphi^2=\text{常量},
+\]
+可知 $\dot\varphi$ 保持常量。杆维持原有倾角，绕竖直铰链轴匀速转动，两端描出同轴圆周。
+\end{solution}
+
+\begin{problem}{第 2 题｜纵波的最密与最疏处}
+弹簧中传播正弦纵波，图中 $A$ 为最密处、$B$ 为最疏处。判断对应质点处在最大位移位置还是平衡位置，并说明理由。
+\FigLongWave
+\end{problem}
+\begin{solution}
+设纵向位移为
+\[
+\xi(x,t)=A\cos(kx-\omega t).
+\]
+小形变下密度变化满足
+\[
+\frac{\delta\rho}{\rho_0}=-\frac{\partial\xi}{\partial x}=kA\sin(kx-\omega t).
+\]
+最密、最疏处对应 $\partial\xi/\partial x$ 的正、负极值，此时
+\[
+\cos(kx-\omega t)=0,
+\]
+所以 $\xi=0$。因此 $A,B$ 处的质点都正经过各自平衡位置，而不是处在位移极值；同时它们的振动速度大小最大。
+\end{solution}
+
+\begin{problem}{第 3 题｜雨滴终端速度与斯托克斯公式的适用性}
+把雨滴近似为半径 $r$ 的球，用斯托克斯阻力
+\[
+f=6\pi\eta rv,
+\qquad \eta_{\rm air}=1.8\times10^{-5}\ \mathrm{Pa\,s}
+\]
+估算其终端速度，并判断结果是否合理。
+\end{problem}
+\begin{solution}
+终端速度时重力、浮力和阻力平衡：
+\[
+\frac43\pi r^3(\rho_w-\rho_a)g=6\pi\eta rv_t.
+\]
+因此
+\[
+\boxed{v_t=\frac{2(\rho_w-\rho_a)gr^2}{9\eta}}.
+\]
+关键不在代数，而在适用条件。斯托克斯阻力只适用于雷诺数
+\[
+\mathrm{Re}=\frac{2\rho_a rv_t}{\eta}\ll1
+\]
+的缓慢黏性流。举例说，若取典型毫米级雨滴 $r=\SI{1}{mm}$，上式给出约 $1.2\times10^2\ \mathrm{m/s}$，对应雷诺数远大于 1，明显不合理。真实毫米级雨滴的阻力主要接近 $v^2$ 规律，还会出现形变、尾流和湍动。
+\begin{selfcheck}
+原题只给符号半径 $r$，没有指定数值；毫米级计算只是说明模型失效的示例，不是擅自补入的题设。
+\end{selfcheck}
+\end{solution}
+
+\begin{problem}{第 4 题｜LHC 质子的速度}
+两束质子在大型强子对撞机中相向运动，每个质子总能量为 \SI{6.5}{TeV}。估算单个质子以及两质子相对运动一秒时，相比光少走的距离。
+\end{problem}
+\begin{solution}
+取 $m_pc^2\approx\SI{0.936}{GeV}$，有
+\[
+\gamma\approx6.94\times10^3,
+\qquad 1-\beta\approx\frac1{2\gamma^2}.
+\]
+单质子一秒的落后距离为
+\[
+\Delta x\approx\frac{c}{2\gamma^2}\approx\SI{3.1}{m}.
+\]
+两束质子的相对 Lorentz 因子为
+\[
+\gamma_{\rm rel}=2\gamma^2-1\approx9.64\times10^7,
+\]
+所以一秒落后
+\[
+\Delta x_{\rm rel}\approx\frac{c}{2\gamma_{\rm rel}^2}
+\approx1.6\times10^{-8}\ \mathrm m.
+\]
+一位有效数字分别为 $\SI{3}{m}$ 和 $2\times10^{-8}\ \mathrm m$。
+\end{solution}
+
+\begin{problem}{第 5 题｜匀速转动光滑杆上的小珠}
+一根水平光滑直杆绕竖直轴以恒定角速度 $\omega$ 转动。小珠质量为 $m$，初始距轴 $r_0$，且相对杆静止。求 $r$ 与杆转角 $\theta$ 的关系。
+\FigRotatingRodBead
+\end{problem}
+\begin{solution}
+在惯性系中，小珠极坐标角度为 $\theta=\omega t$。杆只给垂直于杆的约束力，径向无外力，因此
+\[
+m(\ddot r-r\omega^2)=0,
+\qquad \ddot r=\omega^2r.
+\]
+由 $r(0)=r_0$、$\dot r(0)=0$，
+\[
+r(t)=r_0\cosh\omega t.
+\]
+又因 $\theta=\omega t$，
+\result{$\displaystyle r=r_0\cosh\theta,\qquad \theta=\operatorname{arcosh}\frac r{r_0}=\ln\frac{r+\sqrt{r^2-r_0^2}}{r_0}$。}
+\end{solution}
+
+\begin{problem}{第 6 题｜粗糙斜面上的均匀绳与悬挂质量}
+线密度为 $\lambda$、总长为 $L$ 的均匀软绳全部放在倾角为 $\phi$ 的粗糙斜面上，绳的一端越过光滑固定杆 $A$，连接点质量 $m$。斜面与绳间摩擦因数
+\[
+\mu=\frac12\tan\phi.
+\]
+初始时点质量刚在杆外、竖直绳段长度可视为零，系统静止释放。
+
+（1）求点质量向下运动所需的临界质量 $m_0$；（2）取 $m=m_0$，点质量下降 $L$ 后求速度与加速度；（3）取 $m>m_0$，求从下降 $L/2$ 到下降 $L$ 所需时间。
+\FigRopeIncline
+\end{problem}
+\begin{identification}
+原手写回忆版的“最小/最大”和第三问不等号较模糊。由物理可解性及后续问法，本版采用“最小质量 $m_0$、第三问 $m>m_0$”的重建；若取相反不等号，系统从静止不会按题述方向运动。
+\end{identification}
+\begin{solution}
+设点质量已下降 $x$。此时竖直绳段长 $x$，斜面上的绳长 $L-x$，整个绳和点质量速度相同，总惯性质量为 $m+\lambda L$。
+
+沿运动方向的合力为
+\begin{align*}
+F(x)&=mg+\lambda xg
+-\lambda(L-x)g\sin\phi
+-\mu\lambda(L-x)g\cos\phi\\
+&=g\left[m-\frac32\lambda L\sin\phi
++\lambda x\left(1+\frac32\sin\phi\right)\right].
+\end{align*}
+初始恰能向下运动的阈值由 $F(0)=0$ 给出
+\[
+\boxed{m_0=\frac32\lambda L\sin\phi}.
+\]
+取 $m=m_0$。由于 $m_0+\lambda L=\lambda L(1+\frac32\sin\phi)$，有
+\[
+a(x)=\frac{F(x)}{m_0+\lambda L}=\frac{g}{L}x.
+\]
+由 $v\dd v/\dd x=a(x)$，
+\[
+v^2=\frac gLx^2.
+\]
+在 $x=L$ 时
+\[
+\boxed{v=\sqrt{gL},\qquad a=g}.
+\]
+严格说，临界状态从完全静止会停在原位；这里按题意取任意小的向下扰动。
+
+当 $m>m_0$ 时，定义
+\[
+a_0=\frac{g(m-m_0)}{m+\lambda L},
+\qquad
+b=\frac{g\lambda(1+\frac32\sin\phi)}{m+\lambda L}.
+\]
+则 $a(x)=a_0+bx$，从 $x=0$ 静止出发有
+\[
+v^2=2a_0x+bx^2.
+\]
+故
+\[
+\Delta t=\int_{L/2}^{L}\frac{\dd x}{\sqrt{2a_0x+bx^2}}
+=\frac{2}{\sqrt b}\left[
+\operatorname{arsinh}\sqrt{\frac{bL}{2a_0}}
+-\operatorname{arsinh}\sqrt{\frac{bL}{4a_0}}
+\right].
+\]
+\end{solution}
+
+\begin{problem}{第 7 题｜粗糙地面上的线轴收绳}
+质量为 $m$ 的线轴外半径为 $R$、内轴半径为 $r$，绕中心的转动惯量近似为 $I_C=mR^2/2$。绳从内轴下方水平引出，受恒定张力 $T$；地面静摩擦因数为 $\mu$，绳总长为 $L$。
+
+（1）在不打滑条件下，何种 $T$ 使收绳最快？（2）该条件下收完长度 $L$ 后线轴动能为多少？（3）给出可纯滚动收绳的 $T$ 范围。
+\FigSpool
+\end{problem}
+\begin{solution}
+取向右平动加速度为 $a$，逆时针角加速度为正，地面摩擦力代数值为 $f$。纯滚动条件为 $\alpha=-a/R$。动力学方程
+\[
+ma=T+f,
+\qquad
+I_C\alpha=rT+Rf.
+\]
+代入 $I_C=mR^2/2$，得到
+\[
+a=\frac{2T(R-r)}{3mR},
+\qquad
+f=-\frac{T(R+2r)}{3R}.
+\]
+摩擦向左。静摩擦条件 $|f|\le\mu mg$ 给出
+\[
+T\le T_{\max}=\frac{3\mu mgR}{R+2r}.
+\]
+收绳加速度与 $T$ 单调增加，因此最快时取 $T=T_{\max}$。
+
+线轴中心前进距离 $x$ 时，内轴下方切点的位移为
+\[
+\ell=x\left(1-\frac rR\right).
+\]
+收完 $L$ 时 $x=LR/(R-r)$。由功--能定理，静摩擦不做功，张力作用点沿力方向移动 $L$，故
+\[
+K=TL.
+\]
+\result{$\displaystyle T_{\rm fastest}=\frac{3\mu mgR}{R+2r}$，$\displaystyle K=T_{\rm fastest}L$，纯滚动收绳范围为 $\displaystyle 0<T\le\frac{3\mu mgR}{R+2r}$。}
+\end{solution}
+
+\begin{problem}{第 8 题｜过阻尼振动与临界阻尼极限}
+过阻尼振子位移写为
+\[
+x(t)=A_1\ee^{-(\beta+\sqrt{\beta^2-\omega_0^2})t}
++A_2\ee^{-(\beta-\sqrt{\beta^2-\omega_0^2})t}.
+\]
+已知 $x(0)=x_0,\dot x(0)=v_0$。
+
+（1）求 $A_1,A_2$；（2）求初速度条件，使物体越过平衡点后只发生一次“往返”；（3）证明 $\beta\to\omega_0^+$ 时得到临界阻尼形式。
+\end{problem}
+\begin{solution}
+令
+\[
+\delta=\sqrt{\beta^2-\omega_0^2},
+\qquad
+\lambda_1=\beta+\delta,
+\qquad
+\lambda_2=\beta-\delta.
+\]
+由
+\[
+A_1+A_2=x_0,
+\qquad
+-\lambda_1A_1-\lambda_2A_2=v_0
+\]
+得到
+\[
+A_1=\frac{-v_0-\lambda_2x_0}{\lambda_1-\lambda_2},
+\qquad
+A_2=\frac{v_0+\lambda_1x_0}{\lambda_1-\lambda_2}.
+\]
+若取 $x_0>0$，要让轨迹越过 $x=0$ 并从负侧返回，长时间主导项 $A_2\ee^{-\lambda_2t}$ 必须为负，因此
+\[
+v_0<-\lambda_1x_0.
+\]
+一般写作
+\[
+v_0x_0<-\lambda_1x_0^2.
+\]
+在这一条件下，过阻尼解至多有一个零点和一个回转点，不会持续振荡。
+
+当 $\delta\to0$ 时，把 $\ee^{\pm\delta t}$ 展开到一阶，或直接解重根特征方程，得到
+\[
+\boxed{x(t)=\bigl[x_0+(v_0+\beta x_0)t\bigr]\ee^{-\beta t}}.
+\]
+若写成 $(A_1't+A_2')\ee^{-\beta t}$，则
+\[
+A_1'=v_0+\beta x_0,
+\qquad A_2'=x_0.
+\]
+\end{solution}
+
+\begin{problem}{第 9 题｜光滑半圆槽中的长杆}
+半径为 $R$ 的光滑半圆槽固定，质量为 $m$、长度为 $2R$ 的均匀细杆一端在槽内圆弧上，杆同时搭在右端槽口 $P$ 上并伸出。以杆和水平线的夹角 $\theta$ 描述位置。
+
+（1）求平衡角 $\theta_0$；（2）求平衡附近微振动角频率与 $\sqrt{g/R}$ 的比值；（3）从 $\theta=\pi/3$ 静止释放，求 $\dot\theta(\theta)$ 以及杆质心加速度的大小和方向。
+\FigRodBowl
+\end{problem}
+\begin{identification}
+回忆图未用字母标出两个接触点。本解采用图形唯一自然的几何：杆的一端在圆弧上，杆身经过固定槽口 $P$。若正式原题的约束不同，第三问公式需相应调整。
+\end{identification}
+\begin{solution}
+令 $c=\cos\theta,s=\sin\theta$。从槽口 $P$ 沿杆到槽内端点的距离由圆方程给出
+\[
+AP=2R\cos\theta.
+\]
+杆质心相对 $P$ 的矢量可写为
+\[
+\vect r_C=R(1-2c)\vect e,
+\qquad
+\vect e=(c,s).
+\]
+于是
+\[
+\left|\frac{\dd\vect r_C}{\dd\theta}\right|^2=R^2(5-4c).
+\]
+杆绕质心的转动惯量为 $m(2R)^2/12=mR^2/3$，故动能
+\[
+T=\frac12mR^2\left(\frac{16}{3}-4c\right)\dot\theta^2.
+\]
+势能取为
+\[
+U=mgR(1-2c)s.
+\]
+平衡条件
+\[
+\frac{1}{mgR}\frac{\dd U}{\dd\theta}=2+c-4c^2=0
+\]
+在允许范围 $0\le\theta\le\pi/2$ 内给出
+\[
+\boxed{\cos\theta_0=\frac{1+\sqrt{33}}8}.
+\]
+且 $U''(\theta_0)=mgR\sqrt{33}\sin\theta_0>0$，所以稳定。有效惯量为
+\[
+J_0=mR^2\left(\frac{16}{3}-4\cos\theta_0\right),
+\]
+从而
+\[
+\boxed{
+\Omega^2=\frac gR\,
+\frac{\sqrt{33}\sin\theta_0}{16/3-4\cos\theta_0}}
+\quad(\Omega\approx1.255\sqrt{g/R}).
+\]
+
+从 $\theta_i=\pi/3$ 静止释放时，恰有 $U(\pi/3)=0$。能量守恒给出
+\[
+\boxed{
+\dot\theta^2=\frac{2g}{R}
+\frac{s(2c-1)}{16/3-4c}}.
+\]
+Lagrange 方程为
+\[
+\boxed{
+\ddot\theta=-\frac{2s\dot\theta^2+(g/R)(2+c-4c^2)}{16/3-4c}}.
+\]
+定义沿杆单位矢量 $\vect e=(c,s)$，法向单位矢量 $\vect e_\perp=(-s,c)$。由
+\[
+\frac{\dd\vect r_C}{\dd\theta}=R[2s\vect e+(1-2c)\vect e_\perp],
+\]
+\[
+\frac{\dd^2\vect r_C}{\dd\theta^2}=R[(4c-1)\vect e+4s\vect e_\perp]
+\]
+得到质心加速度
+\[
+\boxed{
+\vect a_C=R\left(\bigl[(4c-1)\dot\theta^2+2s\ddot\theta\bigr]\vect e
++\bigl[4s\dot\theta^2+(1-2c)\ddot\theta\bigr]\vect e_\perp\right)}.
+\]
+代入前两式即可得到只含 $\theta$ 的大小；其方向相对杆的夹角满足
+\[
+\tan\alpha=\frac{4s\dot\theta^2+(1-2c)\ddot\theta}{(4c-1)\dot\theta^2+2s\ddot\theta}.
+\]
+\end{solution}
+
+\begin{problem}{第 10 题｜Laplace--Runge--Lenz 矢量与水星近日点进动}
+对万有引力势 $V=-\alpha/r$，其中 $\alpha=GMm$，定义
+\[
+\vect B=m\vect v\times\vect L-m\alpha\unitv r.
+\]
+
+（1）证明 $\vect B$ 守恒，并由它导出轨道方程、半长轴和偏心率；（2）若势能增加小修正 $-A/r^3$，求 $\vect B$ 的转动及每周进动角，并说明广义相对论结果。
+\end{problem}
+\begin{solution}
+对纯平方反比力，$\dot{\vect L}=0$。又有
+\[
+\unitv r\times\vect L=-mr^2\dot{\unitv r},
+\qquad
+m\vect a=-\frac{\alpha}{r^2}\unitv r.
+\]
+所以
+\[
+\dot{\vect B}=m\vect a\times\vect L-m\alpha\dot{\unitv r}=0.
+\]
+取 $\theta$ 为 $\vect r$ 与 $\vect B$ 的夹角，点乘 $\unitv r$：
+\[
+B\cos\theta=\frac{L^2}{r}-m\alpha.
+\]
+于是
+\[
+\boxed{\frac1r=\frac{m\alpha}{L^2}(1+e\cos\theta)},
+\qquad e=\frac{B}{m\alpha}.
+\]
+另有
+\[
+B^2=m^2\alpha^2+2mEL^2,
+\]
+从而
+\[
+e^2=1+\frac{2EL^2}{m\alpha^2},
+\qquad
+p=\frac{L^2}{m\alpha}=a(1-e^2),
+\qquad
+a=-\frac{\alpha}{2E}.
+\]
+
+加入 $-A/r^3$ 后，附加力为 $-3A\unitv r/r^4$。开普勒部分仍相消，留下
+\[
+\boxed{\dot{\vect B}=\frac{3AL}{r^4}\unitv\theta}.
+\]
+因此 $\vect B$ 的瞬时方位角速度为
+\[
+\dot\varpi=\frac{(\vect B\times\dot{\vect B})_z}{B^2}
+=\frac{3AL\cos\theta}{Br^4}.
+\]
+用未扰动椭圆轨道在一周内积分，得到一阶进动
+\[
+\boxed{\Delta\varpi=\frac{6\pi m^2\alpha A}{L^4}}.
+\]
+广义相对论的一阶等效修正对应
+\[
+A=\frac{\alpha L^2}{m^2c^2},
+\]
+故
+\[
+\boxed{\Delta\varpi_{\rm GR}=\frac{6\pi GM}{a(1-e^2)c^2}}.
+\]
+代入水星轨道参数，约为每周 $0.1035''$，即每世纪约 $43''$。
+\end{solution}
