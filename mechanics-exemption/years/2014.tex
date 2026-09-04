@@ -1,0 +1,289 @@
+\chapter{2014 年力学免修考试}
+\noindent\yearbadge{2014}\quad\sourcebadge{正式扫描版}\qquad 共 10 题，题目覆盖非惯性系、流体、振动、刚体与相对论。
+
+\begin{problem}{第 1 题｜旋转参考系中的惯性力}
+参考系 $S'$ 相对惯性系以角速度 $\vect\omega=\omega\unitv z$ 逆时针匀速转动。质点质量为 $m$，在 $S'$ 中从 $(l,0)$ 出发，以恒定相对速度 $v_0=\omega l/\sqrt2$ 沿 $+y'$ 方向运动。求其到达 $(l,l)$ 时的离心力、科里奥利力和真实力大小。
+\FigRotFrame
+\end{problem}
+\begin{solution}
+在 $(l,l)$ 处，离转轴距离为 $\sqrt2l$，故离心力为
+\[
+\vect F_{\rm cf}=m\omega^2l(\unitv{x'}+\unitv{y'}),
+\qquad F_{\rm cf}=\sqrt2m\omega^2l.
+\]
+科里奥利力
+\[
+\vect F_{\rm Cor}=-2m\vect\omega\times\vect v'
+=-2m\omega\unitv z\times(v_0\unitv{y'})
+=2m\omega v_0\unitv{x'},
+\]
+所以
+\[
+F_{\rm Cor}=2m\omega\frac{\omega l}{\sqrt2}=\sqrt2m\omega^2l.
+\]
+质点在 $S'$ 中做匀速直线运动，$\vect a'=0$；欧拉力也为零。因此真实力恰为两种惯性力之和的反向：
+\[
+\vect F=-m\omega^2l\bigl[(1+\sqrt2)\unitv{x'}+\unitv{y'}\bigr].
+\]
+\result{$\displaystyle F_{\rm cf}=F_{\rm Cor}=\sqrt2m\omega^2l,\qquad F=m\omega^2l\sqrt{4+2\sqrt2}.$}
+\end{solution}
+
+\begin{problem}{第 2 题｜垂直轴定理与薄球壳转动惯量}
+先证明平面薄片的垂直轴定理，再据此思路求质量为 $M$、半径为 $R$ 的均匀薄球壳绕任一直径的转动惯量。
+\end{problem}
+\begin{solution}
+对位于 $xy$ 平面的薄片，任一质量元到三条坐标轴的距离平方分别为
+\[
+r_x^2=y^2,
+\qquad r_y^2=x^2,
+\qquad r_z^2=x^2+y^2.
+\]
+逐元积分立即得到
+\[
+\boxed{I_z=I_x+I_y}.
+\]
+对薄球壳，球对称性给出 $I_x=I_y=I_z=I$。每个质量元满足
+\[
+(y^2+z^2)+(z^2+x^2)+(x^2+y^2)=2R^2,
+\]
+故
+\[
+I_x+I_y+I_z=\int 2R^2\dd m=2MR^2.
+\]
+所以
+\result{$\displaystyle I=\frac23MR^2.$}
+\end{solution}
+
+\begin{problem}{第 3 题｜伯努利方程与旋转球的轨迹}
+写出伯努利方程及其成立条件。三个相同小球以相同初速度水平抛出：球 1 不自转，球 2、球 3 具有图示的相反自转。定性画出三球落地前的质心轨迹。
+\FigMagnus
+\end{problem}
+\begin{solution}
+对稳恒、不可压缩、无黏流动，沿同一条流线有
+\[
+\boxed{p+\frac12\rho v^2+\rho gz=\text{常量}}.
+\]
+若流动还无旋，则该常量可在整个流场中相同。真实空气具有黏性，旋转球通过边界层带动附近气流，使球两侧流速不同；借助伯努利压强差可解释 Magnus 力。
+
+无自转的球 1 近似走普通抛物线。回旋（球顶表面相对空气向后运动）的球受到向上的 Magnus 力，轨迹高于球 1；上旋球受到向下的 Magnus 力，轨迹低于球 1。图示中的球 2、球 3 分别对应这两种情况。
+\end{solution}
+
+\begin{problem}{第 4 题｜欠阻尼振动}
+求方程
+\[
+\ddot x+2\beta\dot x+\omega_0^2x=0
+\]
+在欠阻尼情况下的通解，并画出典型 $x-t$ 曲线。
+\end{problem}
+\begin{solution}
+特征方程为
+\[
+\lambda^2+2\beta\lambda+\omega_0^2=0.
+\]
+欠阻尼条件是 $\beta<\omega_0$，令
+\[
+\omega_d=\sqrt{\omega_0^2-\beta^2},
+\]
+则根为 $-\beta\pm i\omega_d$。通解可写成
+\[
+\boxed{x(t)=\ee^{-\beta t}\bigl(C_1\cos\omega_dt+C_2\sin\omega_dt\bigr)
+=A\ee^{-\beta t}\cos(\omega_dt+\varphi)}.
+\]
+曲线在两条包络 $x=\pm A\ee^{-\beta t}$ 之间振荡，振幅指数衰减，而周期为 $2\pi/\omega_d$。
+\begin{center}
+\begin{tikzpicture}[scale=.82]
+\draw[axis](0,0)--(7,0)node[right]{$t$};\draw[axis](0,-1.8)--(0,1.8)node[above]{$x$};
+\draw[Indigo,line width=1.1pt,samples=180,smooth,domain=0:6.7]plot(\x,{1.35*exp(-.22*\x)*cos(deg(3.3*\x))});
+\draw[dashed,Teal,domain=0:6.7]plot(\x,{1.35*exp(-.22*\x)});\draw[dashed,Teal,domain=0:6.7]plot(\x,{-1.35*exp(-.22*\x)});
+\end{tikzpicture}
+\end{center}
+\end{solution}
+
+\begin{problem}{第 5 题｜固体中的纵波能量密度}
+一维纵波位移为
+\[
+\xi(x,t)=A\cos\left[\omega\left(t-\frac{x}{u}\right)\right],
+\qquad u=\sqrt{\frac{E}{\rho}},
+\]
+其中 $E$ 为杨氏模量，$\rho$ 为密度。求瞬时能量密度及周期平均值。
+\end{problem}
+\begin{solution}
+记相位 $\Phi=\omega(t-x/u)$。单位体积动能为
+\[
+w_k=\frac12\rho\dot\xi^2
+=\frac12\rho A^2\omega^2\sin^2\Phi.
+\]
+纵向应变为 $\partial\xi/\partial x=(A\omega/u)\sin\Phi$，弹性势能密度
+\[
+w_p=\frac12E\left(\frac{\partial\xi}{\partial x}\right)^2
+=\frac12E\frac{A^2\omega^2}{u^2}\sin^2\Phi
+=\frac12\rho A^2\omega^2\sin^2\Phi.
+\]
+故动能与势能在每一点、每一时刻相等，
+\result{$\displaystyle w=w_k+w_p=\rho A^2\omega^2\sin^2\Phi,\qquad \overline w=\frac12\rho A^2\omega^2.$}
+\end{solution}
+
+\begin{problem}{第 6 题｜岸上拉船}
+岸高为 $h$，绳经岸边定滑轮连接小船。当绳与水面夹角为 $\phi$ 时，岸上人沿水平面远离岸边运动，速度和加速度大小分别为 $v,a$。求此时小船向岸运动的速度和加速度。
+\FigBoat
+\end{problem}
+\begin{solution}
+设滑轮到船的斜绳长为 $s$，船到岸的水平距离为 $x$，则
+\[
+s^2=x^2+h^2,
+\qquad \cos\phi=\frac{x}{s}.
+\]
+人走出的水平绳长以速率 $v$ 增加，因此 $\dot s=-v$。于是
+\[
+\dot s=\frac{x}{s}\dot x=\cos\phi\,\dot x=-v.
+\]
+船向岸速度 $V=-\dot x$ 为
+\[
+V=v\sec\phi.
+\]
+再求导。由 $h=s\sin\phi$，
+\[
+\dot\phi=\frac{v\sin^2\phi}{h\cos\phi}.
+\]
+因此
+\[
+A=\dot V=a\sec\phi+v\sec\phi\tan\phi\,\dot\phi
+=a\sec\phi+\frac{v^2}{h}\tan^3\phi.
+\]
+\result{$\displaystyle V=v\sec\phi,\qquad A=a\sec\phi+\frac{v^2}{h}\tan^3\phi$，方向均指向岸边。}
+\end{solution}
+
+\begin{problem}{第 7 题｜实验室系中的弹性斜碰}
+质量为 $m$、初速度为 $v_0\unitv x$ 的粒子与质量为 $\alpha m$、初始静止的靶粒子发生弹性碰撞。
+
+（1）一维正碰时，何种 $\alpha$ 使靶粒子获得的动能最大？
+
+（2）斜碰后靶粒子速度与 $v_0$ 的夹角 $\beta$ 的上限是多少？
+
+（3）用 $m,v_0,\alpha,\beta$ 表示靶粒子的动能。
+\end{problem}
+\begin{solution}
+设靶粒子碰后速度大小为 $V$、方向与 $x$ 轴夹角为 $\beta$；入射粒子碰后速度为 $\vect u$。动量守恒给出
+\[
+\vect u=v_0\unitv x-\alpha\vect V.
+\]
+代入能量守恒 $v_0^2=u^2+\alpha V^2$，得到
+\[
+2v_0V\cos\beta=(1+\alpha)V^2,
+\]
+故非平凡碰撞时
+\[
+V=\frac{2v_0\cos\beta}{1+\alpha}.
+\]
+必须有 $\cos\beta\ge0$，所以 $0\le\beta<\pi/2$；极限上限为 $\pi/2$，此时 $V\to0$。
+
+靶粒子动能为
+\[
+K_t=\frac12\alpha mV^2
+=\frac{2\alpha m v_0^2\cos^2\beta}{(1+\alpha)^2}.
+\]
+正碰时 $\beta=0$。函数 $\alpha/(1+\alpha)^2$ 在 $\alpha=1$ 处最大。
+\result{$\alpha=1$；$\beta_{\max}=\pi/2$；$\displaystyle K_t=\frac{2\alpha m v_0^2\cos^2\beta}{(1+\alpha)^2}$。}
+\end{solution}
+
+\begin{problem}{第 8 题｜由开普勒定律确定中心力幂次}
+质量 $M\gg m$ 的两质点相互作用力大小写作 $F=GMm\,r^{\alpha}$。利用开普勒第一、第二定律确定指数 $\alpha$。
+\end{problem}
+\begin{solution}
+第二定律“等面积定律”说明单位时间扫过面积恒定，因而角动量守恒，作用力必为中心力。第一定律给出以力心为焦点的圆锥曲线：
+\[
+u(\theta)=\frac1r=\frac{1+e\cos\theta}{p}.
+\]
+于是 $u''+u=1/p$。Binet 公式为
+\[
+F_r=-\frac{L^2}{m}u^2(u''+u)
+=-\frac{L^2}{mp}\frac1{r^2}.
+\]
+因此力随距离按平方反比衰减。
+\result{$\boxed{\alpha=-2}$。}
+\end{solution}
+
+\begin{problem}{第 9 题｜光滑地面上的均匀半圆柱}
+质量为 $m$、半径为 $R$ 的均匀实心半圆柱以曲面置于光滑水平地面。$O$ 为截面圆心，$C$ 为质心。
+
+（1）求 $z_C=OC$；（2）求过 $C$ 且垂直截面的转动惯量 $I_C$；（3）水平冲量 $J$ 作用在截面边缘上、作用点高度为 $R/2$，求冲量后瞬间质心加速度；（4）忽略翻倒前可能离地，求不翻倒的最大冲量；（5）$J\to0$ 时求小振动周期。
+\FigSemicylinder
+\end{problem}
+\begin{solution}
+半圆面积的质心距直径
+\[
+z_C=\frac{4R}{3\pi}.
+\]
+半圆截面对圆心的极转动惯量仍为 $I_O=\frac12mR^2$。平行轴定理给出
+\[
+I_C=I_O-mz_C^2
+=mR^2\left(\frac12-\frac{16}{9\pi^2}\right).
+\]
+初态时质心高度为 $R-z_C$。冲量作用点高度 $R/2$，相对质心的竖直力臂为
+\[
+d=\frac R2-z_C>0.
+\]
+因此冲量后
+\[
+v_C=\frac Jm,
+\qquad
+\omega_0=\frac{Jd}{I_C}.
+\]
+地面光滑，质心水平加速度为零。几何约束给出 $y_C=R-z_C\cos\theta$，在 $\theta=0$ 瞬间
+\[
+a_C=\ddot y_C=z_C\omega_0^2,
+\]
+方向竖直向上。
+
+半圆柱翻到平面边缘的临界姿态为 $\theta=\pi/2$，质心势能增加 $mgz_C$。临界条件
+\[
+\frac12I_C\omega_0^2=mgz_C
+\]
+给出
+\[
+J_{\max}=\frac{\sqrt{2mgz_CI_C}}{R/2-z_C}.
+\]
+小振动时，$y_C=R-z_C+\frac12z_C\theta^2+\cdots$，而竖直平动动能是更高阶小量，因此
+\[
+I_C\ddot\theta+mgz_C\theta=0.
+\]
+\result{$\displaystyle z_C=\frac{4R}{3\pi}$，$\displaystyle I_C=mR^2(\frac12-\frac{16}{9\pi^2})$；$\displaystyle a_C=z_C(Jd/I_C)^2$ 向上；$\displaystyle J_{\max}=\frac{\sqrt{2mgz_CI_C}}d$；$\displaystyle T=2\pi\sqrt{\frac{I_C}{mgz_C}}$。}
+\end{solution}
+
+\begin{problem}{第 10 题｜两次非共线 Lorentz 变换}
+惯性系 $S_1$ 相对 $S$ 沿 $-x$ 方向以速度 $v_1$ 运动；$S_2$ 相对 $S$ 沿 $+y$ 方向以速度 $v_2$ 运动。三系原点在零时刻重合。
+
+（1）求 $S_1$ 中 $S_2$ 的速度分量；（2）求 $S_2$ 中 $S_1$ 的速度分量，并说明相对速率的一致性。原题还要求画出同时面上另一坐标系轴线的投影方向。
+\FigRelFrames
+\end{problem}
+\begin{solution}
+设
+\[
+\gamma_1=\frac1{\sqrt{1-v_1^2/c^2}},
+\qquad
+\gamma_2=\frac1{\sqrt{1-v_2^2/c^2}}.
+\]
+从 $S$ 到 $S_1$ 是沿 $x$ 方向速度 $-v_1$ 的变换。把 $S_2$ 的速度 $(0,v_2)$ 代入速度变换式，得到
+\[
+\boxed{u_{21,x_1}=v_1,\qquad u_{21,y_1}=\frac{v_2}{\gamma_1}}.
+\]
+从 $S$ 到 $S_2$ 是沿 $y$ 方向速度 $+v_2$ 的变换；把 $S_1$ 的速度 $(-v_1,0)$ 代入，得到
+\[
+\boxed{u_{12,x_2}=-\frac{v_1}{\gamma_2},\qquad u_{12,y_2}=-v_2}.
+\]
+两者速率平方均为
+\[
+w^2=v_1^2+v_2^2-\frac{v_1^2v_2^2}{c^2},
+\]
+符合相对速率应相同的要求。
+
+轴线投影体现相对同时性的差异。在 $t_1=0$ 截面上，$y_2$ 轴与 $y_1$ 轴重合，而 $x_2$ 轴满足
+\[
+\tan\alpha=-\gamma_1\frac{v_1v_2}{c^2}.
+\]
+在 $t_2=0$ 截面上，$x_1$ 轴与 $x_2$ 轴重合，而 $y_1$ 轴相对 $y_2$ 的横向倾斜满足
+\[
+\frac{x_2}{y_2}=-\gamma_2\frac{v_1v_2}{c^2}.
+\]
+这并非普通欧氏转动，而是两次非共线 Lorentz 变换造成的同时面倾斜。
+\end{solution}
