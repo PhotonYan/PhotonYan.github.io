@@ -1,0 +1,235 @@
+\chapter{2013 年力学免修考试}
+\noindent\yearbadge{2013}\quad\sourcebadge{正式扫描版}\qquad 共 6 题。原卷中的少量字符识别错误已按公式与图形校正。
+
+\begin{problem}{第 1 题｜极坐标轨道上的速度与加速度（15 分）}
+质量为 $m$ 的质点在平面内运动，轨道方程为
+\[
+r=\frac{p}{1+e\cos\theta}.
+\]
+运动过程中质点相对原点的角动量守恒，大小为 $L$。求速度分量 $v_r,v_\theta$ 和加速度分量 $a_r,a_\theta$ 随 $r$ 的表达式。
+\end{problem}
+\begin{solution}
+角动量守恒给出
+\[
+r^2\dot\theta=\frac{L}{m},\qquad v_\theta=r\dot\theta=\frac{L}{mr}.
+\]
+由 $p/r=1+e\cos\theta$ 对时间求导，
+\[
+-\frac{p}{r^2}\dot r=-e\sin\theta\,\dot\theta,
+\]
+所以
+\[
+v_r=\dot r=\frac{eL}{mp}\sin\theta
+=\pm\frac{L}{mp}\sqrt{e^2-\left(\frac{p}{r}-1\right)^2}.
+\]
+正负号分别对应远离、靠近原点。令 $u=1/r$，则
+\[
+u=\frac{1+e\cos\theta}{p},\qquad u''+u=\frac1p.
+\]
+Binet 公式给出径向加速度
+\[
+a_r=-\left(\frac{L}{m}\right)^2u^2(u''+u)
+=-\frac{L^2}{m^2pr^2}.
+\]
+角动量守恒又等价于 $a_\theta=0$。因此
+\result{$\displaystyle v_r=\pm\frac{L}{mp}\sqrt{e^2-(p/r-1)^2},\quad v_\theta=\frac{L}{mr},\quad a_r=-\frac{L^2}{m^2pr^2},\quad a_\theta=0.$}
+\end{solution}
+
+\begin{problem}{第 2 题｜球壳受斜向冲量（15 分）}
+质量为 $m$、半径为 $R$ 的刚性匀质薄球壳静置在刚性地面上，绕球心的转动惯量为 $I_C=2mR^2/3$。球壳与地面间的动摩擦因数和最大静摩擦因数均为 $\mu$。某外部冲量作用在与球心等高的球壳侧点上，其方向指向球壳与地面的接触点，大小为 $I$，作用时间可忽略。
+
+求：（1）冲量结束后瞬间球心速度 $v_0$ 与角速度 $\omega_0$；（2）达到稳定运动状态后的 $v,\omega$。
+\FigImpulseSphere
+\end{problem}
+\begin{solution}
+冲量与水平、竖直方向均成 $45^\circ$。记其水平分量大小为
+\[
+J=\frac{I}{\sqrt2}.
+\]
+竖直向下分量由地面的法向冲量抵消，所以法向冲量也为 $J$。若全过程可保持静止接触，所需摩擦冲量为 $J$，因此只有 $\mu\ge1$ 时才做得到，此时
+\[
+v_0=\omega_0=0.
+\]
+若 $0\le\mu<1$，冲击阶段发生滑动，摩擦冲量为 $\mu J$，方向与水平分量相反。于是
+\[
+m v_0=(1-\mu)J,
+\qquad
+I_C\omega_0=R(1-\mu)J,
+\]
+即
+\[
+v_0=\frac{(1-\mu)I}{\sqrt2m},
+\qquad
+\omega_0=\frac{3(1-\mu)I}{2\sqrt2mR}.
+\]
+这两个速度使接触点沿同一方向滑动。冲量结束后，动摩擦满足
+\[
+\dot v=-\mu g,
+\qquad
+\dot\omega=-\frac{\mu mgR}{I_C}=-\frac{3\mu g}{2R}.
+\]
+平动和转动的停止时间恰好相等：
+\[
+\frac{v_0}{\mu g}=\frac{\omega_0}{3\mu g/(2R)}.
+\]
+故最终球壳完全停止。也可直接取接触点为矩心：外冲量作用线和地面冲量均通过接触点，关于该点的总角动量始终为零，而非零纯滚动不可能满足这一点。
+\result{若 $\mu\ge1$，冲量后即有 $v_0=\omega_0=0$；若 $\mu<1$，上式给出瞬时速度，但最终仍有 $v=\omega=0$。}
+\end{solution}
+
+\begin{problem}{第 3 题｜转动圆环上的小球（15 分）}
+半径为 $R$ 的光滑圆环绕其竖直直径以恒定角速度 $\omega_0$ 转动，环上套有一小球。已知 $R\omega_0^2=2g$。确定小球的平衡位置及稳定性；对稳定平衡点求微振动角频率。
+\FigHoop
+\end{problem}
+\begin{solution}
+令 $\theta$ 从竖直向下方向量起。在随环转动的参考系中，有效势能为
+\[
+U_{\rm eff}=-mgR\cos\theta-\frac12m\omega_0^2R^2\sin^2\theta.
+\]
+平衡条件为
+\[
+U'_{\rm eff}=mR\sin\theta\bigl(g-R\omega_0^2\cos\theta\bigr)=0.
+\]
+因此
+\[
+\theta=0,\ \pi,
+\qquad\text{或}\qquad
+\cos\theta=\frac{g}{R\omega_0^2}=\frac12,
+\]
+即还有 $\theta=\pm\pi/3$。二阶导数判断表明，$0,\pi$ 均不稳定，$\pm\pi/3$ 稳定。
+
+在稳定点 $\theta_0$ 附近，
+\[
+mR^2\ddot\eta+U''_{\rm eff}(\theta_0)\eta=0,
+\]
+从而
+\[
+\Omega^2=\omega_0^2\sin^2\theta_0=\frac34\omega_0^2=\frac{3g}{2R}.
+\]
+\result{$\theta=\pm\pi/3$ 为稳定平衡，微振动角频率 $\displaystyle \Omega=\frac{\sqrt3}{2}\omega_0=\sqrt{\frac{3g}{2R}}$。}
+\end{solution}
+
+\begin{problem}{第 4 题｜槽、双物块与弹簧的分段运动（20 分）}
+质量为 $2m$ 的光滑水平槽放在光滑水平地面上，槽内有质量均为 $m$ 的小物块 $A,B$，二者以劲度系数为 $k$、原长为 $2L_0$ 的轻弹簧相连。初始时 $A$ 紧靠槽左壁，弹簧被缓慢压缩到长度 $L_0$，并保持槽不动；随后同时撤去外力。
+
+（1）槽足够长时，经过多久 $A$ 相对槽的速度第一次达到最大？
+
+（2）若恰在该时刻 $B$ 接触槽右壁，求槽长 $L$。
+
+（3）此后能否形成周期运动？若能，求周期。
+\FigCartSpring
+\end{problem}
+\begin{solution}
+\textbf{阶段一：$A$ 贴左壁。} 槽和 $A$ 共同运动，等效质量为 $3m$，与质量 $m$ 的 $B$ 构成二体弹簧系统。约化质量 $3m/4$，故
+\[
+\Omega=\sqrt{\frac{k}{3m/4}}=2\sqrt{\frac{k}{3m}}.
+\]
+若 $q$ 为弹簧长度，则
+\[
+q(t)=2L_0-L_0\cos\Omega t.
+\]
+当弹簧第一次恢复原长时，$A$ 对左壁压力为零并脱离：
+\[
+t_1=\frac{\pi}{2\Omega},\qquad \dot q(t_1)=L_0\Omega.
+\]
+由总动量为零，脱离瞬间
+\[
+v_A=v_{\rm 槽}=-\frac{L_0\Omega}{4},
+\qquad
+v_B=\frac{3L_0\Omega}{4}.
+\]
+
+\textbf{阶段二：两物块均不碰壁。} 槽保持匀速，$A,B$ 的相对振动频率为
+\[
+\omega=\sqrt{\frac{k}{m/2}}=\sqrt{\frac{2k}{m}}.
+\]
+令 $\tau=t-t_1$，则
+\[
+q-2L_0=\frac{L_0\Omega}{\omega}\sin\omega\tau,
+\qquad
+v_{A/{\rm 槽}}=\frac{L_0\Omega}{2}(1-\cos\omega\tau).
+\]
+第一次最大值发生在 $\omega\tau=\pi$，所以
+\[
+t_{\max}=\frac{\pi}{2\Omega}+\frac{\pi}{\omega}
+=\pi\sqrt{\frac{m}{k}}\left(\frac{\sqrt3}{4}+\frac1{\sqrt2}\right).
+\]
+在该时刻，$B$ 相对槽左壁的位置为
+\[
+2L_0+\frac{\pi L_0\Omega}{2\omega},
+\]
+故
+\[
+L=L_0\left(2+\frac{\pi}{\sqrt6}\right).
+\]
+此时 $B$ 与右壁速度相同，接触没有冲量和能量损失；以后过程左右对称。一个完整周期包含两段贴壁运动和两段自由相对运动：
+\[
+T=\frac{2\pi}{\Omega}+\frac{2\pi}{\omega}
+=\pi\sqrt{\frac{m}{k}}(\sqrt3+\sqrt2).
+\]
+\result{$\displaystyle t_{\max}=\pi\sqrt{m/k}(\sqrt3/4+1/\sqrt2)$；$\displaystyle L=L_0(2+\pi/\sqrt6)$；系统可周期运动，$\displaystyle T=\pi\sqrt{m/k}(\sqrt3+\sqrt2)$。}
+\end{solution}
+
+\begin{problem}{第 5 题｜非共线方向的尺缩（15 分）}
+惯性系 $S$ 中有两根细杆：$A_1B_1$ 平行于 $x$ 轴，$A_2B_2$ 平行于 $y$ 轴；两杆以同一速度 $\vect v=v_1\unitv x+v_2\unitv y$ 匀速运动。$S$ 测得两杆长度分别为 $l_1,l_2$。两杆各自静止长度为 $L_1,L_2$。
+
+（1）求 $L_1/L_2$；（2）两杆彼此测量对方长度时，求对应长度之比。
+\FigMovingRods
+\end{problem}
+\begin{solution}
+设
+\[
+\gamma=\frac1{\sqrt{1-(v_1^2+v_2^2)/c^2}}.
+\]
+对一根在 $S$ 中的同时空间分离矢量 $\vect l$，反变换到物体静止系后，静止长度满足
+\[
+L^2=l^2+\gamma^2\frac{(\vect v\cdot\vect l)^2}{c^2}.
+\]
+对第一根杆 $\vect l_1=l_1\unitv x$，
+\[
+L_1=l_1\sqrt{1+\gamma^2\frac{v_1^2}{c^2}}
+=l_1\sqrt{\frac{1-v_2^2/c^2}{1-(v_1^2+v_2^2)/c^2}}.
+\]
+同理
+\[
+L_2=l_2\sqrt{\frac{1-v_1^2/c^2}{1-(v_1^2+v_2^2)/c^2}}.
+\]
+因此
+\[
+\frac{L_1}{L_2}
+=\frac{l_1}{l_2}\sqrt{\frac{1-v_2^2/c^2}{1-v_1^2/c^2}}.
+\]
+两杆具有相同四速度，彼此静止，所以每根杆测得另一根杆的都是其静止长度。第二问的比值与第一问相同。
+\result{$\displaystyle \frac{L_1}{L_2}=\frac{l_1}{l_2}\sqrt{\frac{1-v_2^2/c^2}{1-v_1^2/c^2}}$，彼此测量时仍为该比值。}
+\end{solution}
+
+\begin{problem}{第 6 题｜由粒子衰变导出光的相对论多普勒公式（20 分）}
+有静止质量的粒子 $X$ 相对惯性系 $S$ 以速度 $u$ 匀速运动，在某时刻衰变并发出一个光子，光子被 $S$ 系中的静止探测器接收。光子方向与 $\vect u$ 的夹角为 $\theta$。设 $u=0$ 时光子频率为 $\nu_0$，用能量、动量守恒推导探测器测得的频率 $\nu$。
+\FigDoppler
+\end{problem}
+\begin{solution}
+设母粒子和余下粒子的静止质量分别为 $M,m'$。母粒子的四动量为 $P$，光子四动量为 $K$。由
+\[
+(P-K)^2=m'^2c^2,
+\qquad P^2=M^2c^2,
+\qquad K^2=0,
+\]
+得到
+\[
+M^2c^2-m'^2c^2=2P\cdot K.
+\]
+在 $S$ 系中，$P=(\gamma Mc,\gamma M\vect u)$，而
+\[
+K=\left(\frac{h\nu}{c},\frac{h\nu}{c}\unitv n\right),
+\qquad \unitv n\cdot\vect u=u\cos\theta.
+\]
+故
+\[
+P\cdot K=\gamma Mh\nu(1-\beta\cos\theta),
+\qquad \beta=\frac{u}{c}.
+\]
+当 $u=0$ 时，同一个不变量等于 $2Mh\nu_0$，于是
+\[
+\gamma\nu(1-\beta\cos\theta)=\nu_0.
+\]
+\result{$\displaystyle \nu=\frac{\nu_0}{\gamma(1-\beta\cos\theta)},\qquad \gamma=(1-\beta^2)^{-1/2}.$}
+\end{solution}
