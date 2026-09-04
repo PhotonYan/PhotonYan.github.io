@@ -1,0 +1,197 @@
+% !TEX program = xelatex
+\documentclass[UTF8,11pt,a4paper,openany]{ctexbook}
+
+\usepackage[a4paper,top=22mm,bottom=23mm,left=22mm,right=22mm,headheight=15pt]{geometry}
+\usepackage{fontspec}
+
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{siunitx}
+\sisetup{per-mode=symbol,detect-all}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=2em}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,angles,quotes,patterns,decorations.pathmorphing,decorations.markings,positioning,intersections,backgrounds,shapes.geometric}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{setspace}
+\usepackage{needspace}
+\usepackage{caption}
+
+\definecolor{Navy}{HTML}{17233C}
+\definecolor{Indigo}{HTML}{4D4AC7}
+\definecolor{Violet}{HTML}{7667E8}
+\definecolor{Teal}{HTML}{0E8A86}
+\definecolor{Gold}{HTML}{D89B2B}
+\definecolor{Coral}{HTML}{D65B5B}
+\definecolor{Mist}{HTML}{F4F5FA}
+\definecolor{PaleBlue}{HTML}{EEF1FF}
+\definecolor{PaleTeal}{HTML}{EAF8F6}
+\definecolor{PaleGold}{HTML}{FFF7E7}
+\definecolor{LineGray}{HTML}{D8DCE8}
+\definecolor{TextGray}{HTML}{4B5266}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=Indigo,
+  urlcolor=Teal,
+  citecolor=Teal,
+  pdftitle={力学免修历年真题与详细解答（2013--2025）},
+  pdfauthor={电子整理版},
+  pdfsubject={力学免修考试历年题、TikZ重绘与详细解答}
+}
+
+\pagestyle{fancy}
+\setlength{\headheight}{23pt}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{TextGray}\leftmark}
+\fancyhead[R]{\small\sffamily\color{TextGray}力学免修历年真题与详解}
+\fancyfoot[C]{\small\sffamily\color{TextGray}\thepage/\pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{LineGray}\leaders\hrule height \headrulewidth\hfill}}
+
+\ctexset{
+  chapter={format=\Huge\bfseries\sffamily\color{Navy},beforeskip=0pt,afterskip=18pt},
+  section={format=\Large\bfseries\sffamily\color{Navy}},
+  subsection={format=\large\bfseries\sffamily\color{Indigo}}
+}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+\linespread{1.16}
+\emergencystretch=3em
+\allowdisplaybreaks[3]
+\numberwithin{equation}{chapter}
+
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\unitv}[1]{\hat{\bm{#1}}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\diff}[2]{\frac{\dd #1}{\dd #2}}
+\newcommand{\difff}[2]{\frac{\dd^2 #1}{\dd #2^2}}
+\newcommand{\yearbadge}[1]{\tikz[baseline=(Y.base)]\node[fill=Indigo,text=white,rounded corners=2pt,inner xsep=7pt,inner ysep=2.5pt,font=\sffamily\bfseries] (Y) {#1};}
+\newcommand{\sourcebadge}[1]{\tikz[baseline=(S.base)]\node[draw=Teal,text=Teal,rounded corners=2pt,inner xsep=5pt,inner ysep=1.5pt,font=\scriptsize\sffamily\bfseries] (S) {#1};}
+\newcommand{\result}[1]{\par\smallskip\noindent\begin{tcolorbox}[colback=PaleGold,colframe=Gold,boxrule=.55pt,arc=1.5mm,left=3mm,right=3mm,top=1.5mm,bottom=1.5mm]\textbf{结论：}#1\end{tcolorbox}}
+
+\newtcolorbox{problem}[1]{
+  enhanced,breakable,colback=white,colframe=Indigo,
+  boxrule=0.9pt,arc=2.5mm,left=5mm,right=5mm,top=3.2mm,bottom=3.2mm,
+  title={#1},fonttitle=\large\bfseries\sffamily,coltitle=Navy,
+  attach boxed title to top left={xshift=4mm,yshift*=-2.5mm},
+  boxed title style={colback=PaleBlue,colframe=Indigo,boxrule=0.8pt,arc=2mm,left=3mm,right=3mm,top=1.5mm,bottom=1.5mm},
+  before skip=8pt,after skip=8pt
+}
+\newtcolorbox{solution}{
+  enhanced,breakable,colback=Mist,colframe=Teal,
+  boxrule=0.8pt,arc=2.5mm,left=5mm,right=5mm,top=3.2mm,bottom=3.2mm,
+  title={详细解答},fonttitle=\bfseries\sffamily,coltitle=white,
+  attach boxed title to top left={xshift=4mm,yshift*=-2.5mm},
+  boxed title style={colback=Teal,colframe=Teal,arc=2mm,left=3mm,right=3mm,top=1.4mm,bottom=1.4mm},
+  before skip=5pt,after skip=12pt
+}
+\newtcolorbox{identification}[1][题面辨识说明]{
+  enhanced,breakable,colback=PaleGold,colframe=Gold,
+  boxrule=0.7pt,arc=2mm,left=4mm,right=4mm,top=2.5mm,bottom=2.5mm,
+  title={#1},fonttitle=\bfseries\sffamily,coltitle=Navy,before skip=6pt,after skip=8pt
+}
+\newtcolorbox{selfcheck}[1][自检]{
+  enhanced,breakable,colback=PaleTeal,colframe=Teal,
+  boxrule=0.6pt,arc=2mm,left=4mm,right=4mm,top=2mm,bottom=2mm,
+  title={#1},fonttitle=\bfseries\sffamily,coltitle=Navy,before skip=5pt,after skip=5pt
+}
+
+\tikzset{
+  axis/.style={-{Latex[length=2.2mm]},line width=0.7pt,Navy},
+  force/.style={-{Latex[length=2.5mm]},line width=1.1pt,Coral},
+  velocity/.style={-{Latex[length=2.5mm]},line width=1.1pt,Teal},
+  dimension/.style={{Latex[length=2mm]}-{Latex[length=2mm]},line width=0.6pt,TextGray},
+  body/.style={draw=Navy,fill=PaleBlue,line width=0.9pt},
+  track/.style={draw=Navy,line width=1.2pt},
+  spring/.style={decorate,decoration={coil,aspect=0.4,segment length=3.5pt,amplitude=3pt},line width=0.9pt,Indigo}
+}
+\input{figures.tex}
+
+\begin{document}
+\frontmatter
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[Navy] (current page.north west) rectangle ([yshift=-92mm]current page.north east);
+  \fill[Indigo] ([yshift=-92mm]current page.north west) rectangle ([yshift=-98mm]current page.north east);
+  \draw[Violet,line width=1.4pt,opacity=.65] ([xshift=18mm,yshift=-27mm]current page.north west) -- ([xshift=-18mm,yshift=-27mm]current page.north east);
+  \foreach \x/\r/\o in {27/8/.22,55/13/.12,84/5/.28,117/16/.12,154/9/.20,184/4/.30}{\draw[white,opacity=\o,line width=.8pt] ([xshift=\x mm,yshift=-58mm]current page.north west) circle (\r mm);}
+  \draw[white,opacity=.25,line width=1pt,->] ([xshift=30mm,yshift=-75mm]current page.north west) .. controls +(25mm,22mm) and +(-20mm,-18mm) .. ([xshift=92mm,yshift=-35mm]current page.north west);
+  \draw[white,opacity=.25,line width=1pt,->] ([xshift=112mm,yshift=-75mm]current page.north west) arc[start angle=210,end angle=510,radius=18mm];
+\end{tikzpicture}
+\vspace*{24mm}
+{\color{white}\sffamily\bfseries\fontsize{31}{38}\selectfont 力学免修历年真题\par}
+\vspace{3mm}
+{\color{white}\sffamily\bfseries\fontsize{24}{30}\selectfont 与详细解答\par}
+\vspace{7mm}
+{\color{white!82}\sffamily\Large 2013--2025 · 统一排版 · TikZ 重绘\par}
+\vspace{53mm}
+\begin{tcolorbox}[width=\textwidth,colback=white,colframe=LineGray,boxrule=.6pt,arc=3mm,left=8mm,right=8mm,top=7mm,bottom=7mm]
+\large
+本书合并所给资料中的六套试题：\textbf{2013、2014、2016、2020、2023、2025}。所有示意图均以 TikZ 重新绘制；每题均附推导、关键物理判断与结果自检。对回忆版中确有缺字、方向不清或物理条件不自洽之处，使用醒目的“题面辨识说明”标注，不以猜测冒充原题。
+\end{tcolorbox}
+\vfill
+\begin{center}
+\begin{tikzpicture}
+\foreach \x/\y/\c in {0/2013/Indigo,2.4/2014/Violet,4.8/2016/Teal,7.2/2020/Gold,9.6/2023/Coral,12/2025/Navy}{\node[fill=\c,text=white,rounded corners=2mm,minimum width=19mm,minimum height=8mm,font=\sffamily\bfseries] at (\x,0) {\y};}
+\end{tikzpicture}
+\par\vspace{8mm}{\sffamily\color{TextGray}电子整理版 · 2026 年 9 月}
+\end{center}
+\end{titlepage}
+
+\chapter*{编校说明}
+\addcontentsline{toc}{chapter}{编校说明}
+\begin{identification}[资料范围与可靠性]
+\begin{tabularx}{\textwidth}{>{\bfseries\sffamily}l l X}
+\toprule
+年份 & 资料性质 & 编校策略\\
+\midrule
+2013、2014 & 正式扫描版 & 忠实转写；公式与图形统一重排。\\
+2016 & 三张试卷照片 & 逐题转写；轻微字迹歧义按上下文订正。\\
+2020、2023、2025 & 回忆版 & 保留原意；缺失条件或自洽性问题明确标注，并给出采用的解释。\\
+\bottomrule
+\end{tabularx}
+\end{identification}
+本书中的方向、正负号与坐标约定均在解答开头说明。对于同一题在不同年份重复出现的情况，仍保留在对应年份章节中，便于按年份整套练习。
+\begin{selfcheck}[建议用法]
+第一次阅读时先遮住“详细解答”，只用题面完成建模；第二遍重点检查约束、守恒量与符号；最后再比较本书推导。回忆版题目尤其应训练“先审题、再计算”：当轻绳需要承受压力、斯托克斯公式超出低雷诺数范围等情况出现时，指出模型失效本身就是答案的一部分。
+\end{selfcheck}
+\tableofcontents
+\mainmatter
+\input{years/2013.tex}
+\input{years/2014.tex}
+\input{years/2016.tex}
+\input{years/2020.tex}
+\input{years/2023.tex}
+\input{years/2025.tex}
+
+\backmatter
+\chapter*{公式速查}
+\addcontentsline{toc}{chapter}{公式速查}
+\begin{multicols}{2}
+\subsection*{极坐标运动学}
+\[\begin{aligned}\vect v&=\dot r\,\unitv r+r\dot\theta\,\unitv\theta,\\
+\vect a&=(\ddot r-r\dot\theta^2)\unitv r+(r\ddot\theta+2\dot r\dot\theta)\unitv\theta.\end{aligned}\]
+\subsection*{刚体平面运动}
+\[\vect v_P=\vect v_C+\vect\omega\times\vect r_{P/C},\quad T=\frac12Mv_C^2+\frac12I_C\omega^2.\]
+\subsection*{阻尼振动}
+\[\ddot x+2\beta\dot x+\omega_0^2x=0,\quad \omega_d=\sqrt{\omega_0^2-\beta^2}.\]
+\subsection*{相对论速度变换}
+\[u'_x=\frac{u_x-v}{1-u_xv/c^2},\quad u'_y=\frac{u_y}{\gamma_v(1-u_xv/c^2)}.\]
+\subsection*{恒定固有加速度}
+\[ct=\frac{c^2}{a_0}\sinh\frac{a_0\tau}{c},\quad x=\frac{c^2}{a_0}\left(\cosh\frac{a_0\tau}{c}-1\right).\]
+\subsection*{Binet 方程}
+\[F(r)=-\frac{L^2u^2}{m}(u''+u),\qquad u=\frac1r.\]
+\end{multicols}
+\chapter*{勘误记录}
+\addcontentsline{toc}{chapter}{勘误记录}
+本版对回忆资料中无法唯一辨识的部分均已在对应题目旁标注。若后续取得原始正式试卷，可据此替换题面而不改变全书结构。
+\end{document}
