@@ -1,0 +1,205 @@
+\chapter{2025 年力学免修考试回忆版}
+\noindent\yearbadge{2025}\quad\sourcebadge{手写回忆版}\qquad 原资料注明考试时长 2 小时，共 9 题。
+
+\begin{problem}{第 1 题｜中点铰接双质点轻杆}
+两个质量均为 $m$ 的小球固定在长度为 $2l$ 的轻杆两端，杆中点与固定竖直轴光滑铰接，两端具有图示大小相等、方向相反的垂直纸面初速度。判断哪些力学量守恒，并定性描述运动。
+\FigHingedRod
+\end{problem}
+\begin{identification}
+按回忆图把竖直线解释为固定转轴。若正式题面指球铰而不是单自由度转轴，则应改用自由刚体的角动量分析。
+\end{identification}
+\begin{solution}
+铰链可提供外力，所以总线动量不守恒；铰链力对固定轴的力矩为零，故绕轴角动量分量守恒。系统质心在铰点，两端重力势能之和不随方位角改变，光滑铰链不做功，因此机械能和转动动能守恒。
+
+该约束下只有绕轴方位角这一自由度，$L_z=I_z\dot\varphi$ 恒定，故杆保持倾角不变并绕竖直轴匀速转动。
+\end{solution}
+
+\begin{problem}{第 2 题｜线性中心力的守恒量}
+质点质量为 $m$，受力 $\vect F=\alpha\vect r$。初始 $\vect r_0=(-a,a)$、$\vect v_0=(v_0,0)$；某时刻 $\vect v_e\perp\vect r_e$。列出求 $r_e,v_e$ 的两个独立守恒方程。
+\end{problem}
+\begin{solution}
+中心力保证角动量守恒，机械能也守恒。由于 $r_0^2=2a^2$，
+\[
+mr_ev_e=ma v_0,
+\]
+\[
+\frac12mv_e^2-\frac12\alpha r_e^2
+=\frac12mv_0^2-\alpha a^2.
+\]
+这两式就是所需独立方程。
+\end{solution}
+
+\begin{problem}{第 3 题｜纵波的疏密位置}
+弹簧中传播正弦纵波，$A,B$ 分别为最密和最疏处。判断相应质点位移是否最大。
+\FigLongWave
+\end{problem}
+\begin{solution}
+密度扰动与位移梯度成正比：
+\[
+\delta\rho=-\rho_0\frac{\partial\xi}{\partial x}.
+\]
+对正弦波，密度极值处恰有位移 $\xi=0$。所以 $A,B$ 处质点都正经过平衡位置，位移不是最大；此时振动速度大小最大。
+\end{solution}
+
+\begin{problem}{第 4 题｜伯努利方程与 Magnus 效应}
+写出伯努利方程，并判断无自转、回旋、上旋三个相同小球以相同初速度水平抛出后的轨迹高低。
+\FigMagnus
+\end{problem}
+\begin{solution}
+稳恒、不可压缩、无黏流体沿流线满足
+\[
+p+\frac12\rho v^2+\rho gz=\text{常量}.
+\]
+旋转球通过黏性边界层改变上下表面附近流速，从而形成压强差：回旋产生向上 Magnus 力，轨迹最高；无自转居中；上旋产生向下力，轨迹最低。
+\end{solution}
+
+\begin{problem}{第 5 题｜视在超光速}
+远处观测者位于 $x$ 轴上。碎片从 $O$ 以速度 $v$、与 $+x$ 轴夹角 $\phi$ 飞出。求视在横向速度、其最大值，并讨论 $v=2c/3$ 时是否能观察到超光速。
+\FigSuperluminal
+\end{problem}
+\begin{solution}
+经过实验室时间 $t$，横向位移为 $vt\sin\phi$；由于碎片靠近观测者，光信号到达间隔缩短为
+\[
+t(1-\beta\cos\phi),\qquad \beta=v/c.
+\]
+所以
+\[
+v_s=\frac{v\sin\phi}{1-\beta\cos\phi}.
+\]
+极值条件为 $\cos\phi=\beta$，因此
+\[
+v_{s,\max}=\gamma v.
+\]
+当 $v=2c/3$ 时，$v_{s,\max}=2c/\sqrt5<c$，不存在满足 $v_s>c$ 的角度。
+\end{solution}
+
+\begin{problem}{第 6 题｜无阻尼受迫振动与共振}
+质量 $m$ 的物块由劲度系数为 $k$ 的弹簧连接，受外力
+\[
+F(t)=F_0\cos\omega t.
+\]
+初始 $x(0)=\dot x(0)=0$。记 $\omega_0=\sqrt{k/m}$、$f_0=F_0/m$。
+
+（1）$\omega>\omega_0$ 时求 $x(t)$；（2）$\omega=\omega_0$ 时求 $x(t)$。
+\FigForcedOsc
+\end{problem}
+\begin{solution}
+方程为
+\[
+\ddot x+\omega_0^2x=f_0\cos\omega t.
+\]
+非共振时取特解 $x_p=f_0\cos\omega t/(\omega_0^2-\omega^2)$。利用零初始条件，
+\[
+\boxed{x(t)=\frac{f_0}{\omega_0^2-\omega^2}\bigl(\cos\omega t-\cos\omega_0t\bigr)}.
+\]
+该式对 $\omega>\omega_0$ 同样成立；分母为负只改变相位。
+
+共振时可由上式取极限，或取特解 $x_p=(f_0/2\omega_0)t\sin\omega_0t$，得到
+\[
+\boxed{x(t)=\frac{f_0}{2\omega_0}t\sin\omega_0t}.
+\]
+振幅包络随时间线性增长，体现无阻尼理想共振。
+\end{solution}
+
+\begin{problem}{第 7 题｜线轴收绳}
+质量为 $m$ 的线轴外半径为 $R$、内轴半径为 $r$，$I_C=mR^2/2$。绳从内轴下方水平引出，受张力 $T$；地面静摩擦因数为 $\mu$，绳长为 $L$。
+
+（1）求纯滚动条件下使收绳最快的 $T$；（2）收完后动能；（3）可纯滚动收绳的 $T$ 范围。
+\FigSpool
+\end{problem}
+\begin{solution}
+平动、转动与纯滚动条件为
+\[
+ma=T+f,
+\qquad
+I_C\alpha=rT+Rf,
+\qquad
+\alpha=-\frac aR.
+\]
+解得
+\[
+a=\frac{2T(R-r)}{3mR},
+\qquad
+f=-\frac{T(R+2r)}{3R}.
+\]
+故纯滚动要求
+\[
+T\le\frac{3\mu mgR}{R+2r}.
+\]
+收绳加速度随 $T$ 单调增加，最快时取等号。收绳长度 $L$ 等于张力作用点沿力方向的位移，静摩擦不做功，所以 $K=TL$。
+\result{$\displaystyle T_{\max}=\frac{3\mu mgR}{R+2r}$；$\displaystyle K=T_{\max}L$；$\displaystyle 0<T\le T_{\max}$。}
+\end{solution}
+
+\begin{problem}{第 8 题｜静止释放轻绳的题面自洽性}
+长为 $l$ 的不可伸长轻绳一端固定于 $O$，另一端连接小球。小球在绳与水平线夹角为 $\theta$ 的位置静止释放，并要求讨论其脱离绳后的最高点。
+\FigPendulumSlack
+\end{problem}
+\begin{identification}
+本题与 2023 年第 4 题相同。按回忆版现有文字，小球在水平线上方静止释放时绳会立即松弛，题目很可能遗漏了初速度或圆轨道条件。
+\end{identification}
+\begin{solution}
+初始沿指向 $O$ 的径向方程为
+\[
+T+mg\sin\theta=0.
+\]
+图示 $\theta\ge0$ 时所需张力非正，轻绳不能提供压力，所以立即松弛。之后小球从静止自由落下，最高高度就是初始高度：
+\[
+h_m=l\sin\theta.
+\]
+在 $0\le\theta\le\pi/2$ 内，最大值为
+\[
+h_{m,\max}=l,
+\qquad \theta=\frac\pi2.
+\]
+\end{solution}
+
+\begin{problem}{第 9 题｜圆弧内的“杆--圆盘”纯滚动系统}
+固定圆弧以 $O$ 为圆心、半径为 $L+r$。均匀细杆 $OA$ 长度为 $L$、质量为 $m$；半径为 $r$、质量也为 $m$ 的均匀圆盘以圆心 $A$ 与杆相连，并在圆弧内纯滚动。系统从角位移 $\theta_0$ 静止释放。
+
+（1）运动到一般角度 $\theta$ 时，求圆盘所受摩擦力及方向；（2）$\theta_0\ll1$ 时求周期。
+\FigRodDisk
+\end{problem}
+\begin{solution}
+以杆相对竖直向下方向的角位移 $\theta$ 为广义坐标。圆盘中心速率为 $L\dot\theta$。纯滚动条件要求圆盘自转角速度
+\[
+\omega_s=-\frac Lr\dot\theta.
+\]
+杆关于 $O$ 的转动惯量为 $mL^2/3$；圆盘平动等效惯量为 $mL^2$；圆盘自转等效惯量为
+\[
+I_d\frac{L^2}{r^2}=\frac12mL^2.
+\]
+因此总有效惯量
+\[
+I_{\rm eff}=\frac{11}{6}mL^2.
+\]
+杆质心距 $O$ 为 $L/2$，圆盘质心距 $O$ 为 $L$，势能为
+\[
+U=mg\left(\frac L2+L\right)(1-\cos\theta)
+=\frac32mgL(1-\cos\theta).
+\]
+Lagrange 方程
+\[
+\frac{11}{6}mL^2\ddot\theta+\frac32mgL\sin\theta=0
+\]
+给出
+\[
+\ddot\theta=-\frac{9g}{11L}\sin\theta.
+\]
+圆盘的自转角加速度为 $\dot\omega_s=-L\ddot\theta/r$。支持力和杆力都过圆心，只有摩擦力 $f$ 提供自转力矩：
+\[
+fr=I_d\dot\omega_s
+=\frac12mr^2\left(-\frac Lr\ddot\theta\right).
+\]
+所以
+\[
+\boxed{f=-\frac{mL}{2}\ddot\theta=\frac{9}{22}mg\sin\theta}.
+\]
+当 $\theta>0$ 时，$f$ 沿增大 $\theta$ 的切向，即沿圆弧向上，反对圆盘质心向平衡点的运动趋势。
+
+小振动方程为
+\[
+\ddot\theta+\frac{9g}{11L}\theta=0,
+\]
+故
+\result{$\displaystyle T=2\pi\sqrt{\frac{11L}{9g}}$。}
+\end{solution}
