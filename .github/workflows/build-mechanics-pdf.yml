@@ -1,0 +1,45 @@
+name: Build mechanics PDF
+
+on:
+  push:
+    branches: [gh-pages]
+    paths:
+      - 'mechanics-exemption/**'
+      - '.github/workflows/build-mechanics-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install XeLaTeX and Chinese support
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-science latexmk
+
+      - name: Compile PDF
+        working-directory: mechanics-exemption
+        run: |
+          xelatex -interaction=nonstopmode -halt-on-error main.tex
+          xelatex -interaction=nonstopmode -halt-on-error main.tex
+          mv main.pdf mechanics.pdf
+
+      - name: Publish compiled PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mechanics-exemption/mechanics.pdf
+          if git diff --cached --quiet; then
+            echo "PDF unchanged"
+          else
+            git commit -m "build: publish mechanics PDF"
+            git push
+          fi
