@@ -1760,7 +1760,9 @@ order: 1
             <p>{{ pub.authors }}</p>
             <div class="about-badges" aria-label="Publication status">
               {% for badge in pub.badges %}
+              {% if badge.text %}
               <span class="about-badge about-badge-{{ badge.color | default: 'default' }}">{{ badge.text }}</span>
+              {% endif %}
               {% if badge.venue %}
               <span class="publication-badge-venue">{{ badge.venue }}</span>
               {% endif %}
@@ -2549,7 +2551,7 @@ order: 1
     const title = firstItem.querySelector("h3");
     const authors = firstItem.querySelector("p");
     const link = firstItem.querySelector(".publication-links a");
-    const badge = firstItem.querySelector(".about-badge");
+    const badge = document.querySelector(".about-badge");
     const spotlight = document.querySelector(".about-badge-spotlight");
     const venue = document.querySelector(".publication-badge-venue");
     const beforeLeft = numberFromCss(css(list, "left", "::before"));
@@ -2581,7 +2583,7 @@ order: 1
       "--pub-title-color": css(title, "color"),
       "--pub-author-color": css(authors, "color"),
       "--pub-link-color": css(link, "color"),
-      "--pub-badge-color": css(badge, "color"),
+      "--pub-badge-color": badge ? css(badge, "color") : css(page, "--pub-badge-color"),
       "--pub-spotlight-bg": spotlight ? css(spotlight, "background-color") : "oklch(91% 0.085 82)",
       "--pub-spotlight-color": spotlight ? css(spotlight, "color") : "oklch(43% 0.13 78)",
       "--pub-venue-color": venue ? css(venue, "color") : css(authors, "color")
