@@ -66,7 +66,7 @@ publications:
     date_label: "2026-5"
     authors: "<strong>Shaoheng Yan</strong>, Zian Li, Cai Zhou, Qiaojing Huang, Kai Liu, Muhan Zhang"
     badges:
-      - text: Preprint
+      - text: NeurIPS 2026
         color: primary
     links:
       - text: arXiv
@@ -76,7 +76,7 @@ publications:
     date_label: "2026-5"
     authors: "Xinyuan Wei, Zian Li, <strong>Shaoheng Yan</strong>, Cai Zhou, Muhan Zhang"
     badges:
-      - text: Preprint
+      - text: NeurIPS 2026
         color: primary
     links:
       - text: arXiv
