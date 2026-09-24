@@ -1665,7 +1665,7 @@ order: 1
     <section class="about-hero" aria-labelledby="about-title">
       <div>
         <p class="about-kicker">Peking University, YuanPei College</p>
-        <h1 id="about-title">Shaoheng Yan <span>AI, physics, and the shape of scientific representation.</span></h1>
+        <h1 id="about-title">Shaoheng Yan <span>A junior, maybe forever.</span></h1>
         <div class="about-lede">
           {{ about.basic_info.lead }}
           <p style="margin-top: 0.5em;">
