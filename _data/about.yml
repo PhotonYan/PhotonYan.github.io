@@ -61,6 +61,12 @@ education:
     
 # Publications
 publications:
+  - title: "Seeing the Molecule Behind the Map"
+    date: "2026"
+    date_label: "2026"
+    authors: "<strong>Shaoheng Yan</strong>, Qiaojing Huang, Muhan Zhang, Kai Liu"
+    badges:
+      - text: Under Review
   - title: "Toward Better Geometric Representations for Molecule Generative Models"
     date: "2026-05-02"
     date_label: "2026-5"
