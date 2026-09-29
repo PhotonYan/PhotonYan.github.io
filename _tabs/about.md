@@ -1825,7 +1825,7 @@ order: 1
               {% if item.logo %}<img src="{{ item.logo | relative_url }}" alt="" loading="lazy">{% endif %}
             </span>
             <strong>{{ item.role }} <em>&middot; {{ item.company }}</em></strong>
-            <small>{% if item.team %}{{ item.team }} &middot; {% endif %}{{ item.location }}</small>
+            {% if item.team or item.location %}<small>{% if item.team %}{{ item.team }}{% endif %}{% if item.team and item.location %} &middot; {% endif %}{% if item.location %}{{ item.location }}{% endif %}</small>{% endif %}
             <time>{{ item.time }}</time>
           </li>
           {% endfor %}

@@ -41,10 +41,16 @@ internships:
     logo: /assets/img/about/logos/bytedance-icon.svg
   - role: Algorithm Intern
     company: Anew Lab
-    time: Aug 2026 – Present
+    time: Aug 2026 – Sep 2026
     location: Shanghai, China
     icon: fas fa-briefcase
     logo: /assets/img/about/logos/anew-icon.svg
+  - role: Founding Researcher
+    company: Norizon
+    team: Lead, Recursive Self-Improvement for Science (RSI4Sci)
+    time: Sep 2026 – Present
+    icon: fas fa-flask
+    logo: /assets/img/about/logos/norizon-icon.png
 
 # Education
 education:
