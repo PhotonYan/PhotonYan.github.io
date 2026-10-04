@@ -48,10 +48,27 @@
   }
   async function resource(src,signal) {
     if(blobs.has(src))return blobs.get(src);
-    const response=await fetch(src,{signal});if(!response.ok)throw new Error('Media unavailable');
+    const response=await fetch(src,{signal});
+    if(!response.ok){const error=new Error('Media unavailable');error.status=response.status;throw error;}
     const url=URL.createObjectURL(await response.blob());blobs.set(src,url);
     if(blobs.size>4){const [key,old]=blobs.entries().next().value;blobs.delete(key);URL.revokeObjectURL(old);}
     return url;
+  }
+  async function refreshSlides(signal,request) {
+    // An already-open tab can still refer to a clip removed by a new release.
+    const response=await fetch(new URL('index.html',document.baseURI),{signal,cache:'no-store'});
+    if(!response.ok)return null;
+    const documentCopy=new DOMParser().parseFromString(await response.text(),'text/html');
+    const data=[...documentCopy.scripts].map(script=>script.textContent.match(/^const slides=(\[.*\]);$/s)).find(Boolean);
+    if(!data)return null;
+    const latest=JSON.parse(data[1]);
+    if(!Array.isArray(latest)||!latest.length||!latest.every(slide=>
+      typeof slide.story_key==='string'&&typeof slide.src==='string'&&Array.isArray(slide.cues)))return null;
+    if(request!==serial||signal.aborted||JSON.stringify(latest)===JSON.stringify(slides))return null;
+    const following=slides.slice(index).map(slide=>slide.story_key);
+    const target=following.map(key=>latest.findIndex(slide=>slide.story_key===key)).find(i=>i>=0);
+    slides.splice(0,slides.length,...latest);
+    return target??Math.min(index,slides.length-1);
   }
   function updateLinks() {
     const layer=$('slideLinks');layer.replaceChildren();
@@ -61,7 +78,7 @@
       a.setAttribute('aria-label',link.label);layer.append(a);
     }
   }
-  async function setSlide(requested,last=false) {
+  async function setSlide(requested,last=false,allowRefresh=true) {
     stopWatch();aborter?.abort();aborter=new AbortController();const signal=aborter.signal;
     const request=++serial;pending=true;active().pause();
     index=Math.max(0,Math.min(slides.length-1,requested));step=last?points().length-1:0;
@@ -86,6 +103,13 @@
       }
     }catch(error){
       if(error.name==='AbortError'||request!==serial)return;
+      if(allowRefresh&&(error.status===404||error.status===410)){
+        try{
+          const target=await refreshSlides(signal,request);
+          if(target!==null&&request===serial)return setSlide(target,last,false);
+        }catch(refreshError){if(refreshError.name==='AbortError'||request!==serial)return;}
+      }
+      if(request!==serial||signal.aborted)return;
       pending=false;$('notice').textContent='动画暂时无法播放，请点重播再试。';$('notice').classList.add('show');
       window.dispatchEvent(new Event('fft-slidechange'));
     }
