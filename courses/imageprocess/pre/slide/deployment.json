@@ -1,8 +1,8 @@
 {
-  "edition": "rehearsal-20261005-click",
-  "source_commit": "f47d784a87753a4437e003b9f7e4ef1c8e74edc5",
-  "pages": 29,
-  "click_states": 34,
+  "edition": "rehearsal-20261008-video-qr",
+  "source_commit": "e5050a04c06c8d28d5e920f777f4c9f035647fbf",
+  "pages": 30,
+  "click_states": 35,
   "url": "https://www.photonyan.fun/courses/imageprocess/pre/slide/",
   "feedback": "copy with page and animation context; no public feedback inbox",
   "files": {
@@ -10,7 +10,7 @@
     "ATTRIBUTION.md": "5d03d57878b225dc6b1bf8b8b4dfcb329ff0df7e7921236dd8b70853a8313f9c",
     "concise/posters/O01.png": "8c3e57b808206ed46954dc34b0df972f99e46a091ba72f44c2de1d11aef5e209",
     "concise/posters/O02.png": "5c1200a370d18a76569350fb5a148c30287d20c921bfc9547e722dcb7bb3419c",
-    "index.html": "0fc270ce896d372a75bff95d492189e97e94fe47e7b7061cbc9778ff1287aa3b",
+    "index.html": "3c9115b2a62a0e757d085b3b5ac3fc099223ab652f5e8f5f73bc34ac92aae141",
     "loops/01-FFTCoverLoop.mp4": "44a1105b54476f3a400c7577d7972c688bd99e9eb5263c841c86ec12551b9050",
     "player/presenter-tools.css": "615988df1a268cdf3a2efde05acb27caa1231ecc2effce5b11b063797ae829a6",
     "player/presenter-tools.js": "8ef1ec8be4e35b103122317395bf21bd811bd63856f96ca33e7cc805bf858f2f",
@@ -41,6 +41,7 @@
     "rehearsal/posters/Q02.png": "0fa79dc72cffd141070598a34fc663c27aecc7f1e44ada7d0c9f1cc0ad070946",
     "rehearsal/posters/RCost.png": "b5d2b9d1d4d2927f6316e41656f00a5aeded634fd7fb33590a8be48c57718d45",
     "rehearsal/posters/RTree.png": "7fc337d4ca6e55712726f86e5ae4ce0c79ac84503caeb8cf4249ce6593313c8c",
+    "rehearsal/posters/RVideoQR.png": "53c1fc219b98145c5ed946720cda3bfe80be3a5c17b173c22250c073f48d3030",
     "rehearsal/posters/RWatermark.png": "fc243140227ee755d75ccf33728b3bd48e15c853b000a7fba96534fc7d54e6e2",
     "slides/files/FFTReport/f1528c6a57dc80b0.mp4": "e6512496af5f5e523332e46a404e15bb952bdb19ebe0c825fd482ad487fd448d",
     "slides/files/rehearsal/C02-click.mp4": "cc26ef9b9ffdc60504a2a0feb0de8af1d61264835db8e991042660e8f14d49a5",
@@ -69,6 +70,7 @@
     "slides/files/rehearsal/RIntro.mp4": "8c8444b1afe5f7e782423c80834e857a889b2feb532734a1ec320f9f98962888",
     "slides/files/rehearsal/RPlaneSpectrum.mp4": "f7480eee543e35e67dbf05693d188b39791a243113c82cbe8673b13c227ca047",
     "slides/files/rehearsal/RTree.mp4": "7636bf5f14977b5cec7434d32b3167ea2e9a9cb9c8a8c9a2590eb955778da71d",
+    "slides/files/rehearsal/RVideoQR.mp4": "e010016f49d261be3536b72764b6beba213ab369cbde794620dc6454a9ea5122",
     "slides/files/rehearsal/RWatermark.mp4": "532f111a9c7056fdcaf25c1055967cfa50e8c80b8401630af428cd7602fce69b"
   }
 }
