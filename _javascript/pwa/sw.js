@@ -26,6 +26,7 @@ function verifyUrl(url) {
 }
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   if (purge) {
     return;
   }
@@ -62,6 +63,13 @@ self.addEventListener('message', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // The booking app and its live API are served independently by Cloudflare.
+  // Bypass even pre-existing offline entries, not only new cache writes.
+  const path = new URL(event.request.url).pathname;
+  if (path === '/calendar' || path.startsWith('/calendar/')) {
+    return;
+  }
+
   if (event.request.headers.has('range')) {
     return;
   }
